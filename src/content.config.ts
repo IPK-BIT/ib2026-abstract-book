@@ -1,8 +1,11 @@
 import { z, defineCollection, reference } from 'astro:content';
+import { glob, file } from 'astro/loaders'; // <-- Added loaders for local files
+import { docsLoader } from '@astrojs/starlight/loaders'; // <-- Added Starlight's official content layer loader
 import { docsSchema } from '@astrojs/starlight/schema';
 
 const authors = defineCollection({
-  type: 'data',
+  // Use glob or file loader depending on how your data files are stored
+  loader: glob({ pattern: '**/*.{json,yaml,yml}', base: './src/content/authors' }),
   schema: ({ image }) => z.object({
     name: z.string(),
     image: image().optional(),
@@ -21,8 +24,9 @@ const authors = defineCollection({
   }),
 });
 
-// FIX: Remove the redundant outer defineCollection wrapper here
+// Correctly defined using the Starlight content layer loader
 const extendedDocsSchema = defineCollection({
+  loader: docsLoader(), // <-- Essential for Starlight to discover your Markdown files
   schema: docsSchema({
     extend: z.object({
       authors: z.array(reference('authors')).optional(),
@@ -40,7 +44,7 @@ const contributionSchema = z.object({
 });
 
 const scheduleCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.{json,yaml,yml}', base: './src/content/schedule' }),
   schema: z.object({
     days: z.array(z.object({
       date: z.string(),
