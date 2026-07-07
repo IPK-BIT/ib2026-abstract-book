@@ -1,0 +1,35 @@
+---
+import { getEntry } from 'astro:content';
+import AuthorCard from './AuthorCard.astro';
+
+interface Props {
+  authorRefs: string[]; // Typed explicitly as an array of string slugs
+}
+
+const { authorRefs = [] } = Astro.props;
+
+// Safely resolve each string slug against the 'authors' collection
+const authors = await Promise.all(
+  authorRefs.map(async (slug) => {
+    return await getEntry('authors', slug);
+  })
+);
+
+// Filter out any undefined results just in case a slug typo happens in MDX
+const validAuthors = authors.filter((author) => author !== undefined);
+---
+
+<div class="not-prose authors-list-container">
+  {validAuthors.map((author) => (
+    <AuthorCard author={author} />
+  ))}
+</div>
+
+<style>
+  .authors-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+</style>

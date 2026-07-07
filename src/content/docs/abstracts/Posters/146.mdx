@@ -1,0 +1,20 @@
+---
+title: Including legal information in RO-Crates
+authors:
+  - constantin-bress
+  - carmen-scheuner
+---
+
+Data sets may be associated with various legal details, such as licence information or usage restrictions. Standards have now been established for the former, including for integration into RO-Crates. This is not yet the case for usage restrictions and further legal information.
+
+Such information may, for example, relate to the entities authorised to use a dataset, such as a restriction to specific institutions. Until now, such restrictions have been enforced manually, for instance by sending an email request to a repository. However, this enforcement could also be carried out more quickly via the infrastructure.
+
+Discussions across several NFDI consortia (4Biodiversity, 4Microbiota, FAIRagro) have led to an approach based on schema.org for embedding this information in RO-Crates and similar formats. By using widely adopted and established standards, we hope to facilitate seamless integration into existing infrastructures. In doing so, we are utilising existing properties within schema.org rather than introducing an additional property. We use ODRL, a W3C standard, to represent the legal information in a structured format.
+
+In this talk, we will discuss the practical implementation and how we will store usage data within the infrastructure. We will also outline how this data could be utilised across various services.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

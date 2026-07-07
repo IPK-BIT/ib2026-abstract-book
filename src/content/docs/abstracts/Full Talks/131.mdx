@@ -1,0 +1,21 @@
+---
+title: Understanding the Bioimaging Standardization Runway
+authors:
+  - josh-moore
+---
+
+Bioimaging has become a central modality in the life sciences, spanning applications from molecular and cellular biology to plant phenotyping, clinical research, and increasingly AI-driven analysis. Yet despite major advances in imaging technologies, the surrounding data ecosystem remains highly fragmented. Data are often stored in proprietary formats, metadata practices vary substantially between communities, and interoperability across infrastructures, tools, and computational workflows remains difficult.
+
+Over the past two decades, the bioimaging community has developed a progressively broader set of open standards and shared infrastructure to address these challenges. Beginning with the Open Microscopy Environment (OME) data model and OME-TIFF, and continuing through newer cloud-oriented approaches such as OME-Zarr, these efforts have increasingly shifted from isolated file format development toward a wider ecosystem of specifications, reference implementations, governance processes, and community coordination.
+
+This talk examines the “standardization runway” emerging around bioimaging data infrastructures: the long and often non-linear process through which research formats evolve into interoperable, FAIR, and operationally sustainable standards. Particular attention will be given to the transition from traditional single-file exchange mechanisms toward scalable object-store and cloud-native architectures capable of supporting large-scale imaging, distributed analysis, visualization, and AI workflows.
+
+The presentation will discuss how standards development intersects with broader research data management concerns, including FAIR Digital Objects, metadata harmonization, and long-term stewardship. It will also examine the increasingly important role of governance, cross-consortium collaboration, and institutional alignment across initiatives such as NFDI4BIOIMAGE and the wider international bioimaging community.
+
+Rather than presenting standardization as a purely technical problem, the talk argues that sustainable interoperability depends equally on community processes, transparent governance, implementation experience, and operational adoption. In this context, OME-Zarr provides a useful case study for understanding both the opportunities and challenges of building shared research infrastructure that can support the next generation of integrative and AI-enabled life science research.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

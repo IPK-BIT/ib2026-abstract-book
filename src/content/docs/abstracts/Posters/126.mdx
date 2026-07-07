@@ -1,0 +1,31 @@
+---
+title: Mining Biochemical Relationships from Tandem MS Data Using Deep Learning
+authors:
+  - zahra-jafarirameshti
+  - rene-meier
+  - steffen-neumann
+---
+
+Mass spectrometry–based metabolomics is widely used to investigate plant metabolism, biochemical pathways, and cellular responses to environmental and developmental changes. In particular, tandem mass spectrometry (MS/MS) has become one of the central technologies for detecting and characterizing small molecules in complex biological samples. However, despite major advances in instrumentation and computational analysis methods, interpreting metabolomics data remains a significant challenge. One of the major bottlenecks in metabolomics workflows is the identification of metabolites from MS/MS spectra and the integration of these metabolites into biochemical and metabolic network contexts.
+
+Current metabolomics workflows typically rely on matching experimentally measured MS/MS spectra against spectral reference libraries such as MassBank or GNPS. If a metabolite can be identified, its chemical structure and associated identifiers can then be integrated into genome-scale metabolic networks and pathway analysis pipelines. However, existing spectral libraries cover only a limited fraction of known metabolites, while many experimentally observed spectra remain unannotated. As a result, large amounts of metabolomics data cannot be fully interpreted using conventional metabolite-centric approaches. Furthermore, metabolite identification is often labor-intensive, error-prone, and difficult to scale to increasingly large metabolomics datasets.
+
+This project explores a machine learning framework for detecting biochemical relationships directly from MS/MS spectra, with the goal of bridging the gap between raw metabolomics data and interpretable biochemical knowledge. Instead of relying solely on prior metabolite identification, we aim to infer potential biochemical connections between metabolites by learning representations of their spectra and integrating them with curated biochemical reaction knowledge. The central hypothesis of this work is that fragmentation patterns encoded in MS/MS spectra contain latent biochemical and structural information that can be leveraged to identify relationships between metabolites beyond conventional spectral matching approaches.
+
+Recent advances in deep learning and representation learning have demonstrated that MS/MS spectra can be transformed into embeddings that capture chemically meaningful information encoded in fragmentation patterns. In this work, spectral embeddings are generated using the DreaMS model, a deep representation learning framework trained on large collections of tandem mass spectra. DreaMS maps spectra into a continuous embedding space in which structurally or chemically related metabolites are expected to occupy nearby regions. These learned spectral embeddings provide compact and computationally efficient representations suitable for downstream machine learning tasks and large-scale spectral comparison.
+
+The use of learned spectral embeddings is particularly promising for large-scale metabolomics analysis because it enables spectra to be compared beyond direct peak matching. Metabolites participating in related biochemical transformations may exhibit similarities in fragmentation behavior even when their spectra are not directly matched by conventional similarity metrics such as cosine similarity. Representation learning approaches therefore provide an opportunity to capture latent biochemical relationships that are difficult to identify using traditional rule-based or library-matching methods alone.
+
+To integrate biochemical knowledge into the framework, curated metabolic reactions are obtained from e.g. the Rhea biochemical reaction database. Rhea contains expert-curated biochemical reactions linking substrates, products, enzymes, and associated biochemical functions. In the current work, reactions are decomposed into metabolite pairs representing substrate–product relationships. These reaction-derived metabolite pairs are then linked to available MS/MS spectra and their corresponding DreaMS embeddings. The resulting integrated dataset consists of metabolite pairs that are either connected (positive examples) or not connected (negative examples) through known biochemical reactions. This reaction-aware dataset provides a structured foundation for supervised machine learning approaches aimed at identifying biochemical transformations and functional relationships directly from spectral information in large-scale metabolomics datasets.
+
+The current stage of this project focuses primarily on large-scale data integration and dataset construction. Spectral data from multiple metabolomics resources are aggregated into a unified collection of MS/MS spectra, while biochemical reaction information is extracted and standardized from Rhea. By combining spectral embeddings with curated biochemical relationships, we establish a scalable reaction-aware spectral dataset that can serve as training data for downstream predictive models.
+
+Future work will investigate machine learning models capable of predicting whether two MS/MS spectra correspond to metabolites connected through biochemical reactions. Initial approaches will focus on baseline classifiers operating on spectral embeddings before exploring more advanced deep learning architectures and representation learning strategies. In addition to reaction prediction, future directions include investigating whether biochemical and functional annotations, such as Enzyme Commission (EC) classes and Gene Ontology (GO) associations, can be inferred directly from spectral representations without requiring prior metabolite identification.
+
+By enabling reaction-aware analysis directly from spectral features, this work will complement existing metabolite identification workflows and improve the functional interpretation of untargeted metabolomics data. More broadly, the project contributes toward representation learning strategies that connect large-scale metabolomics datasets with biochemical network knowledge for downstream systems biology and bioinformatics applications.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

@@ -1,0 +1,55 @@
+---
+title: Provenance-Aware Spreadsheet FAIRification Using Layered Metadata Integration and RDM-based Storage
+authors:
+  - wolfgang-mueller
+  - timo-muehlhaus
+  - birgitta-koenig-ries
+---
+
+Database scientists have long criticized the use of spreadsheets for scientific data management because spreadsheets lack amongst others explicit schemas, transactions, and declarative query mechanisms [4-6]. Nevertheless, spreadsheets remain among the most widely used tools for research data collection, transformation, annotation, and exchange across many scientific disciplines. Since Lotus 1-2-3, the first spreadsheet system that also considered the spreadsheet as a data collection, continuous improvements in usability and flexibility have further increased their attractiveness as temporary and collaborative data stores.
+
+A key strength of spreadsheets is the workbook concept. Workbooks are ordered collections of sheets that allow researchers to combine data, calculations, metadata, annotations, and workflow context within a single portable research object. However, while spreadsheet software simplifies data entry and ad hoc analysis, it does not solve the problem of data harmonization. Due to their flexibility, spreadsheets created by different researchers frequently differ substantially in structure and semantics unless harmonization efforts are applied explicitly.
+
+This motivates the development of tools that facilitate spreadsheet FAIRification, transformation, annotation, and provenance tracking. Existing tools, however, focus on different aspects of spreadsheet workflows. Transformation-oriented tools such as OpenRefine ( https://openrefine.org/) and ReStoRunT [1] support reshaping and documenting processing workflows. Annotation-oriented tools such as RightField and (ARC-)SWATE (https://arc-rdm.org/details/tools-and-services/SWATE/ , [2]) support ontology-based semantic enrichment of spreadsheet data.
+
+At first sight, these tools appear complementary. However, closer inspection reveals substantial interoperability problems. We argue that one major reason for these limitations is that different tools implicitly operate on different provenance and metadata layers without clearly distinguishing them.
+
+We distinguish at least three provenance and metadata layers relevant for spreadsheet-centered FAIRification workflows:
+
+1. Operational provenance, describing transformation and processing steps applied during data cleaning and restructuring workflows. OpenRefine and ReStoRunT primarily support this layer by recording transformation histories or storing provenance information within spreadsheet formulas.
+
+1. Explicit metadata annotations, describing semantic enrichment intentionally added by researchers, including ontology annotations, units, protocols, variable descriptions, and experimental context. (ARC-)SWATE and RightField+FAIRDOM SEEK primarily support this layer through ontology-guided spreadsheet annotation workflows integrated or for integration in a data management solution.
+
+1. Structural spreadsheet context, describing organizational information encoded through workbook structures, sheet ordering, hidden sheets, formulas, cross-sheet references, and spreadsheet layout conventions that frequently contain implicit scientific meaning.
+
+Current spreadsheet FAIRification tools preserve only subsets of these layers. As a consequence, interoperation between tools often leads to information loss. For example, OpenRefine lets the user operate on single-table projects and does not preserve workbook structures or hidden sheets during import and export. This prevents straightforward interoperability with RightField, which stores ontology-related information in hidden workbook sheets. Similarly, ReStoRunT stores provenance information in spreadsheet formulas, whereas OpenRefine primarily operates on values rather than formulas, resulting in provenance loss during transformation workflows.
+
+These examples demonstrate that spreadsheet interoperability should not be treated solely as a table-conversion problem. Instead, it should be understood as a provenance-aware integration problem involving multiple distinct metadata layers.
+
+To address this challenge, we propose a provenance-aware spreadsheet FAIRification architecture that explicitly separates operational provenance, semantic metadata annotations, and research data content while maintaining transparent spreadsheet-centered workflows for users. Our approach builds upon OpenRefine as an operational provenance backbone while extending spreadsheet workflows with explicit metadata integration, validation, and ontology-aware annotation support.
+
+As underlying storage representation, we propose the use of ARC-based or similar RDM structures that allow transparent separation of metadata layers while remaining compatible with spreadsheet-oriented user interfaces. This separation enables machine-actionable metadata integration, facilitates validation workflows, and supports direct compatibility with RO-Crate-based research object representations.
+
+Rather than replacing spreadsheets, our goal is to preserve the advantages of spreadsheet-centered research workflows while improving interoperability, provenance preservation, and FAIR compliance. Based on experiences from teaching, FAIRification workflows, and practical research data management scenarios, we discuss requirements and challenges for provenance-aware spreadsheet interoperability in integrative bioinformatics and related disciplines.
+
+## References
+
+[1] Wolfgang Müller, Lukrécia Mertová: ReStoRunT: Simple Recording, Storing, Running and Tracing changes in Spreadsheets. BTW 2023: 865-877
+
+[2] Gajendra Doniparthi, Timo Mühlhaus, Stefan Deßloch:
+
+Integrating FAIR Experimental Metadata for Multi-omics Data Analysis. Datenbank-Spektrum 24(2): 107-115(2024)
+
+[3] Verborgh, R., De Wilde, M. : (2013). Using openrefine (Vol. 1). Birmingham: Packt Publishing.
+
+[4] Panko, R. R. (1998). What we know about spreadsheet errors. Journal of Organizational and End User Computing (JOEUC), 10(2), 15-21.
+
+[5] Karr, J. R., Liebermeister, W., Goldberg, A. P., Sekar, J. A., & Shaikh, B. (2020). ObjTables: structured spreadsheets that promote data quality, reuse, and integration. arXiv preprint arXiv:2005.05227.
+
+[6] Bendre, M., Venkataraman, V., Zhou, X., Chang, K., & Parameswaran, A. (2018, April). Towards a holistic integration of spreadsheets with databases: A scalable storage engine for presentational data management. In 2018 IEEE 34th International Conference on Data Engineering (ICDE) (pp. 113-124). IEEE.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

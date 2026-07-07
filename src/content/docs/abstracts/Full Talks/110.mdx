@@ -1,0 +1,66 @@
+---
+title: A FAIR Workflow Engine for Reproducible Life Science Research
+authors:
+  - lena-perzlmaier
+  - daniel-bauer
+  - ayco-holleman
+  - sharif-islam
+  - taimur-khan
+  - julian-oeser
+  - julio-paneque
+  - claus-weiland
+---
+
+## Introduction
+
+Ensuring the reusability of scientific algorithms and the computational reproducibility of workflow results remains a primary challenge in the life sciences, yet it is a fundamental requirement for truly FAIR research. This challenge is rooted in an information gap that is not solved alone by publishing the model code. Scientific workflows typically depend on specific constellations of system libraries, container runtimes, and hardware architectures that are rarely documented in full. Additionally, in complex pipelines consisting of multiple interdependent steps, it is often unclear how input data was retrieved or which specific tasks need to be executed in which order. Without this precise computational and structural context, a pipeline that performs flawlessly on one machine may fail or produce divergent results on another. This lack of transparency effectively turns computational workflows into black boxes, undermining the "R" (Reusability) of the FAIR principles.
+
+To address these gaps, we present a production-ready, FAIR-compliant workflow engine developed within the frameworks of Biodiversity Meets Data (BMD) and Destination Earth (Weiland et al. 2026). The engine is built upon Argo Workflows, a robust execution layer designed for complex, parallel computational tasks. By defining workflows as declarative YAML manifests, they are described in a machine-executable format that explicitly maps every data dependency and containerized task. This ensures that the workflow contains all necessary instructions to be executed deterministically on any instance of an Argo-enabled Kubernetes cluster, while providing a clear, visualizable roadmap of the entire scientific process.
+
+However, technical execution alone does not guarantee scientific transparency. By adopting the Workflow Run RO-Crate (WRROC) standard, our framework ensures that every execution is both portable and transparent. By encapsulating the workflow definition, input parameters, generated outputs, and comprehensive metadata into a single, machine-interpretable package, we create "Actionable Knowledge Units". These units can be moved across diverse environments without loss of context, ensuring that the scientific intent remains coupled with the digital result.
+
+Within BMD, this engine is supplemented by the Biodiversity Analysis Tool (BAT), a user interface designed to lower the entry barrier for fellow scientists and environmental practitioners. A central objective of BMD is to enable managers of Natura 2000 sites in generating biodiversity insights in the context of the EU Nature Restoration Regulation. The platform provides curated workflows across terrestrial, freshwater, and marine systems, addressing topics such as invasive species and drivers of change. As an initial use case, species distribution models for invasive species have been implemented to support reproducible site-level analysis. By enabling the execution of published workflows through an intuitive interface, we extend the traditional notion of reusability, maximizing the societal and scientific impact of research. While currently optimized for biodiversity monitoring, specifically Natura 2000 site analysis, the architecture is strictly domain-agnostic, offering a scalable blueprint for any life science domain requiring standardized, cross-domain pipelines.
+
+## Technical Architecture
+
+The architecture of the workflow engine is designed to manage the full lifecycle of a computational artifact, from initial submission to long-term result retrieval. The computational backbone is built on Argo Workflows, an open-source, Kubernetes-native engine. Because Argo operates natively within the Kubernetes ecosystem, every step of a workflow is executed within an isolated container. This isolation ensures that the environment, including libraries, binaries, and OS dependencies, is strictly defined and reproducible across different providers. This is demonstrated by current deployments at the Jülich Supercomputing Centre (JSC), the Destination Earth Data Lake and LifeWatch ERIC, as well as the capacity for deployment on commercial cloud resources. Furthermore, the framework leverages Kubernetes’ ability to scale pods dynamically, ensuring that the system can handle bursts of high-demand without manual intervention.
+
+While the Argo workflow specification itself is sufficient for workflow execution, it lacks the broader context to define workflow provenance. That is why, the submission endpoint (Workflow API) expects a Workflow RO-Crate (WROC, Bacall et al. 2022), rather than the bare Argo workflow definition. In this setup, the WROC represents the “Prospective Provenance” of a workflow execution (Khan et al. 2019): it describes the intended computational experiment before execution takes place. In addition to the Argo workflow definition, it includes structured metadata such as authorship, titles, descriptions, licenses, and a declarative specification of the workflow’s inputs and outputs. These inputs and outputs are systematically derived from the corresponding elements of the Argo workflow specification, ensuring that the executable interface of the workflow is consistently reflected in its semantic representation.
+
+The true challenge of reproducibility often lies in the "Retrospective Provenance"—the record of the execution event and its produced outputs. Upon completion of a workflow, the Workflow API harvests execution logs, parameters, and results, bundling them with the prospective metadata into a Workflow Run RO-Crate (WRROC). This comprehensive bundle includes:
+
+1. The "Recipe": The original prospective provenance from the submission.
+
+1. The "Record": Retrospective provenance detailing when, by whom and with which specific parameters the workflow was executed, and which results were produced.
+
+1. Semantic Enrichment: Final outputs are linked to these metadata records using JSON-LD and Schema.org vocabularies, ensuring machine-interpretability.
+
+These results are then persisted in a structured object store, such as Cordra, where they are assigned persistent identifiers. The result endpoint serves these as FAIR Digital Objects (FDOs). By implementing FAIR Signposting (Soiland-Reyes et al. 2024), we provide machine-readable link headers that allow automated agents to navigate from a result file (e.g., a species distribution map) back to the full provenance record in the RO-Crate. This ensures that every computational run is not just a set of files, but a fully auditable and portable scientific record.
+
+## Outlook and Conclusion
+
+The framework presented here illustrates a practical approach to reducing the information gap in computational research. By combining the execution capabilities of Argo Workflows with the metadata structure of Workflow Run RO-Crates, we have implemented a system that treats workflows as encapsulated, documented units rather than isolated scripts. This "FAIR-by-design" methodology demonstrates that it is feasible to embed data stewardship directly into the computational layers used in the life sciences, ensuring that both software environments and processing steps are systematically recorded.
+
+Looking ahead, the impact of this architecture extends beyond biodiversity monitoring. As a domain-agnostic toolset, it is designed to be adaptable by other scientific communities requiring consistent pipeline execution in containerized environments. Furthermore, by generating machine-interpretable provenance, this system provides a structured foundation for data-intensive research, including machine learning applications that require a clear record of data lineage for validation.
+
+Ultimately, this work aims to contribute to the integration of the OneNFDI initiative and the European Open Science Cloud (EOSC), specifically within the life science domain (Glöckner et al., 2019). By providing a technically accessible interface through the Biodiversity Analysis Tools (BATs) while maintaining a standardized backend, we aim to contribute to a more transparent and reproducible research environment that serves both technical developers and domain scientists alike.
+
+## References
+
+Bacall, F., Williams, A. R., Owen, S., & Soiland-Reyes, S. (2022). Workflow RO-Crate profile 1.0. https://w3id.org/workflowhub/workflow-ro-crate/1.0
+
+Glöckner, F. O., Diepenbroek, M., Felden, J., Overmann, J., Bonn, A., Gemeinholzer, B., Güntsch, A., König-Ries, B., Seeger, B., Pollex-Krüger, A., Fluck, J., Pigeot, I., Toralf, K., Mühlhaus, T., Wolf, C., Heinrich, U., Steinbeck, C., Koepler, O., Stegle, O., … Bernard, L. (2019). Berlin Declaration on NFDI Cross-Cutting Topics (Version 1). Zenodo. https://doi.org/10.5281/ZENODO.3457213
+
+Khan, F. Z., Soiland-Reyes, S., Sinnott, R. O., Lonie, A., Goble, C., & Crusoe, M. R. (2019). Sharing interoperable workflow provenance: A review of best practices and their practical application in CWLProv. GigaScience, 8(11), giz095. https://doi.org/10.1093/gigascience/giz095
+
+Leo, S., Crusoe, M. R., Rodríguez-Navas, L., Sirvent, R., Kanitz, A., De Geest, P., Wittner, R., Pireddu, L., Garijo, D., Fernández, J. M., Colonnelli, I., Gallo, M., Ohta, T., Suetake, H., Capella-Gutierrez, S., De Wit, R., Kinoshita, B. P., & Soiland-Reyes, S. (2024). Recording provenance of workflow runs with RO-Crate. PLOS ONE, 19(9), e0309210. https://doi.org/10.1371/journal.pone.0309210
+
+Soiland-Reyes, S., Castro, L. J., Ravinder, R., Weiland, C., Grieb, J., Rogers, A., Blanchi, C., & Van De Sompel, H. (2024). BioHackEU23 report: Enabling FAIR Digital Objects with RO-Crate, Signposting and Bioschemas. BioHackrXiv. https://doi.org/10.37044/osf.io/gmk2h
+
+Weiland, C., Perzlmaier, L., Bauer, D., Grieb, J., Oeser, J., Khan, T., Islam, S., & Raes, N. (2026, March 13). Integrating biodiversity in Situ data, Earth observation and stakeholder engagement—From machine- to policy-actionability. https://doi.org/10.5194/egusphere-egu26-7717
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

@@ -1,0 +1,36 @@
+---
+title: From Data Management to Data Publication
+hero:
+  tagline: Lessons learned from fostering cultural change towards FAIR and AI-ready research data
+authors:
+  - dirk-von-suchodoletz
+  - bjoern-usadel
+  - timo-muehlhaus
+  - cristina-schmale-rodrigues
+---
+
+The FAIR principles have become widely accepted as a framework for improving the management and reuse of research data. However, despite substantial progress in research data management, the publication of research data as a recognised scholarly output remains far from routine practice in many scientific disciplines. While technical solutions for storing and sharing data have matured considerably, cultural, organisational, and incentive-related barriers continue to limit the widespread adoption of data publication workflows.
+
+DataPLANT was established with the vision of addressing this challenge within in plant sciences. Rather than focusing solely on compliance with data management requirements, the consortium aimed to contribute to a broader cultural shift towards recognising data publications as valuable research outputs alongside traditional journal articles. This vision has gained additional relevance in recent years as advances in artificial intelligence (AI) have increased the value of structured, well-documented, and machine-actionable research data.
+
+The emergence of generative AI is reshaping scientific practice and scholarly communication. While AI technologies offer new opportunities for data analysis, knowledge extraction, and scientific discovery, they also highlight longstanding concerns regarding transparency, reproducibility, and provenance. Scientific publications remain essential for communicating research findings, but they often provide only a condensed representation of the underlying scientific process. In contrast, well-annotated datasets and research objects preserve primary research evidence, document methodological decisions, and enable both human and machine interpretation. As a result, such resources are increasingly becoming a critical foundation for trustworthy and reusable science.
+
+To support this transition, DataPLANT developed an ecosystem centred around the Annotated Research Context (ARC), a structured framework for organising research data, metadata, protocols, and computational workflows. Combined with RO-Crate compatibility and a suite of supporting tools and services, ARC enables the creation of FAIR and machine-actionable research objects that can be reused by researchers, infrastructures, and increasingly by AI-driven systems (Bauer et al. 2026).
+
+Alongside these standards, DataPLANT established technical infrastructures such as the ARChub and a federated network of DataHUBs (Weil et al. 2023; Bauer et al. 2024). These services provide mechanisms for managing, sharing, discovering, and publishing research assets across institutional boundaries. The federated architecture was intentionally designed to lower barriers to participation by allowing institutions to maintain control over their local infrastructure while providing a pathway towards participation in a broader ecosystem for data publication and discovery. This approach addresses a challenge frequently encountered in infrastructure projects: sustainable adoption often depends less on technical sophistication than on institutional trust, governance, and ease of integration.
+
+Several years of community engagement and infrastructure development provide an opportunity to reflect on the realities of fostering cultural change. Evidence for this transition can be observed in the steadily growing number of ARC-based research projects and the increasing adoption of structured research objects across the DataPLANT community, as recently analysed through quantitative assessments of ARC usage patterns (Schneider et al. 2025). The existence of standards, policies, or infrastructure alone does not automatically result in widespread adoption. Requirements imposed by journals, funders, and institutions can certainly encourage data sharing practices. However, sustained uptake appears more likely when publication workflows also generate direct value for researchers themselves, for example by improving collaboration, supporting reproducibility, simplifying data organisation, or facilitating downstream reuse. Consequently, successful implementation requires not only appropriate technical solutions but also alignment with researchers' everyday workflows, incentives, and support structures.
+
+Recent developments in artificial intelligence have added a new perspective to ongoing discussions around FAIR research data. While interoperability and reuse have long been central motivations for structured research objects, increasing use of AI highlights the importance of high-quality metadata, provenance information, and transparent documentation. In this sense, AI reinforces many of the original arguments for data publication rather than fundamentally changing them.
+
+At the same time, important challenges remain. Academic reward systems continue to prioritise traditional publications, while data publications often receive limited recognition in hiring, promotion, and funding decisions. Research institutions face increasing demands for sustainable storage, curation, and publication services, often without corresponding long-term funding mechanisms (Leendertse et al. 2025). Furthermore, ensuring the quality, completeness, and interoperability of metadata remains a persistent challenge, particularly if research objects are expected to support both human reuse and machine-assisted interpretation.
+
+To address these issues, DataPLANT continues to expand its collaboration with infrastructure providers, funding initiatives, and other NFDI consortia. Current activities include strengthening the visibility and interoperability of services through registrations in community-recognised registries such as re3data and DFG-RI Source, supporting the development of data-oriented core facilities, participating in storage infrastructure initiatives, and promoting federated approaches that enable scalable and sustainable data publication.
+
+In this contribution, we reflect on the lessons learned from DataPLANT's efforts to promote data publication as a routine component of scientific practice. We discuss both successes and remaining obstacles, examine how AI has changed the conversation around research data, and explore the implications for research infrastructures and institutions. We argue that the future of scholarly communication will increasingly depend on the ability to treat data publications as genuine research outputs and that sustainable cultural change requires the combined evolution of technologies, infrastructures, incentives, and community practices.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

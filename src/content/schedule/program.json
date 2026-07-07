@@ -1,0 +1,363 @@
+{
+  "days": [
+    {
+      "date": "2026-07-06",
+      "label": "Wednesday",
+      "slots": [
+        {
+          "time": "08:30 - 09:00",
+          "title": "Registration & Welcome Coffee",
+          "location": "Lecture Hall",
+          "type": "Break"
+        },
+        {
+          "time": "09:00 - 09:15",
+          "title": "Opening Ceremony",
+          "location": "Lecture Hall",
+          "type": "Break"
+        },
+        {
+          "time": "09:15 - 12:45",
+          "title": "Session 1: Operationalizing FAIR - From Data Accumulation to AI-Ready Assets",
+          "description": "This session addresses the transition from passive data archiving to active engineering. It focuses on implementing FAIR Digital Objects (FDOs) and semantic technologies to transform heterogeneous datasets into standardized, machine-actionable assets serving as reliable „ground truth“ for AI-driven modeling.",
+          "chair": "TBD",
+          "location": "Lecture Hall",
+          "contributions": [
+            {
+              "time": "09:15 - 10:00",
+              "title": "Keynote 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-1/",
+              "type": "Keynote"
+            },
+            {
+              "time": "10:00 - 10:30",
+              "title": "Coffee Break & Networking",
+              "type": "Break",
+              "location":"Foyer"
+            },
+            {
+              "time": "10:30 - 10:55",
+              "title": "Full Talk 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "10:55 - 11:20",
+              "title": "Full Talk 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:20 - 11:45",
+              "title": "Full Talk 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:45 - 12:10",
+              "title": "Full Talk 4",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "12:10 - 12:35",
+              "title": "Full Talk 5",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            }
+          ]
+        },
+        {
+          "time": "12:45 - 13:45",
+          "title": "Lunch Break",
+          "type": "Break"
+        },
+        {
+          "time": "13:45 - 16:10",
+          "title": "Session 2: Standardization of Cross-Domain Computational Workflows",
+          "description": "Highlighting strategies for scalable and reproducible data analysis, this session explores cloud computing and distributed environments. Discussions will center on establishing community-driven standards for sharing and executing robust computational workflows across diverse local and cloud-based resources.",
+          "chair": "TBD",
+          "location": "Lecture Hall",
+          "contributions": [
+            {
+              "time": "13:45 - 14:30",
+              "title": "Keynote 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-2/",
+              "type": "Keynote"
+            },
+            {
+              "time": "14:30 - 14:55",
+              "title": "Full Talk 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "14:55 - 15:20",
+              "title": "Full Talk 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "15:20 - 15:45",
+              "title": "Full Talk 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "15:45 - 16:10",
+              "title": "Full Talk 4",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            }
+          ]
+        },
+        {
+          "time": "16:10 - 16:40",
+          "title": "Coffee Break",
+          "location": "Foyer",
+          "type": "Break"
+        },
+        {
+          "time": "16:40 - 17:40",
+          "title": "Flash Talks & Poster Pitches",
+          "location":"Lecture Hall",
+          "type": "Poster"
+        },
+        {
+          "time": "17:40 - 19:30",
+          "title": "Poster Session 1 & Welcome Reception",
+          "location":"Casino",
+          "type": "Poster"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "label": "Thursday",
+      "slots": [
+        {
+          "time": "09:00 - 12:45",
+          "title": "Session 3: Integrative Systems Biology and Multi-Modal Modeling",
+          "description": "Moving beyond isolated analysis, this session presents novel algorithms and digital twins for integrating multi-modal datasets (genomics, phenomics, imaging, and environment). The goal is to condense massive data quantities to uncover fundamental biological mechanisms and agronomic traits.",
+          "chair": "TBD",
+          "location": "Lecture Hall",
+          "contributions": [
+            {
+              "time": "09:00 - 09:45",
+              "title": "Keynote 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-3/",
+              "type": "Keynote"
+            },
+            {
+              "time": "09:45 - 10:15",
+              "title": "Coffee Break & Networking",
+              "type": "Break",
+              "location":"Foyer"
+            },
+            {
+              "time": "10:15 - 10:35",
+              "title": "Full Talk 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "10:35 - 11:00",
+              "title": "Full Talk 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:00 - 11:25",
+              "title": "Full Talk 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:25 - 11:50",
+              "title": "Full Talk 4",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:50 - 12:15",
+              "title": "Full Talk 5",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "12:15 - 12:35",
+              "title": "Full Talk 6",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            }
+          ]
+        },
+        {
+          "time": "12:45 - 13:45",
+          "title": "Lunch Break",
+          "location":"Casino",
+          "type": "Break"
+        },
+        {
+          "time": "13:45 - 16:10",
+          "title": "Session 4: Artificial Intelligence and Knowledge Graphs in the Life Sciences",
+          "description": "This session delves into the application of Machine Learning and Knowledge Graphs in computational biology. It focuses on leveraging these technologies to build interpretable decision-support systems and advanced visualizations that augment human domain expertise with intelligent automation.",
+          "chair": "TBD",
+          "location": "Lecture Hall",
+          "contributions": [
+            {
+              "time": "13:45 - 14:30",
+              "title": "Keynote 4",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-4/",
+              "type": "Keynote"
+            },
+            {
+              "time": "14:30 - 14:55",
+              "title": "Full Talk 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "14:55 - 15:20",
+              "title": "Full Talk 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "15:20 - 15:45",
+              "title": "Full Talk 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "15:45 - 16:10",
+              "title": "Full Talk 4",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            }
+          ]
+        },
+        {
+          "time": "16:10 - 16:15",
+          "title": "Best Poster Award",
+          "location": "Lecture Hall",
+          "type": "Break"
+        },
+        {
+          "time": "16:15 - 16:20",
+          "title": "Group Picture",
+          "location": "Lecture Hall",
+          "type": "Break"
+        },
+        {
+          "time": "16:20 - 16:45",
+          "title": "Coffee Break",
+          "location":"Foyer",
+          "type": "Break"
+        },
+        {
+          "time": "16:45 - 17:30",
+          "title": "Transfer to Quedlinburg",
+          "location": "Gate North",
+          "type": "Break"
+        },
+        {
+          "time": "17:30 - 22:00",
+          "title": "Social Event: Quedlinburg City Tour & Conference Dinner",
+          "location": "TBD",
+          "type": "Break"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "label": "Friday",
+      "slots": [
+        {
+          "time": "09:00 - 12:15",
+          "title": "Session 5: NFDI Infrastructures, Data Stewardship and Community Best Practices",
+          "description": "Dedicated to the research data ecosystem, this session covers cross-consortium alignment and Research Data Management (RDM) professionalization. Topics include training data stewards, building interdisciplinary communities, and bridging national innovations (DataPLANT, FAIRagro, NFDI4Biodiversity) with global standards like ELIXIR and the EOSC.",
+          "chair": "TBD",
+          "location": "Lecture Hall",
+          "contributions": [
+            {
+              "time": "09:00 - 09:45",
+              "title": "Keynote 5",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-5/",
+              "type": "Keynote"
+            },
+            {
+              "time": "09:45 - 10:15",
+              "title": "Coffee Break & Networking",
+              "type": "Break",
+              "location":"Foyer"
+            },
+            {
+              "time": "10:15 - 10:35",
+              "title": "Full Talk 1",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "10:35 - 11:00",
+              "title": "Full Talk 2",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:00 - 11:25",
+              "title": "Full Talk 3",
+              "speaker": "TBD",
+              "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
+              "type": "Full Talk"
+            },
+            {
+              "time": "11:30 - 12:15",
+              "title": "Joint Panel Discussion: Cross-Consortium Alignment",
+              "speaker": "TBD",
+              "type": "Panel"
+            }
+          ]
+        },
+        {
+          "time": "12:15 - 12:45",
+          "title": "Closing Ceremony & Awards",
+          "location": "Lecture Hall",
+          "type": "Break"
+        },
+        {
+          "time": "12:45 - 13:45",
+          "title": "Farewell Lunch & Departure",
+          "location": "Casino",
+          "type": "Break"
+        }
+      ]
+    }
+  ]
+}

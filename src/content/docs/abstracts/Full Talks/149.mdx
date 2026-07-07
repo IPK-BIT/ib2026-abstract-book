@@ -1,0 +1,27 @@
+---
+title: Challenges and solutions in data integration when building a crop-specific pan-omics data visualization portal
+authors:
+  - patrick-koenig
+  - zihao-zhu
+  - martin-mascher
+  - nils-stein
+  - uwe-scholz
+---
+
+The rapid accumulation of crop genomic resources has necessitated a shift from passive data archiving to active, scalable data engineering. Here, we present PanBARLEX, an interactive web portal designed to explore the pan-omics layers of barley. PanBARLEX integrates a massive, multi-modal dataset , including an annotated pan-gene space of 76 chromosome-scale assemblies, pan-gene clusters with multiple sequence alignments, and corresponding gene expression and epigenetic data for a subset of 20 genotypes. Operating at the intersection of integrative systems biology and multi-modal modeling, the portal aims to condense these massive data quantities to allow researchers to uncover fundamental biological mechanisms and agronomic traits from interconnected omics layers. However, building such a comprehensive multi-modal system introduces significant data management and integration challenges. During the development of PanBARLEX, several critical bottlenecks were encountered:
+
+- Identity and Congruency Mismatches: Inconsistent sample-IDs for identical chromosome assemblies across datasets, alongside congruency mismatches between different omics layers
+
+- Structural Discrepancies: mRNA-transcripts that were pre-mapped to an artificial linearized genome rather than the original genotype-specific genomes
+
+- Data Volume: The sheer scale of the data, exemplified by roughly 270 GB of epigenetic signal data alone for just 10 to 20 genotypes
+
+To address these hurdles and align with modern principles of operationalizing FAIR data into AI-ready assets, we implemented targeted data-engineering solutions. Heterogeneous datasets were standardized using robust Extract, Transform, Load (ETL) scripts featuring strict ID-mappings to resolve semantic and identity mismatches. To overcome storage and accessibility bottlenecks, the Zarr format was utilized to efficiently store and compress pan-genome-scale datasets. Furthermore, high-throughput data ingestion into the web portal’s backing SQLite databases was achieved by leveraging the to_sql() function of the Pandas library.
+
+Ultimately, PanBARLEX demonstrates how complex, large-scale plant multi-omics data can be structured into high-performance, standardized architectures. By resolving integration mismatches and leveraging optimized storage formats, this work paves the way for advanced visualizations and future knowledge graph integrations, serving as an interpretable decision-support system that augments human domain expertise with intelligent automation.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

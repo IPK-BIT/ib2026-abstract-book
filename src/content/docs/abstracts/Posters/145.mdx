@@ -1,0 +1,38 @@
+---
+title: An interactive platform for exploring structural variation across the barley panproteome
+authors:
+  - victor-henrique-rabesquine-nogueira
+  - amanda-souza-camara
+---
+
+Proteins play a central role in translating genetic information encoded in genomes into molecular functions and phenotypic traits. Genetic variation can influence protein sequence, structure, stability, localization, abundance and interaction specificity, thereby shaping biological diversity within a species, yet the systematic characterization of how naturally occurring allelic diversity propagates through protein structural space remains a critical and largely unaddressed challenge in plant genomics. Population genomic approaches can identify protein variants across accessions, but they provide limited mechanistic insight into downstream functional consequences. Bridging this gap requires frameworks that integrate genomic, proteomic, and structural information at scale.
+
+The increasing availability of pangenomes offers an opportunity to move beyond single-reference representations and capture species-wide genetic diversity across large, diverse panels of accessions. Extending this concept to the proteome, a panproteome analysis provides a framework for systematically studying how genetic variation may reshape protein function across a species. Recent advances in protein structure prediction, most notably in models such as AlphaFold [1,2], have enabled proteome-scale structural modelling [3], opening new opportunities to investigate how genomic variation is reflected in the three-dimensional protein universe of a species. Despite this potential, the structural consequences of naturally occurring allelic variation at panproteome scale remain poorly characterized, partially because existing methods for comparing large numbers of protein structures typically reduce complex multidimensional relationships to global similarity scores or rely on representations that do not show biologically meaningful variation in local conformation or structural divergence [4, 5].
+
+Here, we present a framework for analyzing a predicted species-wide panproteome, applied to the barley (Hordeum vulgare) pangenome version 2 [6], which comprises 76 fully sequenced genotypes divided into 23 wild accessions, 36 landraces, and 17 cultivar lines. From over 3.79 million encoded proteins across this panel, we derived a non-redundant panproteome of 856,971 unique protein sequences, or proteoforms, a term that encompasses allelic variants, paralog-derived sequences, copy-number-associated products, and putative pseudogene-derived proteins. Barley was selected as a model system based on its global agricultural importance, broad adaptive range, and substantial genetic, phenotypic diversity, and data availability, making it well suited to a panproteome-scale investigation.
+
+Our framework comprises two complementary analytical components. The first component addresses proteoform classification, mapping them across genotypes and distinguishing allelic variants, paralogs, and pseudogene-derived sequences. The second component addresses structural comparison at scale: we systematically compared hundreds of thousands of predicted protein structures by decomposing structural similarity into shared subregions rather than collapsing comparisons to a single global metric. This approach enables the resolution of complex structural relationships, including partial structural conservation, domain rearrangements, and conformational divergence, that are invisible to global similarity methods. Together, these two analyses help to reveal that natural allelic diversity can meaningfully reorganize protein structural landscapes in ways that are biologically interpretable, with implications for understanding molecular adaptation across accessions.
+
+A persistent challenge in panproteome research is not only generating data but enabling its exploration. Panproteome datasets are characterized by large numbers of related proteins whose relationships can cut across multiple levels simultaneously: allelic variation, gene duplication, partial annotation, structural similarity, and shared biological function. No single label or similarity measure captures this multidimensional structure. Meaningful interpretation requires integrating proteoform presence and absence patterns across genotypes, predicted structures, functional annotations, structural cluster assignments, and biological data in a unified and interactive environment. To address this, we developed a web-based exploration platform built on the barley panproteome dataset, designed to enable researchers to navigate allelic and structural diversity without requiring specialist computational infrastructure. The platform links annotation, proteoform distribution within and across genotypes, structural cluster groups, and phenotypic data in a single analytical environment, with particular attention to the approximately 25% of proteoforms that lack functional annotation and for which exploratory, to which this kind of structure-guided approaches are essential.
+
+Taken together, this work establishes a reusable and extensible framework for panproteome-scale structural analysis and lays the groundwork for connecting allelic diversity to molecular function in crop species and beyond. The approaches developed here, for proteoform classification, structure-based comparison, and interactive exploration, are applicable to any species for which a pangenome and proteome-scale structure predictions are available. They represent a concrete step toward systematically interpreting the functional consequences of natural genetic variation in the language of protein structure, and toward making panproteome datasets accessible and analytically tractable for the broader research community.
+
+## References
+
+[1] Jumper, J. et al. Nature (2021) 596, 583–589.
+
+[2] Abramson, J. et al. Nature (2024) 630, 493–500.
+
+[3] Varadi, M. et al. Nucleic Acids Research (2022) 50 (D1): D439–D444.
+
+[4] van Kempen, M. et al. Nat Biotechnol (2024) 42, 243–246.
+
+[5] Barrio-Hernandez, I. et al. Nature (2023) 622, 637–645
+
+[6] Jayakodi, M. et al. Nature (2024) 636, 654–662.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

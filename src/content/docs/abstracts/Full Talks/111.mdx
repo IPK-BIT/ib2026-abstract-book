@@ -1,0 +1,46 @@
+---
+title: One Tool, Many Domains
+hero:
+  tagline: Harmonizing FAIR Metadata Collection with the ISA-Wizard
+authors:
+  - manuel-feser
+  - patrick-koenig
+  - daniel-arend
+  - sebastian-beier
+  - dennis-psaroudakis
+  - sarah-oranna-fischer-zielke
+  - rica-rehfeld
+  - marc-heuermann
+  - klara-panzarova
+  - uwe-scholz
+---
+
+The rapid acceleration of high-throughput technologies in the life sciences has created a paradox: while we are generating more data than ever before, the vast majority of it remains “dark data” defined by Gartner as the “information assets organizations collect, process and store during regular business activities, but generally fail to use for other purposes” [1]. In fields ranging from crop science to systems biology, the value of raw data is strongly dependent on the quality of its surrounding context. Without rigorous metadata, the most sophisticated genomic or phenomic dataset cannot be effectively integrated, compared or reused. This challenge sits at the heart of Research Data Management (RDM), representing the foundational hurdle between raw biological observations and reproducible science. The ISA Wizard [2] was developed specifically to bridge this gap, serving as an intuitive, user-centered gateway for researchers. By addressing the very backbone of the data lifecycle, it transforms the complex burden of FAIR (Findable, Accessible, Interoperable, Reusable) data stewardship [3] into a streamlined, guided experience for researchers. Rather than treating metadata as a final, bureaucratic step in the publication process, the tool integrates curation into the active research phase. It leverages the Investigation / Study / Assay (ISA) framework [4], a robust and established standard for describing the metadata of biological experiments. However, the true innovation of the ISA Wizard lies in its accessibility. Historically, the technical barriers associated with metadata syntax such as the details of ISA-Tab or the structural requirements of ISA-JSON have acted as a deterrent for scientists. By utilizing a survey-like interface, the wizard effectively abstracts these complexities. It guides the user through a logical progression of questions, ensuring that the resulting metadata is aligned with established community ontologies and minimum information standards.
+
+The practical application of this tool is most clearly seen in the realm of plant phenotyping. Capturing the interplay between a plant’s genetic makeup and its environmental conditions requires a high level of detail. The ISA Wizard simplifies this process by enforcing compliance with the Minimal Information About a Plant Phenotyping Experiment (MIAPPE) standard [5]. In doing so, it creates interoperable datasets, allowing for the seamless exchange of data across different laboratories and seasons by exporting into Annotated Research Contexts (ARC). This interoperability is further extended through the BrAPI4PSI project, where the ISA Wizard integrates with the Breeding API (BrAPI) [6] to prepare metadata for the experimental setup of the IPK Phenosphere and export into FAIR Digital Objects in form of ARC RO-Crates. ARC is a new framework for representing ISA structured datasets in machine-actionable units which combine data, metadata and the computational environment needed to reproduce an analysis.
+
+Beyond plant sciences, the tool’s versatility has been shown through its adoption in animal phenotyping studies. Arising from a collaborative ELIXIR BioHackathon project [7], the development of a dedicated animal study configuration demonstrates how the ISA Wizard fosters community exchange and interdisciplinary collaboration. This use case demonstrates how the tool can be applied beyond the original domain of interest and cater to different user communities. By providing a scalable, cross-domain solution for data annotation, the wizard supports researchers who may not be experts in informatics.
+
+Ultimately, the impact of the ISA Wizard lies in its capacity to support multi-omics and systems biology workflows. Modern life science projects frequently require combining distinct datasets such as genomic sequences, metabolomic profiles and phenotyping data. Because the ISA Wizard is domain-agnostic in its nature, it provides a consistent framework to integrate these diverse data types at the point of collection. Ensuring that metadata from different biological domains is standardized and mutually interoperable helps prevent the creation of isolated data silos. This cross-domain integration opens up unified data spaces, ultimately allowing for the generation of insights that are difficult to capture when data remains fragmented. By connecting standard research workflows with structured data engineering, the ISA Wizard assists in improving data literacy and supporting a clearer routine for long-term data stewardship.
+
+## References
+
+[1] Forker E. The informativeness of dark data for future firm performance. Emory University, Working Paper; 2023. https://www.hbs.edu/faculty/Shared%20Documents/conferences/2023-IMO/Session4-dark_data.pdf
+
+[2] Arend D, Beier S, Brilhaus D, Dörpholz H, Feser M, Frey K, et al. Improving Metadata Collection and Aggregation in Plant Phenotyping Experiments with MIAPPE Wizard and DataPLANT 2023. https://doi.org/10.37044/osf.io/ekhdw.
+
+[3] Wilkinson MD, Dumontier M, Aalbersberg IjJ, Appleton G, Axton M, Baak A, et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data 2016;3:160018. https://doi.org/10.1038/sdata.2016.18.
+
+[4] Rocca-Serra P, Brandizi M, Maguire E, Sklyar N, Taylor C, Begley K, et al. ISA software suite: supporting standards-compliant experimental annotation and enabling curation at the community level. Bioinformatics 2010;26:2354–6. https://doi.org/10.1093/bioinformatics/btq415.
+
+[5] Papoutsoglou EA, Faria D, Arend D, Arnaud E, Athanasiadis IN, Chaves I, et al. Enabling reusability of plant phenomic datasets with MIAPPE 1.1. New Phytol 2020;227:260–73. https://doi.org/10.1111/nph.16544.
+
+[6] Selby P, Abbeloos R, Adam-Blondon A-F, Agosto-Pérez FJ, Alaux M, Alic I, et al. BrAPI v2: real-world applications for data integration and collaboration in the breeding and genetics community. Database 2025;2025. https://doi.org/10.1093/database/baaf048.
+
+[7] Fischer-Zielke SO, Rehfeld RJ, Santiago M, Clark E, Arend D, Feser M. Minimal information standardization of phenomic experimental data in animals 2026. https://doi.org/https://doi.org/10.37044/osf.io/ncrkm_v1.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

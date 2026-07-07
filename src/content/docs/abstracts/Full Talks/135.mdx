@@ -1,0 +1,61 @@
+---
+title: Metadata Extraction from Electronic Lab Notebooks
+hero: 
+  tagline:  Designing and Evaluating a Multi-Agent System for ISA-Compliant Research Data
+authors:
+  - suzanna-backer
+  - eva-eleonora-ferradosa
+  - christoph-lofi
+---
+
+## Introduction
+
+High-quality metadata is essential for enabling interpretability and reuse of scientific data in the life sciences. As biological research increasingly depends on large-scale data integration and AI-driven analysis, the need for robust and machine-operable research data infrastructure has become critical.
+
+Frameworks such as the Investigation–Study–Assay (ISA) model provide mechanisms for structuring experimental metadata, yet metadata creation remains labour-intensive and difficult to integrate into everyday scientific workflows as it is an extensive manual task and competes with other research priorities. Consequently, many experimental datasets are not sufficiently documented for downstream reuse and computational analysis.
+
+This work investigates whether metadata compliant with the ISA framework can be extracted from electronic lab notebooks (ELNs) using a large language model (LLM)-based multi-agent system. In addition to addressing metadata extraction itself, the work tackles the absence of appropriate evaluation methodologies for complex metadata extraction tasks, for which a single ground truth metadata representation is difficult to formalise. It therefore contributes (1) a prototype multi-agent ISA metadata extraction system and (2) a rubric-based evaluation framework which guides experts in assessing extraction performance from such a system.
+
+## Context
+
+ELNs form a promising source for metadata extraction as they contain descriptions of experimental procedures, materials, parameters, observations, and workflows recorded during experiments. Importantly, extracting metadata from ELNs enables metadata generation without fundamentally changing researchers’ existing documentation practices. However, notebooks are difficult extraction sources because they are written in unstructured natural language and frequently contain ambiguous terminology, abbreviations, omitted details, protocol deviations, mixed languages, and informal notes intended primarily for personal use.
+
+At the same time, recent advances in LLMs and multi-agent systems suggest new opportunities for transforming unstructured scientific text into structured representations. Multi-agent architectures are particularly attractive because ISA extraction is not a conventional information extraction problem. Rather than extracting isolated entities or relations, ISA extraction requires constructing a globally coherent, schema-constrained representation of an experimental workflow. Moreover, ISA is intentionally flexible, and in practice, different researchers may model the same experiment differently. This makes both extraction and evaluation fundamentally ambiguous.
+
+## Approach
+
+To address these challenges, this work adopts a design-science-inspired artefact prototyping methodology. Two artefacts were developed iteratively in parallel: a multi-agent extraction system and a rubric-based evaluation framework. Both were implemented in a feasibility study utilising seven plant science ELNs as sources for metadata extraction.
+
+## Extraction system
+
+LangChain and LangGraph were used to develop the prototype extraction system, in combination with LLMs gpt-5-nano and gpt-5-mini. During prototyping, several design insights emerged regarding agentic extraction systems for ISA metadata construction. A key finding was that ISA extraction cannot effectively be approached as a direct text-to-metadata conversion task. Early prototype iterations struggled to generate metadata that reflected coherent experimental workflows, even when individual entities were extracted correctly. This highlighted the need for an intermediate conceptual modelling step capable of interpreting the experiment globally before constructing ISA entities. The final system therefore first generates an “ISA contract”: a conceptual representation mapping experimental concepts in the notebook to ISA entities and workflow structures. This intermediate representation acts as a bridge between unstructured experimental descriptions and formal metadata extraction.
+
+The resulting prototype operationalises this approach through a workflow of specialised LLM components. The agents first interpret the notebook at a conceptual level before decomposing extraction into smaller ISA entity extraction tasks. Specialised agents subsequently generate structured representations of protocols, materials, samples, assays, and processes. Finally, an assembly component reasons about relationships between these entities to reconstruct the experimental workflow graph represented by the ISA framework.
+
+## Rubric evaluation
+
+In parallel, this work introduces a rubric-based evaluation framework designed specifically for ISA metadata extraction tasks. Traditional evaluation metrics such as precision and recall are poorly suited to ISA extraction because metadata quality cannot be reduced to binary correctness. Metadata representations may be partially correct, semantically useful, or structurally valid despite omissions. The proposed framework therefore evaluates extraction performance holistically using evaluation units corresponding to ISA entities and fields. Each unit receives a complexity score and a performance score from an examiner. Complexity approximates the amount of information and structural reasoning required to represent the entity correctly, while performance reflects examiner judgment regarding accuracy, completeness, relevance, conciseness and modelling logic. Units are categorised as insufficient, sufficient, or good. This enables a nuanced assessment of metadata quality while accounting for ISA’s inherent flexibility.
+
+This work proposes that the evaluation framework could be used as a foundation for future scalable “LLM-as-a-judge” evaluation pipelines. Because the framework formalises scoring logic in a structured manner, future work could investigate whether AI agents can reliably approximate human judgment for metadata generation evaluation tasks. Such approaches could substantially reduce the cost and scalability limitations associated with human-based metadata generation evaluation while enabling benchmarking of future extraction systems.
+
+## Feasibility study
+
+A feasibility study was conducted by a single examiner on seven plant science ELNs originating from real-world studies. The notebooks described experiments involving drought stress, osmotic stress, flowering behaviour and root development studies in Arabidopsis thaliana. The notebooks reflected realistic scientific practice and contained many interpretability challenges, including undefined terminology, incomplete procedures, references to external documents, and ambiguous protocol deviations.
+
+## Results and discussion
+
+The evaluation results demonstrate that partial ISA extraction from the notebooks is feasible with the current prototype architecture. Across 337 identified ISA entities, 41% were represented well, 27% sufficiently, 12% insufficiently, and 20% were missing. Overall extraction performance across notebooks ranged between 46% and 60%. The system demonstrated particular strength in identifying coherent protocol structures and segmenting experimental workflows into meaningful procedural units. However, several limitations remained evident, including insufficient construction of process and sample entities and difficulties in handling ambiguous or underspecified notebook content.
+
+While fully autonomous ISA extraction remains challenging, the results indicate that the current prototype can already provide practical support to researchers during metadata creation workflows. Rather than requiring researchers to construct metadata entirely manually, the system can generate structured first-draft metadata representations that researchers can refine, validate, and complete. In practice, this can reduce the effort required for metadata authoring while helping researchers identify important experimental entities, protocols, and workflow relationships that should be represented in ISA. Consequently, the prototype already demonstrates value as an assistive metadata generation system.
+
+However, the findings suggest that fully autonomous ISA extraction from notebooks remains challenging under the studied conditions, particularly because metadata creation itself is inherently interpretive. Therefore, rather than replacing researchers, this work argues for operationalising metadata extraction through the development of human-in-the-loop systems in which AI agents collaborate with scientists to construct and validate metadata incrementally.
+
+## Conclusion
+
+This work demonstrates both the potential and the current limitations of agentic ISA metadata extraction from unstructured ELNs. It contributes a first step toward AI-supported metadata extraction through a proof-of-concept that can inspire the improvement of research metadata and its associated workflows. The findings further suggest that future metadata extraction workflows should be operationalised as human-in-the-loop systems in which AI agents support researchers in the iterative construction of ISA metadata rather than attempting to replace human expertise entirely. In addition, the proposed evaluation framework provides a foundation for systematically assessing future extraction systems and could support the development of more scalable evaluation approaches, including LLM-as-a-judge pipelines for metadata generation evaluation. Importantly, although these techniques can be used for the scalability of metadata generation evaluation and subsequent improvement of such systems, humans should be kept in the loop for metadata validation, retaining authorship and responsibility in research data management.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

@@ -1,0 +1,54 @@
+---
+title: Bringing research data artifacts to life through federated curation
+authors:
+  - kevin-schneider
+  - emre-filiz
+  - josephine-leonie-scheid
+  - heinrich-lukas-weil
+  - david-zimmer
+  - timo-muehlhaus
+---
+
+## Background
+
+The International Nucleotide Sequence Database Collaboration (INSDC) is an indispensable substrate for secondary research uses such as meta-analysis and the assembly of machine-learning training corpora. However, its reuse value is constrained by metadata deposited largely as free text. This heterogeneity is well documented across public sequence archives. In plant transcriptomics metadata, even basic concepts such as a sample being a control can be encoded in dozens of lexical forms, with analogous variation across tissue, treatment, ecotype, developmental stage, growth condition, and sample title.
+
+Submission-side improvements such as checklists, controlled vocabularies, validation rules, and minimal information standards improve incoming records but do not repair decades of legacy deposits. Secondary analyses therefore repeatedly perform the same harmonization work without a mechanism for aggregating curation effort in a shared resource. Existing approaches address parts of this problem through centralized automated curation but remain limited in how curated interpretations can be attributed, reviewed, extended by distributed contributors, or reused as research outputs. LLM-assisted curation can support automated first-pass extraction, but it can only turn into reusable scientific curation when embedded in defined target structures, including domain constraints, provenance capture, and review mechanisms.
+
+We address these problems by separating authoritative deposition from community curation: we model curation itself as a version-controlled FAIR Digital Object (FDO) that can create or update a curated metadata record as a second, derived FDO. This enables federated curation: contributors can improve curations without modifying the authoritative INSDC record, producing reproducible, reviewable, and citable consensus artifacts. Our approach builds upon the Annotated Research Context (ARC) and combines structured curation-process metadata with SSSOM mapping tables. This makes curation work measurable through metrics such as ontology coverage, mapping-confidence distributions, and inter-curator agreements. Existing curation efforts can also be ingested into this framework.
+
+Curated consensus records can be published through established ARC publication pipelines, providing citable outputs for downstream reuse. Representing curated records as ARCs also exposes them through a unified process graph, allowing study, sample, assay, data, and computational steps to be queried with consistent semantics across projects. Since ARCs are representable as ISA-compliant RO-Crates, curated INSDC metadata can enter existing FAIR data publication and exchange workflows without requiring a new downstream data model. As these RO-Crates expose both experimental and computational provenance through the same process graph, the approach also creates a growing AI-ready dataset for downstream discovery, reasoning, and model training. It aligns with the ARC concept of ‘immutable yet evolving’ FDOs: each released state or commit is immutable and reproducible, while the FDO evolves through versioned, provenance-preserving updates. We further provide a proof-of-concept implementation of these concepts, coined ‘OverARC’, which will be publicly available at final submission.
+
+## Approach
+
+In canon with the underlying principles of the ARC, metadata curation is modelled as a process with the authoritative INSDC record ensemble as input and the curated consensus ARC as output. The INSDC ensemble comprises the related project, study, sample, experiment, and run records that together describe a sequencing dataset. Rather than treating curation as an external annotation layer, we represent each curatorial decision as part of the provenance of the resulting ARC. The curated record is therefore not only a cleaned version of the original metadata, but also a reproducible account of how that interpretation was produced.
+
+We identify three main branches of curation. The first is structural mapping, where entities and fields in INSDC records are mapped to the ARC process graph. For example, a BioProject can contribute to the ARC investigation context, BioSamples map to sample entities, and experiment or run records correspond to assay-level data generation steps. By defining these mappings against structural descriptions of both record systems, many baseline curations can be generated automatically while remaining explicit and reviewable. Even this baseline adds value by placing INSDC records into a consistent process-centric representation.
+
+The second branch is semantic mapping, where free-text annotations or existing terms are linked to ontology terms. These mappings are represented using SSSOM tables and include predicates, confidence values, curator identity, and justification. This supports manual curation as well as automated first-pass extraction, including LLM-assisted suggestions, without losing provenance or reviewability. The SSSOM tables also provide the primary assessment layer for each curated record. For each curation ARC, progress and quality can be described through field-level ontology coverage, mapping-confidence distributions, and the balance of exact, close, broad, or narrow matches. Aggregated across curation ARCs or consensus ARCs, the same metrics characterize the overall curation effort and enable comparison of curation campaigns, including automated or LLM-assisted suggestions evaluated against reviewed mappings.
+
+The third branch is structured extraction, where information encoded in titles, descriptions, protocols, or supplemental sources is decomposed into typed ARC elements that cannot be represented by term-level mappings alone. Examples include extracting treatment parameters, growth conditions, or protocol steps from unstructured descriptions.
+
+The resulting curation rules are then compiled into a consensus ARC. Here, curators decide how the INSDC record ensemble should be represented as an experimental process. Administrative metadata usually originate from project or study records; sample-level metadata often describe biological material, growth conditions, or treatments; and experiment/run records describe how sequencing data were produced. Sensible defaults can therefore be provided, while the model remains flexible enough for curator intervention where the original metadata are ambiguous, incomplete, or project-specific.
+
+## Related works
+
+We position OverARC relative to three lines of work. First, centralized metadata harmonization resources such as MetaSRA and ESPERANTO normalize public sequence-archive metadata into more reusable forms. MetaSRA provides automated ontology-based re-annotation of SRA sample metadata, originally focused on human samples, while ESPERANTO offers a semi-supervised harmonization framework for toxicogenomics metadata. These approaches demonstrate the value of structured metadata harmonization, but their outputs remain primarily centralized products of a specific pipeline or domain workflow. OverARC instead represents curation itself as a versioned, provenance-bearing process in which automated suggestions, domain-expert edits, and review decisions can become attributable contributions to evolving consensus artifacts.
+
+Second, resources such as ARS and DEE2 improve reuse of public RNA-seq data through searchable databases and uniformly processed expression data. ARS focuses on public Arabidopsis RNA-seq libraries, while DEE2 provides gene- and transcript-level expression counts generated through uniform processing across many species. These resources reduce barriers to downstream re-analysis, but they do not primarily expose curation itself as an independently extensible research object. In this contribution, OverARC is demonstrated on the experimental context encoded in INSDC metadata; the underlying ARC-based model is not limited to this layer and can also represent curated computational provenance, processing workflows, and analysis results within the same process graph.
+
+Third, FAIR metadata toolkits such as the FAIR Data Station support ISA-based metadata management and structured BioProject exports. This aligns with our use of ISA-compatible representations but differs in scope: OverARC models curation itself as a provenance-bearing transformation from authoritative source records to curated consensus FDOs. INSDC metadata serve as our reference implementation and evaluation case, while the underlying pattern is intended to generalize beyond sequence archives. Since the approach is embedded in the ARC ecosystem, existing ARC tools remain applicable throughout the process, from modelling and validation to publication.
+
+The proposed system also builds on two concepts previously contributed by us to the Integrative Bioinformatics Conference in 2025: Data Maps for file-fragment-level provenance annotation, and the fusion of experimental and computational provenance in RO-Crates via ARCs. OverARC applies these concepts to INSDC metadata by turning harmonization from a private preprocessing step into a shared, reviewable, and citable curation workflow.
+
+## Contribution
+
+Our contribution is fourfold. First, we propose a process-centric model for metadata curation in which the authoritative record remains unchanged, while curated interpretations are represented as versioned ARCs. Second, we show how this model enables federated community curation in the DataHUB framework: contributions can be reviewed, attributed, merged, and re-rendered into consensus artifacts. Third, we provide a proof-of-concept collection of curated Arabidopsis thaliana records, demonstrating baseline structural mapping, semantic enrichment, curator-reviewed consensus generation, and associated curation metrics. Fourth, we provide OverARC, a domain-specific application that supports this workflow and lowers the barrier for contributors who do not need to interact directly with the underlying representation.
+
+Together, these contributions turn single-use private harmonization work into a federated curation process that produces reusable, AI-ready FDOs.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

@@ -1,0 +1,235 @@
+---
+interface MapPin {
+  lat: number;
+  lng: number;
+  title: string;
+  description?: string;
+  category?: 'transport' | 'venue' | 'social' | 'hotel' | 'default';
+  icon?: string;
+}
+
+interface MapRoute {
+  coordinates: [number, number][];
+  color?: string;
+  weight?: number;
+  dashArray?: string;
+}
+
+interface Props {
+  center: [number, number];
+  zoom?: number;
+  pins: MapPin[];
+  routes?: MapRoute[];
+  height?: string;
+}
+
+const { 
+  center, 
+  zoom = 15, 
+  pins = [], 
+  routes = [], 
+  height = "450px" 
+} = Astro.props;
+---
+
+<link 
+  rel="stylesheet" 
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+  crossorigin=""
+/>
+
+<div class="map-container-wrapper">
+  <div 
+    class="leaflet-map-element" 
+    style={`height: ${height};`}
+    data-center={JSON.stringify(center)}
+    data-zoom={zoom}
+    data-pins={JSON.stringify(pins)}
+    data-routes={JSON.stringify(routes)}
+  ></div>
+</div>
+
+<script>
+  import L from 'leaflet';
+
+  function initMap() {
+    const mapContainers = document.querySelectorAll('.leaflet-map-element');
+    
+    mapContainers.forEach((container) => {
+      if ((container as any)._leaflet_initialized) return;
+      (container as any)._leaflet_initialized = true;
+
+      const element = container as HTMLElement;
+      const center = JSON.parse(element.dataset.center || '[0,0]');
+      const zoom = parseInt(element.dataset.zoom || '15', 10);
+      const pins = JSON.parse(element.dataset.pins || '[]');
+      const routes = JSON.parse(element.dataset.routes || '[]');
+
+      const map = L.map(element).setView(center, zoom);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      // Render Routes
+      routes.forEach((route: any) => {
+        L.polyline(route.coordinates, {
+          color: route.color || 'var(--sl-color-text-accent)',
+          weight: route.weight || 4,
+          dashArray: route.dashArray || '',
+          smoothFactor: 1
+        }).addTo(map);
+      });
+
+      // Render Scheduled Pins
+      pins.forEach((pin: any) => {
+        const markerIcon = L.divIcon({
+          className: `custom-map-pin pin-cat-${pin.category || 'default'}`,
+          html: `<span class="pin-emoji">${pin.icon || '📍'}</span>`,
+          iconSize: [36, 36],
+          iconAnchor: [18, 36],
+          popupAnchor: [0, -32]
+        });
+
+        const marker = L.marker([pin.lat, pin.lng], { icon: markerIcon }).addTo(map);
+
+        if (pin.title) {
+          const popupContent = `
+            <div class="map-popup-card">
+              <h4>${pin.title}</h4>
+              ${pin.description ? `<p>${pin.description}</p>` : ''}
+            </div>
+          `;
+          marker.bindPopup(popupContent);
+        }
+      });
+
+      // ==========================================
+      // 📍 LIVE USER GEOLOCATION TRACKER
+      // ==========================================
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+
+            // Create a sleek pulses/glowing ring modern location ring marker
+            const userIcon = L.divIcon({
+              className: 'user-location-marker',
+              html: '<div class="pulse-ring"></div><div class="user-dot"></div>',
+              iconSize: [20, 20],
+              iconAnchor: [10, 10],
+              popupAnchor: [0, -10]
+            });
+
+            L.marker([userLat, userLng], { icon: userIcon })
+              .addTo(map)
+              .bindPopup('<div class="map-popup-card"><h4>Your Location</h4></div>');
+          },
+          (error) => {
+            console.log('Location permission denied or unavailable:', error.message);
+          },
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMap);
+  document.addEventListener('astro:after-swap', initMap);
+</script>
+
+<style is:global>
+  .map-container-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-gray-5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 1.5rem 0;
+  }
+
+  /* User Location Glowing Marker CSS */
+  .user-location-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .user-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #3b82f6; /* Modern Blue core */
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);
+    z-index: 10;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.2);
+    animation: userPulse 2s ease-out infinite;
+    z-index: 1;
+  }
+
+  @keyframes userPulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  /* Core Pins Styles */
+  .custom-map-pin {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sl-color-bg-inline, #ffffff);
+    border: 2px solid var(--sl-color-text-accent, #3b82f6);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .custom-map-pin .pin-emoji {
+    transform: rotate(45deg);
+    font-size: 1.2rem;
+  }
+
+  .custom-map-pin.pin-cat-transport { border-color: #3b82f6; }
+  .custom-map-pin.pin-cat-venue { border-color: #10b981; }
+  .custom-map-pin.pin-cat-social { border-color: #f59e0b; }
+  .custom-map-pin.pin-cat-hotel { border-color: #8b5cf6; }
+
+  .leaflet-popup-content-wrapper {
+    background: var(--sl-color-bg-nav, #ffffff) !important;
+    color: var(--sl-color-text) !important;
+    border-radius: 8px !important;
+    font-family: inherit !important;
+    padding: 0.25rem;
+  }
+  
+  .leaflet-popup-tip {
+    background: var(--sl-color-bg-nav, #ffffff) !important;
+  }
+
+  .map-popup-card h4 {
+    margin: 0 0 0.25rem 0 !important;
+    font-size: var(--sl-text-md) !important;
+    color: var(--sl-color-white) !important;
+  }
+
+  .map-popup-card p {
+    margin: 0 !important;
+    font-size: var(--sl-text-xs) !important;
+    color: var(--sl-color-gray-3) !important;
+    line-height: 1.4;
+  }
+</style>

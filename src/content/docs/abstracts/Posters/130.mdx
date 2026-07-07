@@ -1,0 +1,40 @@
+---
+title: Object Store meets Laboratory Information System
+hero:
+  tagline: Implementing Self-Service Digital Shadow Infrastructure for Multidomain Plant Data
+authors:
+  - theodor-strauch
+  - danuta-schueler
+  - lars-erik-thomsen
+  - matthias-lange
+---
+
+Research is conducted in a collaborative manner across organisational boundaries and domains to share experimental facilities, technologies and resources. This common set-up for scientific projects is on the same hand challenging for an efficient data life cycle to manage and preserve data and streamline the creation of interoperable and consistent data sets towards trusted dataspaces implemented as FAIR Digital Objects (FDOs) [1]. Challenges arise from the sovereignty of research units with heterogeneous data management policies, the heterogeneity of research domains with diverse data types, scales, formats and metadata standards. This complexity is amplified further in public-private research partnerships, where the partners have diverse governance systems, data management and IT readiness levels.
+
+This poster presents a collaborative and self-service infrastructure as building blocks to implement a FAIR data space for Multidomain Plant Data. Within this poster we will showcase the current implementation status of this research data management system as well as its architecture and outlook into future developments and milestones. The main pillars are clear and accepted data flow, universal and validated self-service data registration using self-validating metadata templates and a data validation pipeline, backed by collaborative data curation, a central Research and Laboratory Information Management System (RALIMS) database infrastructure and data publication repositories. This conceptual principle is currently being pioneered in the recently granted research project INTEGRA, a public-private partnership to enhance genetic gain towards resilient rape seed. Here, the major technical pillar is a GitLab based PLANTDataHUB [2], which uses Git LFS to integrate a Ceph object store as a data storage backend. This technology platform is leveraged synergistically with the German NFDI consortium FAIRagro [3] and DataPLANT[4] as the main developers. The metadata capture and curation are being supported by the RALIMS, a structured and well-established data warehouse at IPK Gatersleben, which has been employed since 2011 [5]. For the purpose of integrating into the self-service system architecture in the INTEGRA project, the RALIMS has been expanded with a light weight web-portal for registration and management of biological material and samples through the acquisition and integration of a web-module. Subsequently, an interface between the RALIMS and the PLANTDataHUB will be established by implementing and utilizing an export-mechanism of metadata stored in the RALIMS into an compliant format for import into the PLANTDataHUB.
+
+The logical metadata structure is the Annotated Research Context (ARC) format, which implements the Investigation-Study-Assay (ISA) concept via tabular, xlsx-formatted, files in a rigid, pre-defined GIT directory structure. The focus is to lower barriers by adopting a lab data documentation practice in combination with rich tooling, such as ARCitect, SWATE and the ARCtrl library. This facilitates domain scientists, data management experts and data scientists to instantly collaborate in one common data space, leveraging Git-mechanisms, such as versioning, merging commits, and branches. To ensure integrity, consistency and compliance of the metadata describing the content of an ARC, the data annotation is technologically supported by CI/CD pipelines for regularly scheduled validation of metadata quality that is extensible and adaptable to custom validation scripts in addition to relevant validation packages already published and integrated into the PLANTDataHUB. Lastly, an RO-Crate artifact build pipeline automatically translates the xlsx file based ARC-scaffold into a corresponding RO-Crate on every commit in order to support the release and publishing of FDOs at domain accepted repositories, like e!DAL-PGP [6].
+
+Building on the presented system architecture and current implementation status, we will discuss future goals and milestones expanding and building upon the technological platforms and processes used and developed during INTEGRA. As part of the further milestones for this data management system, we will aim to annotate the S3 data objects ingested by the Git LFS interface with S3 metadata objects generated in the RO-Crate creation CI/CD pipeline. This will be implemented in Ceph using a shadow-bucket approach via tandem data and metadata buckets. This implements S3-enabled FDO with Persistent Identifier (PID), metadata and data layers, which enables a performant integration with High-Performance Computing (HPC) environments to feed computational pipelines. Prospectively, the search and filter capabilities of such a setup would need to be enhanced, either by employing a restful middleware service, an elasticsearch service or both. We will furthermore share our plans to adopt the data management platforms and processes to foster FAIR data management on an institute level with a special focus on reusability for the research data management of future research projects.
+
+Lastly, we will discuss the possibility of integrating the IPK’s PLANTdataHUB instance into an umbrella platform in order to enable interoperability and data movement between different instances at distributed research institutes.
+
+## References
+
+[1] K. De Smedt, D. Koureas, and P. Wittenburg, “FAIR Digital Objects for Science: From Data Pieces to Actionable Knowledge Units,” Publications, vol. 8, no. 2, p. 21, Apr. 2020, doi: 10.3390/publications8020021.
+
+[2] H. L. Weil et al., “PLANTdataHUB: a collaborative platform for continuous FAIR data sharing in plant research,” The Plant Journal, vol. 116, no. 4, pp. 974–988, 2023, doi: 10.1111/tpj.16474.
+
+[3] X. Specka et al., “FAIRagro: Ein Konsortium in der Nationalen Forschungsdateninfrastruktur (NFDI) für Forschungsdaten in der Agrosystemforschung: Herausforderungen und Lösungsansätze für den Aufbau einer FAIRen Forschungsdateninfrastruktur,” Informatik Spektrum, vol. 46, no. 1, pp. 24–35, Feb. 2023, doi: 10.1007/s00287-022-01520-w.
+
+[4] D. von Suchodoletz, T. Mühlhaus, J. Krüger, B. Usadel, and C. M. Rodrigues, “DataPLANT – Ein NFDI-Konsortium der Pflanzen-Grundlagenforschung,” Bausteine Forschungsdatenmanagement, no. 2, pp. 46–56, Jul. 2021, doi: 10.17192/bfdm.2021.2.8335.
+
+[5] D. Schüler et al., “Data management in balance – a decade of balancing pragmatism, sustainability and innovation at plant research center IPK Gatersleben,” Journal of Integrative Bioinformatics, p. 20250012, May 2025, doi: 10.1515/jib-2025-0012.
+
+[6] D. Arend, P. König, A. Junker, U. Scholz, and M. Lange, “The on-premise data sharing infrastructure e!DAL: Foster FAIR data for faster data acquisition,” GigaScience, vol. 9, no. 10, p. giaa107, Oct. 2020, doi: 10.1093/gigascience/giaa107.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

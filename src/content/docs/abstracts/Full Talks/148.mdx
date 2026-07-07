@@ -1,0 +1,49 @@
+---
+title: Keeping Semantic Authority Human
+hero:
+  tagline: Agent-Operated Construction of FAIR Knowledge Graphs from Croissant-Described Data with Biotope
+authors:
+  - rupshali-dasgupta
+  - peyman-vahidi
+  - sebastian-lobentanzer
+---
+
+## Abstract
+
+FAIR metadata standards such as Croissant make individual datasets findable and machine-readable, but they do not by themselves specify how heterogeneous datasets should be integrated into a queryable graph. The step from many well-described files to a semantically coherent knowledge graph still depends on many modelling decisions: which fields denote entities or relations, how identifiers are reconciled, which transformations are applied, and which source components are relevant for a given research purpose. These decisions are often encoded implicitly in bespoke ingestion code, where they are difficult to inspect, reproduce, or govern. We present Biotope, a command-line tool for the BioCypher ecosystem that constructs knowledge graphs from Croissant-described data while recording the construction process itself as version-controlled metadata.
+
+Biotope is deterministic by design. It enumerates candidate record sets, fields, transformations, and mappings; validates them; previews the projected schema and sample tuples; and materialises a runnable BioCypher project. It does not select a semantic mapping on behalf of the user. Each semantic decision is made by an operator, either a human using an interactive workflow or a software agent operating the same command-line substrate, and is captured as an inspectable artifact. Because the resulting configuration is version controlled through a git-based workflow, including add, commit, status, log, push/pull, and checksum verification, the same committed project state yields the same graph regardless of whether it was assembled manually, automatically, or through mixed human-agent control.
+
+The Integration Gap Between FAIR Data and AI-Ready Knowledge
+
+Research data management has made substantial progress in describing datasets according to the FAIR principles. Croissant and related FAIR digital object approaches provide machine-readable descriptions of data structure, provenance, licensing, and access. This makes individual datasets easier to discover and reuse, but it does not solve the integration problem. A knowledge graph requires a purpose-bound semantic representation: entities, relations, identifiers, evidence types, and transformations must be selected in relation to the questions the graph is meant to answer.
+
+This is especially important in AI-driven research settings. Large language model agents can increasingly assist with data engineering and schema construction, but naive automation risks replacing hidden ingestion code with hidden model judgement. If an agent silently chooses a schema and emits code, the resulting graph may be technically useful but epistemically opaque. Biotope addresses this problem by separating deterministic graph construction from semantic authority. The tool provides the substrate for enumeration, validation, provenance tracking, and reproducible build; the operator provides the modelling choices. In this process, the semantic mappings constitute the recorded reasoning of the graph construction, and that reasoning is externalised as metadata.
+
+## Biotope: Deterministic, Agent-Operable Graph Construction
+
+A Biotope project begins with an explicit statement of purpose and associated competence questions. This anchors graph construction in the intended use of the representation rather than in the maximal accumulation of available data. The workflow then proceeds through a small set of command-line stages. init creates the project scaffold and records its purpose. get and add bring in data and metadata, including human- or agent-derived derivatives. map resolves how record sets and fields populate the declared entities and relations. queue tracks annotation and mapping state. buildmaterialises the corresponding BioCypher project and rejects unresolved mappings.
+
+Biotope consumes Croissant metadata directly, including Croissant annotations generated deterministically by the underlying Croissant Baker framework for a wide range of structured formats such as CSV, FHIR, OMOP, Parquet, and bio-image metadata. This allows Biotope to operate across heterogeneous life-science data without requiring dataset-specific ingestion code. The distinction is important: Biotope removes the need to hand-write bespoke ingestion pipelines, but it does not remove the need for explicit semantic mappings. Instead, it makes those mappings first-class, reviewable, reusable, and attributable.
+
+The same workflow can be operated by a human, by a copilot agent onboarded through an AGENTS.md file generated during project initialisation, or by both in a mixed-initiative process. Since the tool never silently resolves semantic alternatives, every modelling choice has a locus of responsibility. Since the build is deterministic, identical committed metadata produce identical graph outputs. This makes Biotope suitable not only for rapid knowledge graph assembly, but also for settings where provenance, accountability, and auditability are scientific requirements rather than optional engineering features.
+
+## Worked Example
+
+We demonstrate Biotope in an ongoing cardiometabolic disease project that combines structured single-cell omics data, purpose-selected evidence extracted from the scientific literature, and selected components of the Open Targets Platform. The aim is not to ingest “all papers” or to build a maximally broad biomedical graph, but to construct a representation tailored to clinician-researchers’ questions about genes, conditions, cellular contexts, study evidence, therapeutic targets, diseases, and supporting evidence. Starting from Croissant-described sources, the operator declares the target entities and relations, resolves the mapping scaffold field by field, aligns identifiers across structured and unstructured sources, and builds a queryable BioCypher graph for downstream natural-language interaction. The resulting graph can be reproduced from the committed Biotope project state, and each semantic choice remains inspectable as version-controlled metadata.
+
+The Open Targets Platform illustrates the compositional value of this approach. Using Croissant Baker, biotope add automatically generates Croissant annotations for all 55 integrated Open Targets datasets from the platform’s Parquet resources. Biotope can then expose these annotated datasets as selectable components for the cardiometabolic graph, allowing the operator to integrate only those Open Targets layers that serve the project’s purpose, such as target-disease-evidence relations, drug information, variant associations, safety data, or expression evidence. These public-resource components can be combined with project-specific single-cell and literature-derived evidence without writing custom ingestion code or collapsing the workflow into a universal biomedical graph. The selected components, mappings, checksums, and build configuration are captured in the same version-controlled construction metadata as the domain-specific sources, so the complete integrated representation remains reproducible, inspectable, and purpose-bound.
+
+## Relevance and Outlook
+
+Biotope connects FAIR research data infrastructure to integrative bioinformatics by making the transition from described datasets to AI-ready knowledge graphs explicit, reproducible, and efficient. It consumes standardised metadata, including deterministically generated Croissant descriptions, and produces semantically coherent BioCypher graphs suitable for downstream analytics, cross-omics integration, and LLM-supported querying. Its contribution is not merely automation, but governed automation: software agents can perform the labour of graph assembly at scale while semantic authority remains visible, attributable, and auditable.
+
+This efficiency gain is central to the purpose-bound approach. If knowledge graphs require large, comprehensive, multi-year integration projects, they will tend toward universalising representations that are expensive to maintain and only partially aligned with any given research question. By combining reusable Croissant-described sources, deterministic validation and build steps, and human- or agent-operated semantic mapping, Biotope makes it feasible to construct smaller, transient, question-directed graphs on much shorter timescales. A cardiometabolic graph can therefore draw selectively on project-specific single-cell data, literature-derived evidence, and relevant Open Targets components without inheriting the full scope or maintenance burden of a universal biomedical knowledge graph.
+
+Ongoing work extends Biotope with ontology grounding and alignment, using secondary retrieval-based anchoring of operator-chosen concepts to established vocabularies without constraining project-specific schema design. We are also developing coverage and quality benchmarks for constructed graphs. We position Biotope as a concrete contribution to agent-ready research data infrastructure: a deterministic, version-controlled substrate through which humans and AI agents can rapidly construct purpose-bound knowledge representations while preserving provenance and epistemic responsibility. We hope to discuss with the NFDI and broader life-science data communities how such substrates might be standardised across research data management and integrative bioinformatics workflows.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

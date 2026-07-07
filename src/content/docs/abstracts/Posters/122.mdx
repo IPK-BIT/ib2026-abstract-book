@@ -1,0 +1,24 @@
+---
+title: Integration of Genomics, Metabolomics and Transcriptomics Data of 56 rosemary accessions for the elucidation of group-specific pathways
+authors:
+  - david-ruescher
+  - natalie-vogelsang
+  - katja-thiele
+  - alain-tissier
+  - steffen-neumann
+  - arianne-schnabel
+---
+
+Rosemary (Salvia rosmarinus Spenn.) is a specialty crop that produces many bioactive compounds such as diterpenoids (e.g. carnosic acid), phenylpropanoids (e.g. rosmarinic acid) and volatile substances, which create the characteristic scent of the plant. In the DiP-NA-WIR project one of our tasks is to select a biochemically and genetically diverse panel of rosemary genotypes for further investigation. To this end, an initial panel of 56 rosemary genotypes was collected and subjected to genomic sequencing, as well as untargeted LC-TIMS-MS/MS and GC-MS measurements.
+
+To get a better understanding of the genetic diversity within our panel we utilized SNP data called from a low-coverage long-read sequencing experiment. Using hierarchical clustering and principal component analysis, the genotypes were split into seven groups with one consisting of four genotypes being especially dominant. Strikingly, unsupervised analysis of LC and GC data revealed very similar grouping compared to the genomics data, implying tight genetic control of the biochemical makeup of the plants.
+
+Integration of the genomic and metabolomic data and subsequent clustering could clearly identify groups of compounds specific to the identified sub-populations, which included, but were not limited to, many terpenoids that could only be detected in the most dominant sub-population.
+
+To further study this behavior, transcriptomics and metabolomics data were created based on 13 diverse genotypes. This paired dataset can be integrated to identify regulatory networks and pathways involved in the genotype-specific production of terpenoids.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

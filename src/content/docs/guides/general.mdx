@@ -1,0 +1,163 @@
+---
+title: Organizational Information
+description: How to get to the main venue hall, train hubs, and dinner configurations.
+sidebar:
+  order: 0
+---
+
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+
+export const conferencePins = [
+  { 
+    lat: 51.8281325, 
+    lng: 11.2912501, 
+    title: "Gatersleben Train Station", 
+    description: "Main arrival point. Walking distance to IPK 10-15min.",
+    category: "transport",
+    icon: "🚂"
+  },
+  { 
+    lat: 51.8266143, 
+    lng: 11.280289, 
+    title: "Northern Gate IPK", 
+    description: "Bus Pickup point. Walking distance to Lecture Hall 3min.",
+    category: "transport",
+    icon: "🚌"
+  },
+  { 
+    lat: 51.8271181, 
+    lng: 11.2782591, 
+    title: "Poster Session", 
+    description: "Poster Session Location. Set up Poster during lunch or afternoon coffee break.",
+    category: "venue",
+    icon: "🎴"
+  },
+  { 
+    lat: 51.8272322, 
+    lng: 11.278158, 
+    title: "Lecture Hall", 
+    description: "Primary conference auditorium.",
+    category: "venue",
+    icon: "🏫"
+  }
+];
+
+export const qlbPins = [
+    { 
+        lat: 51.7853687, 
+        lng: 11.1357761, 
+        title: "Best Western 'Schlossmühle'", 
+        description: "Rooms 112€ per night (incl. breakfast)",
+        category: "accomodation",
+        icon: "🏨"
+    },
+    { 
+        lat: 51.7913489, 
+        lng: 11.1585728, 
+        title: "Acron Hotel Harz", 
+        description: "Rooms 65€ per night (incl. breakfast)",
+        category: "accomodation",
+        icon: "🏨"
+    },
+    { 
+        lat: 51.7916209, 
+        lng: 11.1576174, 
+        title: "Bus Pickup Acron", 
+        description: "Bus Pickup point.",
+        category: "transport",
+        icon: "🚌"
+    },
+    { 
+        lat: 51.7880098, 
+        lng: 11.1377717, 
+        title: "Bus Pickup Carl Ritter Square", 
+        description: "Bus Pickup point.",
+        category: "transport",
+        icon: "🚌"
+    },
+    { 
+        lat: 51.7894864, 
+        lng: 11.1419054, 
+        title: "City Tour Starting Point", 
+        description: "City Tour will end at conference dinner location.",
+        category: "social",
+        icon: "🏛️"
+    },
+    { 
+        lat: 51.7852579, 
+        lng: 11.135132, 
+        title: "Conference Dinner", 
+        description: "Dinner costs are included in conference fee.",
+        category: "social",
+        icon: "🍽️"
+    },
+    { 
+        lat: 51.7850346, 
+        lng: 11.1519145, 
+        title: "Quedlinburg Train Station", 
+        description: "Main Arrival Point to Quedlinburg. In walking distance to accomodations.",
+        category: "transport",
+        icon: "🚂"
+    }
+]
+
+export const conferenceRoutes = [
+  {
+    coordinates: [
+        [51.828133, 11.2912247],
+        [51.8279922, 11.2905159],
+        [51.8277301, 11.289826],
+        [51.8276167, 11.2887817],
+        [51.8266974, 11.2885349],
+        [51.826228, 11.2875159],
+        [51.8257098, 11.2871654],
+        [51.8259289, 11.2848932],
+        [51.8266252, 11.2802983],
+        [51.8267582, 11.2780704],
+        [51.8272276, 11.2781464]
+    ],
+    color: "#3b82f6",
+    weight: 5,
+    dashArray: "5, 10"
+  }
+];
+
+Welcome to the logistical hub for the NFDI4LS conference! Whether you are arriving by train, looking for your hotel, or trying to find the lecture hall, this guide will help you navigate between our two primary locations: **Gatersleben** (Conference Venue) and **Quedlinburg** (Accommodation & Social Events).
+
+## Main Conference Venue (Gatersleben)
+
+All sessions, keynotes, and poster presentations will take place at the IPK campus in Gatersleben. 
+
+If you are arriving by train, the **Gatersleben Train Station** is a brief 10 to 15-minute walk to the main campus. We have highlighted the recommended walking route in blue on the map below. For those taking the shuttle, buses will drop you off at the **Northern Gate**, which is just a 3-minute walk from the main Lecture Hall. 
+
+<InteractiveMap 
+  center={[51.82772725, 11.28470405]} 
+  zoom={15} 
+  pins={conferencePins} 
+  routes={conferenceRoutes}
+  height="500px" 
+/>
+
+---
+
+## Accommodation & Social Events (Quedlinburg)
+
+Our hotel recommendatations and social excursions are located in the historic town of Quedlinburg. 
+
+If you are arriving via the **Quedlinburg Train Station**, both of our hotel recommendatations are within walking distance. Shuttle buses to the Gatersleben venue will depart daily from two designated pickup spots (Acron Hotel and Carl Ritter Square). 
+
+Additionally, please note the starting point for our historic **City Tour**, which will seamlessly conclude at our designated **Conference Dinner** location.
+
+<InteractiveMap 
+  center={[51.7883588, 11.14717445]} 
+  zoom={15} 
+  pins={qlbPins} 
+  height="500px" 
+/>
+
+### Bus Pickup Times
+
+| Location | Time |
+| :--- | :--- |
+| **Carl Ritter Square** | daily 8:20 |
+| **Acron Hotel** | daily 8:15 |

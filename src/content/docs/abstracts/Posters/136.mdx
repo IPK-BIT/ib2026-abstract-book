@@ -1,0 +1,66 @@
+---
+title: Contigo
+hero:
+  tagline: Context-Preserving Grouped Editing for FAIR Provenance
+authors:
+  - caroline-ott
+  - annika-paul
+  - david-zimmer
+  - timo-muehlhaus
+---
+
+Scientific data management increasingly requires research outputs to be documented not only as data files but as reusable digital objects whose content, context, and provenance can be interpreted by both humans and machines. The FAIR principles articulate this requirement by emphasizing findability, accessibility, interoperability, and reusability, including machine-actionable metadata and detailed provenance as conditions for future discovery, assessment, and reuse [1]. Provenance is therefore central to reproducible and reusable research, because it records how data products were generated, transformed, combined, and interpreted across experimental or computational processes [2]. At the same time, constructing high-quality provenance remains difficult in practice. Provenance is often handled across several representation levels, from conceptual provenance models to tabular records, graph-based semantic representations, and exchange serializations such as JSON or XML. These representation levels serve different technical and human purposes.
+
+This creates a practical tension: provenance must be structured enough to support interoperability, traceability, and reuse, while remaining comprehensible and editable for researchers managing many entities, repeated steps, layered transformations, and complex input-output dependencies. This tension becomes more pronounced as experiments, datasets, and workflows scale. Big-data provenance research has shown that provenance management must address both the provenance of datasets and the provenance of analytical processes, especially where volume, complexity, and distributed execution affect veracity and reuse [3]. As provenance records grow, tabular and graph-based representations can become difficult to use as primary editing interfaces: tables may obscure multi-step dependencies and require repeated entries, whereas graphs preserve relational structure but can become visually and cognitively demanding at scale.
+
+Existing tools address important parts of this problem space, using different interaction paradigms for different use cases.
+
+One group of tools focuses on provenance inspection and visualization. Systems in this area use graph-oriented interaction techniques such as semantic zooming, filtering, coloring, path tracing, node collapsing, and aggregation to make dense provenance more navigable while preserving access to the underlying data. Prov Viewer, for example, supports interactive exploration of PROV-compatible graphs, and AVOCADO demonstrates how workflow-derived provenance can be adaptively visualized for reproducible biomedical research [4,5]. These visualization-oriented approaches are well suited for exploratory inspection, communication, and sense-making, particularly when users need to review complex histories without reading raw provenance records.
+
+A second group is centered on workflow provenance. Platforms and workflow systems such as Galaxy and Nextflow support reproducible computational analyses by organizing execution steps, inputs, outputs, configurations, reports, and workflow structures, while work on workflow- and trace-level provenance shows how dependencies can be made more precise by combining prospective workflow declarations with retrospective execution traces [6,7,8]. Such systems are effective for recording and re-executing computational pipelines and for linking workflow steps to produced data.
+
+Another big aspect is the support of human-centered metadata authoring and experimental documentation. The ISA software suite, CEDAR, and electronic laboratory notebook approaches such as eLabFTW provide structured forms, templates, ontology-based annotation, validation, and reusable metadata capture for experimental organization and repository submission [9,10,11]. These systems lower the burden of metadata entry and support standards-compliant annotation, particularly when users need to curate experimental descriptions rather than inspect a large provenance graph.
+
+To complement the range of the existing capabilities, we propose a concept of an application, where users can work at an aggregated level. The goal is a relation-preserving grouped provenance editing model for scalable FAIR annotation with ontology support. The approach treats grouping not only as a visualization strategy but as an editable operation: entities can be grouped by shared metadata properties, repeated annotations can be represented once at the group level, and the concrete entity-level provenance relations remain recoverable beneath the abstraction. In addition, contextual collapse is applied to enable selected parts of the provenance graph to be folded into higher-level nodes, similar to semantic zoom, allowing users to view and edit the currently relevant context. The collapsed context remains attached to the corresponding nodes and preserves the provenance relations it represents. Groups become the main units used for navigation and editing without replacing the underlying provenance model.
+
+To preserve local interpretability, provenance is organized into transition layers that show adjacent input-output relations rather than one global graph. Users can focus on the currently relevant information while the layer remains connected to the larger provenance chain. New layers can be created from selected entities or continued from previous outputs, supporting iterative annotation that follows the planning and execution flow of scientific work. Contextual propagation is used to collapse upstream information into the current editing context: upstream annotations are propagated into the current editing context so that prior provenance informs grouping and editing without requiring the complete upstream graph to be expanded. Even when upstream provenance is abstracted, metadata remains editable if it can be resolved back to its source entity or relation. Expandable relation summaries connect groups by summarizing the concrete input-output relations represented underneath; they reduce visual clutter while retaining access to the detailed dependencies. Group-level operations, such as assigning metadata to a set of replicates or connecting grouped inputs to grouped outputs, can thus be resolved into explicit underlying provenance relations.
+
+The resulting model addresses three recurrent difficulties in FAIR data annotation. Repeated annotations can be reduced from entity-level repetition to group-level editing: when the same metadata applies to n replicates, the annotation can be entered once for the group instead of n times, while replicate-specific exceptions remain accessible within the group. Additionally, large provenance structures can be reduced at user-selected levels of abstraction. For example, biological replicates can be collapsed into one visible replicate group, and species comparisons can be shown as species-level groups rather than as all underlying sample-level entities. Finally, complex input-output relations can be annotated through group-to-group connections rather than by manually creating every entity-level edge. In structurally clear fan-in or fan-out cases, a single group-level operation can represent the intended mapping and generate the corresponding underlying relations; for a complete bipartite relation between n input entities and m output entities, this can replace up to n × m manual edge specifications. Ambiguous mappings remain editable through user guidance or detailed relation views. In this way, the model supports continuous and iterative annotation while maintaining explicit provenance structure.
+
+Its practical relevance lies in complementing existing provenance systems. By combining relation-preserving aggregation, local transition-oriented editing, contextual propagation, and expandable relation summaries, the approach supports the production of sufficiently detailed and structured metadata for FAIR research objects. It also lowers the entry barrier for researchers who need to document complex multilayered processes but cannot reasonably curate every repeated relation manually. Because process metadata can shape data quality assessment and decision-making, improving the usability and consistency of provenance annotation has implications beyond documentation alone [12]. A reference implementation is already realized within the ARC ecosystem, where it supports provenance-aware annotation for the ISA and ARC Workflow Run RO-Crate profiles and demonstrates how relation-preserving grouped editing can be applied to research-object documentation practices [13,14].
+
+## References
+
+[1] M. D. Wilkinson et al., The FAIR Guiding Principles for scientific data management and stewardship. Sci Data. 3, 160018 (2016), doi:10.1038/sdata.2016.18.
+
+[2] M. Herschel, R. Diestelkämper, H. Ben Lahmar, A survey on provenance: What for? What form? What from? The VLDB Journal. 26, 881–906 (2017), doi:10.1007/s00778-017-0486-1.
+
+[3] J. Wang, D. Crawl, S. Purawat, M. Nguyen, I. Altintas, Big Data Provenance: Challenges, State of the Art and Opportunities. IEEE International Conference on Big Data. 2015, 2509–2516 (2015), doi:10.1109/BigData.2015.7364047.
+
+[4] T. Kohwalter, T. Oliveira, J. Freire, E. Clua, L. Murta, in , pp. 71–82.
+
+[5] H. Stitz, S. Luger, M. Streit, N. Gehlenborg, AVOCADO: Visualization of Workflow-Derived Data Provenance for Reproducible Biomedical Research. Computer graphics forum : journal of the European Association for Computer Graphics. 35, 481–490 (2016), doi:10.1111/cgf.12924.
+
+[6] S. Dey et al., UP & DOWN: Improving provenance precision by combining workflow- and trace-level information. 6th Workshop on the Theory and Practice of Provenance, TaPP 2014 (2014).
+
+[7] P. Di Tommaso et al., Nextflow enables reproducible computational workflows. Nat Biotechnol. 35, 316–319 (2017), doi:10.1038/nbt.3820.
+
+[8] Galaxy Community, The Galaxy platform for accessible, reproducible, and collaborative data analyses: 2024 update. Nucleic acids research. 52, W83-W94 (2024), doi:10.1093/nar/gkae410.
+
+[9] N. CARPi, A. Minges, M. Piel, eLabFTW: An open source laboratory notebook for research labs. The Journal of Open Source Software. 2, 146 (2017), doi:10.21105/joss.00146.
+
+[10] M. A. Musen et al., The center for expanded data annotation and retrieval. Journal of the American Medical Informatics Association : JAMIA. 22, 1148–1152 (2015), doi:10.1093/jamia/ocv048.
+
+[11] P. Rocca-Serra et al., ISA software suite: supporting standards-compliant experimental annotation and enabling curation at the community level. Bioinformatics (Oxford, England). 26, 2354–2356 (2010), doi:10.1093/bioinformatics/btq415.
+
+[12] G. Shankaranarayanan, A. Even, S. Watts, The role of process metadata and data quality perceptions in decision making: An empirical framework and investigation. 17 (2006).
+
+[13] H. L. Weil et al., PLANTdataHUB: a collaborative platform for continuous FAIR data sharing in plant research. The Plant journal : for cell and molecular biology. 116, 974–988 (2023), doi:10.1111/tpj.16474.
+
+[14] C. Ott, K. Schneider, F. Wetzels, H. L. Weil, nfdi4plants/arc-wr-ro-crate-profile: ARC Workflow Run RO-Crate Profiles v1.0.0 (Zenodo, 2025).
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

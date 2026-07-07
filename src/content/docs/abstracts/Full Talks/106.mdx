@@ -1,0 +1,35 @@
+---
+title: MIMSA – Minimal Information Metadata Standard for Animals
+hero: 
+  tagline:  MIAPPE Framework goes animal
+authors:
+  - sarah-oranna-fischer-zielke
+  - rica-rehfeld
+  - manuel-feser
+---
+
+Heterogeneity of data is a global challenge for Research data management. In the field of animal research, this is also a critical aspect that should be preserved and improved, as it has often been neglected in the past. Heterogeneity should therefore not be seen as an obstacle in research data management either, but rather as an opportunity.
+
+Animal research aims to minimise animal testing through the 3Rs principles (replace, reduce, refine), which supports the importance of research data management in this field, as the use of properly prepared datasets actively helps to minimise the need for such experiments. A data or even metadata standard for animal data would greatly help to produce datasets that are easy to reuse. In the agrosystem/agricultural research, this issue is already being worked on for breeding, food safety, phenotypic traits or profits. Animal data additionally covers further fields like social interactions and behaviour studies which are not present in other agricultural fields, but nevertheless the usage of standardisation efforts which were formed in the agricultural field not only helps the animal data to get standardarised but also helps to make data interoperable across research areas to tackle system wide approaches - like nutrient workflows from plant-based feeding through animals toward soil composition.
+
+To address these challenges, we present the Minimal Information Metadata Standard for Animals (MIMSA), our adaptation of the MIAPPE (Minimum Information About Plant Phenotyping Experiments) checklist as a foundational framework for standardizing metadata of animal phenotypic data. Our approach aims to establish a species-independent, user-friendly standard that facilitates data exchange and integration across diverse research domains. To achieve this, we developed a Minimal Information Metadata Standard that covers all species without limiting their heterogeneity.
+
+To develop the data model of the MIMSA checklist, the MIAPPE mapping to the Investigation / Study / Assay (ISA) model was used as a starting point, with its terms scanned and adapted to meet the needs of animal research.
+
+In concrete numbers, 55 terms from the MIAPPE Data Model Checklists could be reused without major adjustments for animals, while 14 terms needed major revision in the form of changed names and descriptions. In addition, MIMSA includes 18 new animal-specific terms added to align with animal data.
+
+25 plant-specific terms were not so versatile enough to specify animal data, especially the Ontologies, because there is no equivalent for the well-curated and extensive crop ontology, and therefore were excluded in MIMSA. The development of a similar ontology for animals remains a challenge, which we do not tackle with MIMSA. Further MIAPPE terms referring to plant-exclusive properties, such as seeds from genbanks, are not required and have therefore been removed from the MIMSA checklist.
+
+During this adaptation process, we identified a number of animal-specific terms that would be required in the minimum information standard, such as the animal's sex, husbandry, and even its date of birth. Overall, we reconstructed the source material entiteis, a subcategory for biological material, as well as including a new entity for standard operation procedures, but to obtain a community-accepted standard, these alterations need to be validated through the community. Therefore, a survey on these constructed terms and specifications is planned for 2026, with the results to be included in the next version of the checklist and the proposed talk.
+
+By using the MIAPPE checklist, we have succeeded in adapting a checklist for animal phenotypic data that forms the basis for the development of MIMSA. The initial results were published in a preprint [https://doi.org/10.37044/osf.io/ncrkm_v1]. A Git repository has been set up in which the first version, as well as the forthcoming second version of the MIMSA checklist, will be published, together with a README, an appendix, licence information, a graphical representation of the structure and a MIMSA template in an Excel file. The second version of the MIMSA checklist is being drawn up, taking the survey results into account. The survey draws on the expertise of various specialists in the animal research sector and ensures that the standard can be applied across different species.
+
+Using the MIMSA Checklist 2.0, the mapping of the terms will be updated to enable the use of ISA-based tooling such as the de.NBI / ELIXIR-DE service ISA Wizard or ARCitect of the NFDI consortium DataPLANT. To assess its usability, this tooling will be tested using the standard on a data set.
+
+Besides the survey for general term assessment with the community, potential differentiation also needs to be addressed. We aim to provide mandatory terms for all species, but to ensure better reusability, species-specific additional recommendations for terms need to be formulated. Additionally, when the MIMSA checklist is completed, the existing ISA-based tools should be adapted for the animal community to provide user-friendly services for animal data annotation. Lastly, the aim of MIMSA is the integration of this standard in existing and emerging animal data repositories and infrastructures, such as the ongoing further development from the FAANG - a mainly genomic-centred portal - to the inclusion of phenotypic data, as well as the planned repository of welfare data through the project KI-Tierwohl.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

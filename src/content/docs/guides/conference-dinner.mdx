@@ -1,0 +1,73 @@
+---
+title: Conference Dinner & City Tour
+description: Evening schedule, venue location, city tour information, and menu details.
+sidebar:
+  order: 2
+---
+
+import InteractiveMap from '../../../components/InteractiveMap.astro';
+
+export const dinnerPin = [
+  { 
+    lat: 51.7852579, 
+    lng: 11.135132, 
+    title: "Conference Dinner (Schlossmühle)", 
+    description: "Dinner costs are included in the conference registration fee.",
+    category: "social",
+    icon: "🍽️"
+  },
+  { 
+    lat: 51.7894864, 
+    lng: 11.1419054, 
+    title: "City Tour Starting Point", 
+    description: "The guided tour will walk through the historic old town and conclude directly at the dinner venue.",
+    category: "social",
+    icon: "🏛️"
+  }
+];
+
+Join us for an evening of local history, relaxation, and networking. The conference social program transitions smoothly from an afternoon guided tour of the historic town of Quedlinburg into our conference dinner.
+
+---
+
+## Evening Schedule
+
+*   **18:00 – 19:15** | **Guided Historic City Tour**  
+    Meet at the **City Tour Starting Point** (Marktplatz area). A local English-speaking guide will take us through the UNESCO World Heritage old town architecture. The walk ends directly at the dinner venue.
+*   **19:30 – Late** | **Conference Dinner**  
+    Doors open at the restaurant for drinks, followed shortly by the opening buffet.
+
+---
+
+## Venue & Location
+
+The dinner takes place at the **Best Western Premier Schlossmühle** restaurant area, nestled right below the historic castle hill (*Schlossberg*) in Quedlinburg.
+
+> 💳 **Cost:** Access to the evening city tour, full buffet dinner is entirely **included in your conference registration fee**. Please ensure you bring your conference badge for verification at the entrance.
+
+<InteractiveMap 
+  center={[51.7870, 11.1385]} 
+  zoom={16} 
+  pins={dinnerPin} 
+  height="400px" 
+/>
+
+---
+
+## Menu
+
+Our host kitchen has prepared a seasonal menu highlighting regional specialties alongside international options. 
+
+### 🥗 Starters
+*   TBD
+
+### 🍲 Main Courses
+*   TBD
+
+### 🍰 Desserts
+*   TBD
+
+---
+
+## Dietary Restrictions & Allergies
+If you specified severe allergies or strict dietary requirements (e.g., celiac, strict vegan) during registration, please let the catering service staff know upon arrival so they can coordinate your customized plating safely.

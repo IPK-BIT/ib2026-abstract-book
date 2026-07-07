@@ -1,0 +1,46 @@
+---
+title: nfdi4LS - Integrative Bioinformatics 2026
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: Interactive Abstract Book
+  image:
+    file: "@images/logos/nfdi4ls.png"
+  actions:
+    - text: Go to the Abstracts
+      link: /ib2026-abstract-book/abstracts/
+      icon: right-arrow
+    - text: Organizational Information
+      link: /ib2026-abstract-book/guides/general/
+      icon: right-arrow
+      variant: minimal
+---
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Direct Links
+
+<CardGrid stagger>
+  <Card title="Conference Schedule" icon="information">
+    Check the conference schedule
+    <a href="/ib2026-abstract-book/abstracts">Go to Schedule</a>
+  </Card>
+  <Card title="Organizational Information" icon="information">
+    Logistical information on the conference
+    <a href="/ib2026-abstract-book/guides/general">Go to Info</a>    
+  </Card>
+  <Card title="Conference Dinner" icon="information">
+    Information for the conference dinner
+    <a href="/ib2026-abstract-book/guides/conference-dinner">Go to Info</a>    
+  </Card>
+  <Card title="Keynotes" icon="open-book">
+    Browse the keynote abstracts
+    <a href="/ib2026-abstract-book/abstracts/keynotes">Go to Abstracts</a>
+  </Card>
+  <Card title="Full Talks" icon="open-book">
+    Browse the full talk abstracts
+    <a href="/ib2026-abstract-book/abstracts/full-talks">Go to Abstracts</a>
+  </Card>
+  <Card title="Posters" icon="open-book">
+    Browse the poster abstracts
+    <a href="/ib2026-abstract-book/abstracts/posters">Go to Abstracts</a>
+  </Card>
+</CardGrid>

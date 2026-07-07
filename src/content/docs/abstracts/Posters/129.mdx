@@ -1,0 +1,60 @@
+---
+title: Elab2ARC
+hero: 
+  tagline: A browser-based workspace for converting free-text protocols into rich FAIR digital objects
+authors:
+  - sabrina-zander
+  - xiaoran-zhou
+  - angela-kranz
+  - kathryn-dummschott
+  - phillippe-rocca-serra
+  - heinrich-lukas-weil
+  - marcel-tschoepke
+  - timo-muehlhaus
+  - dirk-von-suchodoletz
+  - bjoern-usadel
+---
+
+Electronic laboratory notebooks (ELNs) have become a standard tool for documenting experimental workflows in life sciences [1]. They provide flexible, collaborative environments for documentation of laboratory workflows. However, despite their widespread adoption, ELNs often store information in semi-structured or free-text formats that limit machine readability and interoperability. At the same time, experimental data and metadata are frequently distributed across multiple systems, including institutional storage, analysis pipelines, and external repositories. This fragmentation creates significant barriers to reproducibility, reuse, and compliance with the FAIR (Findable, Accessible, Interoperable, Reusable) [2,3] data principles.
+
+Here, we present elab2ARC [4], a browser-based, serverless application designed to bridge ELN documentation and structured, FAIR-compliant research objects. elab2ARC enables the automated transformation of experimental records from the widely used open-source ELN platform eLabFTW [5] into Annotated Research Contexts (ARCs), a standardized format based on the ISA (Investigation–Study–Assay) model [6] developed by DataPLANT [7]. By converting unstructured ELN entries into machine-readable, version-controlled research objects, elab2ARC facilitates seamless integration into research data infrastructures such as the PLANTdataHUB [8,9].
+
+The tool operates entirely in the user’s browser and requires only minimal interaction. Users authenticate via API tokens, select relevant eLabFTW experiments, and define a target ARC. All subsequent steps, including data retrieval, administrative metadata transformation, file restructuring, and Git-based versioning are executed automatically on the client side. This serverless architecture reduces infrastructure dependencies, enhances accessibility, and ensures that sensitive data remain under user control.
+
+During conversion, elab2ARC extracts experimental protocols, administrative metadata, and associated files from eLabFTW via its API. Protocols originally stored as HTML content are converted into Markdown format, while attachments such as images or datasets are organized into structured directories within the ARC. Each eLabFTW experiment is mapped to a dedicated ARC assay/study, ensuring traceability and alignment with ISA standards. Metadata such as authorship, timestamps, and identifiers are systematically captured in ISA-compliant tables, enabling consistent interpretation and reuse.
+
+A key feature of elab2ARC is the optional integration of large language models (LLMs) to enhance metadata extraction from free-text protocols. When enabled, the tool processes textual descriptions of experiments to identify structured elements such as sample characteristics, experimental parameters, and workflow steps. These extracted elements are incorporated into ISA tables, reducing the manual effort required for metadata annotation. While the quality of extraction depends on the structure and clarity of the original documentation, this approach demonstrates the potential of AI-assisted methods to improve data standardization and FAIR compliance in everyday research workflows.
+
+We demonstrate the utility of elab2ARC using a genomic workflow consisting of multiple experimental steps, including bacterial cultivation, DNA extraction, library preparation, sequencing, and bioinformatic analysis. In this use case, distributed ELN records and associated datasets are consolidated into a single ARC, providing a coherent and reusable representation of the experimental process. The resulting ARC can be directly shared, versioned, and extended with additional data, serving as a foundation for collaboration and publication.
+
+elab2ARC leverages established technologies for handling ISA-compliant data structures and isomorphic-git for browser-based version control. Its open-source implementation and integration into the DataPLANT ecosystem ensure transparency, extensibility, and community adoption.
+
+By addressing the disconnect between flexible ELN documentation and structured data standards, elab2ARC contributes to a more integrated and efficient research data management landscape. It allows researchers to retain their preferred documentation workflows while simultaneously generating FAIR, machine-actionable research objects with minimal additional effort.
+
+In conclusion, elab2ARC provides a practical and scalable approach to transforming ELN-based documentation into FAIR digital objects. By combining automation, standardization, and optional AI-assisted annotation within a lightweight browser application, it supports researchers in bridging the gap between data generation and data sharing, ultimately enhancing reproducibility and reuse in the life sciences.
+
+## References
+
+[1] Kanza, S. et al. Electronic lab notebooks: can they replace paper? J. Cheminform. 9, 31 (2017).
+
+[2] Wilkinson, M. D. et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci. Data 3, 160018 (2016).
+
+[3] Mons, B. et al. Cloudy, increasingly FAIR; revisiting the FAIR Data guiding principles for the European Open Science Cloud. Inf. Serv. Use 37, 49–56 (2017).
+
+[4] Zander, S. et al. Elab2ARC: A Browser-Based Workspace for Converting Free-Text Protocols into rich FAIR digital objects. bioRxiv (2026) doi:10.64898/2026.05.14.724833.
+
+[5] Nicolas CARPi, A. M. A. M. P. eLabFTW: An open source laboratory notebook for research labs. J. Open Source Softw. 2(12), 146 (2017).
+
+[6] Rocca-Serra, P. et al. ISA software suite: supporting standards-compliant experimental annotation and enabling curation at the community level. Bioinformatics 26, 2354–2356 (2010).
+
+[7] Mühlhaus, T. et al. DataPLANT – Tools and Services to structure the Data Jungle for fundamental plant researchers. in E-Science-Tage 2021: Share Your Research Data (eds. Heuveline, V. & Bisheh, N.) 132–145 (2022).
+
+[8] Weil, H. L. et al. PLANTdataHUB: a collaborative platform for continuous FAIR data sharing in plant research. Plant J. 116, 974–988 (2023).
+
+[9] Bauer, J. et al. Data publication infrastructure for FAIR digital objects. SN Comput. Sci. 7, (2026).
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

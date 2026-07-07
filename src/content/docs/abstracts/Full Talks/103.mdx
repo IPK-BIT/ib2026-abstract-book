@@ -1,0 +1,22 @@
+---
+title: The Type (Strain) Genome Server (TYGS)
+hero: 
+  tagline: Recent Developments in Genome-Based Prokaryote Taxonomy
+authors:
+  - ayorinde-afolayan
+  - markus-goeker
+---
+
+The Type (Strain) Genome Server (TYGS) is a widely used high-throughput web platform established in 2019 to enable genome-based prokaryote taxonomy without requiring specialist knowledge. TYGS provides users with comprehensive genomic, taxonomic, and nomenclatural information derived from submitted genome sequences and offers continuously updated access to type (strain) data, nomenclature, synonymy, and taxonomic literature.
+
+TYGS consists of three main components: (i) a workflow engine comprising independent microservices for parallelized data processing, (ii) a central TYGS database, and (iii) a user-friendly web interface with its own web database. Upon submission, user genomes are processed on a dedicated computing cluster through a multi-step workflow that includes Mash distance estimation, extraction and BLAST-based comparison of 16S rRNA genes against >23,500 type (strain) genomes, and whole-genome Mash analyses to identify the closest relatives. These are followed by Genome BLAST Distance Phylogeny (GBDP) calculations and prediction of digital DNA–DNA hybridization (dDDH) values for taxonomic delineation. The results are displayed as interactive trees annotated with metadata, dDDH values, and pre-generated text suitable for publication.
+
+Since its launch, TYGS has attracted more than 22,000 unique users, processed over 200,000 jobs, and performed more than 100 million genome comparisons. Recent updates include performance optimization through precomputed pairwise distances among type genomes, implementation of local identifier databases for faster sequence retrieval, and improved email notifications that facilitate user correspondence.
+
+TYGS continues to serve as an essential resource for microbiologists and taxonomists worldwide, supporting accurate classification and the description of new microbial taxa in the era of genome-based taxonomy.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

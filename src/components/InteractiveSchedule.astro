@@ -1,0 +1,366 @@
+---
+import { getEntry } from 'astro:content';
+import { Tabs, TabItem, Badge } from '@astrojs/starlight/components';
+
+const programEntry = await getEntry('schedule', 'program');
+const program = programEntry?.data;
+
+if (!program) {
+  return `<p>Schedule data could not be loaded.</p>`;
+}
+
+const getBadgeVariant = (type?: string) => {
+  switch (type) {
+    case 'Keynote': return 'success';
+    case 'Full Talk': return 'note';
+    case 'Poster': return 'tip';
+    case 'Panel': return 'caution';
+    case 'Break': return 'default';
+    default: return 'default';
+  }
+};
+---
+
+<div class="interactive-schedule">
+  <Tabs>
+    {program.days.map((day) => (
+      /* Passing data-date down to target the tab item container panel */
+      <TabItem label={day.label}>
+        <div class="linear-timeline" data-timeline-date={day.date}>
+          {day.slots.map((slot) => {
+            const isBreak = slot.type === 'Break';
+            // Parse time segment "HH:MM - HH:MM" into distinct start and end chunks
+            const [startTime, endTime] = slot.time.split(' - ').map(t => t.trim());
+            
+            return (
+              <div 
+                class={`timeline-block ${isBreak ? 'block-break' : ''}`}
+                data-time-start={startTime}
+                data-time-end={endTime}
+              >
+                <!-- Left Column: Time Frame Bubble -->
+                <div class="time-marker">
+                  <span class="time-bubble">{slot.time}</span>
+                </div>
+                
+                <!-- Right Column: Content Cards -->
+                <div class="block-content">
+                  <div class="session-header">
+                    <h3 class="session-title">{slot.title}</h3>
+                    <div class="session-badges">
+                      {slot.location && (
+                        <span class="modern-location-tag">
+                          📍
+                          <span>{slot.location}</span>
+                        </span>
+                      )}
+                      {slot.type && <Badge text={slot.type} variant={getBadgeVariant(slot.type)} />}
+                    </div>
+                  </div>
+                  
+                  {slot.chair && <p class="session-chair">Session Chair: <strong>{slot.chair}</strong></p>}
+
+                  {slot.description && <p class="session-description">{slot.description}</p>}
+
+                  {/* Grouped Consecutive Presentations */}
+                  {slot.contributions && slot.contributions.length > 0 && (
+                    <div class="nested-contributions">
+                      {slot.contributions.map((contrib) => (
+                        <div class="contribution-card">
+                          <div class="contrib-top">
+                            <span class="contrib-time">{contrib.time}</span>
+                            <div class="contrib-badges">
+                              {contrib.location && (
+                                <span class="modern-location-tag sub-loc">
+                                  📍                                  
+                                  <span>{contrib.location}</span>
+                                </span>
+                              )}
+                              <Badge text={contrib.type} variant={getBadgeVariant(contrib.type)} size="small" />
+                            </div>
+                          </div>
+                          <h4 class="contrib-title">{contrib.title}</h4>
+                          {contrib.speaker && <p class="contrib-speaker">👤 {contrib.speaker}</p>}
+                          {contrib.abstractSlug && (
+                            <a href={`/${contrib.abstractSlug}`} class="abstract-link">Read Abstract →</a>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </TabItem>
+    ))}
+  </Tabs>
+</div>
+
+{/* Client-side automation script */}
+<script>
+  function handleLiveScheduleSync() {
+    const now = new Date();
+    
+    // Format local date string into "YYYY-MM-DD"
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const dateVal = String(now.getDate()).padStart(2, '0');
+    const currentDayString = `${year}-${month}-${dateVal}`;
+    
+    // Check if a timeline exists for today's date
+    const todayTimeline = document.querySelector(`[data-timeline-date="${currentDayString}"]`);
+    if (!todayTimeline) return; // Exit if current time falls outside conference schedule framework
+
+    // 1. Programmatic Tab Switching Strategy
+    const parentTabContainer = todayTimeline.closest('starlight-tabs') as HTMLElement | null;
+
+    if (parentTabContainer) {
+      const tabPanels = Array.from(parentTabContainer.querySelectorAll('[role="tabpanel"]'));
+      const targetPanelIndex = tabPanels.findIndex(panel => panel.contains(todayTimeline));
+      
+      if (targetPanelIndex !== -1) {
+        const tabButtons = parentTabContainer.querySelectorAll('[role="tab"]');
+        const targetButton = tabButtons[targetPanelIndex] as HTMLButtonElement | undefined;
+        
+        // Simulate click to let Starlight update state hooks cleanly
+        if (targetButton && targetButton.getAttribute('aria-selected') !== 'true') {
+          targetButton.click();
+        }
+      }
+    }
+
+    // 2. Continuous Real-time Chronological Active Slot Discovery
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    const blocks = todayTimeline.querySelectorAll('.timeline-block');
+    let matchedBlock: HTMLElement | null = null;
+
+    blocks.forEach((blockNode) => {
+      const block = blockNode as HTMLElement;
+      const startStr = block.dataset.timeStart || '';
+      const endStr = block.dataset.timeEnd || '';
+      
+      const [startH, startM] = startStr.split(':').map(Number);
+      const [endH, endM] = endStr.split(':').map(Number);
+      
+      const startMinutes = startH * 60 + startM;
+      const endMinutes = endH * 60 + endM;
+
+      if (currentMinutes >= startMinutes && currentMinutes <= endMinutes) {
+        matchedBlock = block;
+      }
+    });
+
+    // 3. Smart Smooth Visual Scroller Implementation
+    if (matchedBlock) {
+      // Add a clean border active state accent rule style
+      (matchedBlock as HTMLElement).classList.add('live-slot-active');
+      
+      // Delays briefly to allow tab content transitions to paint cleanly
+      setTimeout(() => {
+        (matchedBlock as HTMLElement).scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 250);
+    }
+  }
+
+  // Runs on document ready and hooks safely into Astro's SPA lifecycle navigation event signatures
+  document.addEventListener('DOMContentLoaded', handleLiveScheduleSync);
+  document.addEventListener('astro:after-swap', handleLiveScheduleSync);
+</script>
+
+<style>
+  /* Base functional schedule properties layout rules */
+  .linear-timeline {
+    position: relative;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .linear-timeline::before {
+    content: '';
+    position: absolute;
+    left: 4.5rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 2px;
+    background-color: var(--sl-color-gray-5);
+    z-index: 1;
+  }
+
+  .timeline-block {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Ultra-modern visual focus highlight state for ongoing live session presentations */
+  .timeline-block.live-slot-active {
+    transform: scale(1.015);
+  }
+  
+  .timeline-block.live-slot-active .block-content {
+    border-color: var(--sl-color-text-accent);
+    box-shadow: 0 0 0 1px var(--sl-color-text-accent), 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 45rem) {
+    .linear-timeline::before { display: none; }
+    .timeline-block { flex-direction: column; gap: 0.5rem; }
+    .timeline-block.live-slot-active { transform: none; }
+  }
+
+  .time-marker {
+    flex-shrink: 0;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .time-bubble {
+    background-color: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--sl-color-gray-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .block-content {
+    flex-grow: 1;
+    background-color: var(--sl-color-bg-inline);
+    border: 1px solid var(--sl-color-gray-5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .block-break .block-content {
+    background-color: transparent;
+    border: 1px dashed var(--sl-color-gray-5);
+    opacity: 0.7;
+    box-shadow: none;
+  }
+
+  .session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .session-badges, .contrib-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .modern-location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--sl-text-xs);
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    background-color: var(--sl-color-gray-6);
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .modern-location-tag.sub-loc {
+    padding: 0.15rem 0.5rem;
+    opacity: 0.9;
+  }
+
+  .session-title {
+    margin: 0 !important;
+    font-size: var(--sl-text-xl) !important;
+    color: var(--sl-color-white);
+    letter-spacing: -0.01em;
+  }
+
+  .session-chair {
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1.25rem 0 !important;
+  }
+
+  .session-description {
+    font-size: var(--sl-text-sm);
+    line-height: 1.5;
+    color: var(--sl-color-gray-3);
+    margin: 0.5rem 0 1.25rem 0 !important;
+    max-width: 65ch;
+  }
+
+  .nested-contributions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  .contribution-card {
+    background-color: var(--sl-color-bg-nav);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--sl-color-gray-5);
+    border-left: 4px solid var(--sl-color-gray-3);
+  }
+
+  .contrib-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .contrib-time {
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+  }
+
+  .contrib-title {
+    margin: 0 0 0.35rem 0 !important;
+    font-size: var(--sl-text-md) !important;
+    line-height: 1.4 !important;
+  }
+
+  .contrib-speaker {
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+    margin: 0 0 0.75rem 0 !important;
+  }
+
+  .abstract-link {
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  
+  .abstract-link:hover {
+    text-decoration: underline;
+  }
+</style>
