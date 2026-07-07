@@ -95,7 +95,7 @@ export const qlbPins = [
         lat: 51.7850346, 
         lng: 11.1519145, 
         title: "Quedlinburg Train Station", 
-        description: "Main Arrival Point to Quedlinburg. In walking distance to accomodations.",
+        description: "Main Arrival Point to Quedlinburg. In walking distance to accomodations (15 & 20min).",
         category: "transport",
         icon: "🚂"
     }
@@ -121,6 +121,40 @@ export const conferenceRoutes = [
     dashArray: "5, 10"
   }
 ];
+
+export const hotelRoutes = [
+  {
+    coordinates: [
+      [51.7850656, 11.1519159],
+      [51.7855285, 11.1517224],
+      [51.7900458, 11.1595928],
+      [51.7904249, 11.1590254],
+      [51.7904122, 11.1570844],
+      [51.7914328, 11.1573306],
+      [51.791195, 11.1585758],
+    ],
+    color: "#288000",
+    weight: 5,
+    dashArray: "5,10"
+  },
+  {
+    coordinates: [
+      [51.7850117, 11.1517812],
+      [51.7853318, 11.1513214],
+      [51.7828041, 11.1461028],
+      [51.7831761, 11.1421888],
+      [51.7836959, 11.1420653],
+      [51.7841918, 11.1397894],
+      [51.7841336, 11.138276],
+      [51.7847402, 11.1365615],
+      [51.7848791, 11.1354601],
+      [51.7853349, 11.1357572]
+    ],
+    color: "#288000",
+    weight: 5,
+    dashArray: "5,10"
+  }
+]
 
 Welcome to the logistical hub for the NFDI4LS conference! Whether you are arriving by train, looking for your hotel, or trying to find the lecture hall, this guide will help you navigate between our two primary locations: **Gatersleben** (Conference Venue) and **Quedlinburg** (Accommodation & Social Events).
 
@@ -152,6 +186,7 @@ Additionally, please note the starting point for our historic **City Tour**, whi
   center={[51.7883588, 11.14717445]} 
   zoom={15} 
   pins={qlbPins} 
+  routes={hotelRoutes}
   height="500px" 
 />
 
