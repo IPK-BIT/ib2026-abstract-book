@@ -1,12 +1,10 @@
 @layer base, starlight, theme, components, utilities;
 
-@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,yml}";
-
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@theme {
+:root {
   --color-accent-200: #a3d5c6;
   --color-accent-600: #005646;
   --color-accent-900: #003c30;
