@@ -143,6 +143,22 @@ const {
 </script>
 
 <style is:global>
+  .leaflet-map-element img.leaflet-tile {
+    max-width: none !important;
+    max-height: none !important;
+    width: 256px !important;
+    height: 256px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Prevent container flex or transitions from disrupting internal canvas calculations */
+  .leaflet-container {
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+  }
+
   .map-container-wrapper {
     position: relative;
     border-radius: 12px;
