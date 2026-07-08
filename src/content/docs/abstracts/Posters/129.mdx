@@ -18,7 +18,7 @@ references:
   - wilkinson_fair_2016
   - mons_cloudy_2017
   - zander_elab2arc_2026
-  - carp_elabftw_2017
+  - carpi_elabftw_2017
   - rocca-serra_isa_2010 
   - muhlhaus_dataplanttools_2021
   - weil_plantdatahub_2023
@@ -29,7 +29,7 @@ import Cite from '@components/Cite.astro';
 
 Electronic laboratory notebooks (ELNs) have become a standard tool for documenting experimental workflows in life sciences <Cite id="kanza_electronic_2017" />. They provide flexible, collaborative environments for documentation of laboratory workflows. However, despite their widespread adoption, ELNs often store information in semi-structured or free-text formats that limit machine readability and interoperability. At the same time, experimental data and metadata are frequently distributed across multiple systems, including institutional storage, analysis pipelines, and external repositories. This fragmentation creates significant barriers to reproducibility, reuse, and compliance with the FAIR (Findable, Accessible, Interoperable, Reusable) <Cite id="wilkinson_fair_2016, mons_cloudy_2017" /> data principles.
 
-Here, we present elab2ARC <Cite id="zander_elab2arc_2026" />, a browser-based, serverless application designed to bridge ELN documentation and structured, FAIR-compliant research objects. elab2ARC enables the automated transformation of experimental records from the widely used open-source ELN platform eLabFTW <Cite id="carp_elabftw_2017" /> into Annotated Research Contexts (ARCs), a standardized format based on the ISA (Investigation–Study–Assay) model <Cite id="rocca-serra_isa_2010" /> developed by DataPLANT <Cite id="muhlhaus_dataplanttools_2021" />. By converting unstructured ELN entries into machine-readable, version-controlled research objects, elab2ARC facilitates seamless integration into research data infrastructures such as the PLANTdataHUB <Cite id="weil_plantdatahub_2023, bauer_data_2026" />.
+Here, we present elab2ARC <Cite id="zander_elab2arc_2026" />, a browser-based, serverless application designed to bridge ELN documentation and structured, FAIR-compliant research objects. elab2ARC enables the automated transformation of experimental records from the widely used open-source ELN platform eLabFTW <Cite id="carpi_elabftw_2017" /> into Annotated Research Contexts (ARCs), a standardized format based on the ISA (Investigation–Study–Assay) model <Cite id="rocca-serra_isa_2010" /> developed by DataPLANT <Cite id="muhlhaus_dataplanttools_2021" />. By converting unstructured ELN entries into machine-readable, version-controlled research objects, elab2ARC facilitates seamless integration into research data infrastructures such as the PLANTdataHUB <Cite id="weil_plantdatahub_2023, bauer_data_2026" />.
 
 The tool operates entirely in the user’s browser and requires only minimal interaction. Users authenticate via API tokens, select relevant eLabFTW experiments, and define a target ARC. All subsequent steps, including data retrieval, administrative metadata transformation, file restructuring, and Git-based versioning are executed automatically on the client side. This serverless architecture reduces infrastructure dependencies, enhances accessibility, and ensures that sensitive data remain under user control.
 

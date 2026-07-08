@@ -11,8 +11,8 @@ const entry = await getEntry('references', id.toLowerCase());
 
 if (!entry) return null;
 
-const { type, author, title, journal, year, volume, pages, publisher, url } = entry.data;
-
+// Destructure the raw data fields, explicitly including doi
+const { type, author, title, journal, year, volume, pages, publisher, url, doi } = entry.data;
 
 // --- Elsevier Vancouver Author Formatter ---
 function formatVancouverAuthors(authorStr: string | undefined): string {
@@ -22,6 +22,12 @@ function formatVancouverAuthors(authorStr: string | undefined): string {
   const authors = authorStr.split(/\s+and\s+/i).map(name => name.trim());
   
   const formattedArray = authors.map(name => {
+    // Escape hatch for institutional/literal authors wrapped in braces (e.g., {Anaconda Inc.})
+    if (name.startsWith('{') && name.endsWith('}')) {
+      // Remove all leading and trailing curly braces and return as-is
+      return name.replace(/^\{+|\}+$/g, '').trim();
+    }
+
     if (name.includes(',')) {
       // Handles "LastName, FirstName MiddleName"
       const parts = name.split(',');
@@ -50,10 +56,27 @@ function formatVancouverAuthors(authorStr: string | undefined): string {
 const formattedAuthors = formatVancouverAuthors(author);
 const cleanTitle = title ? title.replace(/[\{\}]/g, '') : '';
 const cleanYear = year ? year.trim() : '';
+
+// --- Link & Fallback Logic ---
+let hrefLink = '';
+let displayLinkText = '';
+let isDoi = false;
+
+if (doi) {
+  // Strip any accidental absolute domain roots inside the DOI string field
+  const cleanDoi = doi.replace(/^https?:\/\/doi\.org\//, '');
+  hrefLink = `https://doi.org/${cleanDoi}`;
+  displayLinkText = `doi:${cleanDoi}`;
+  isDoi = true;
+} else if (url) {
+  hrefLink = url;
+  displayLinkText = url;
+}
 ---
 
 <div class="reference-card" id={`ref-${id.toLowerCase()}`}>
   <span class="ref-citation-number">[{number}]</span>
+  
   <span class="ref-details">
     {formattedAuthors && `${formattedAuthors}. `}
     <span class="ref-title">{cleanTitle}{cleanTitle?.endsWith('.') ? '' : '.'}</span>
@@ -73,12 +96,16 @@ const cleanYear = year ? year.trim() : '';
         {publisher && <span class="ref-publisher"> {publisher}</span>}
         {publisher && cleanYear ? '; ' : ' '}
         {cleanYear && `${cleanYear}.`}
-        {url && (
-          <a href={url} target="_blank" rel="noopener noreferrer" class="ref-url-link">
-            {url}
-          </a>
-        )}
       </>
+    )}
+
+    {/* Render the link block according to the updated display rules */}
+    {hrefLink && (
+      <div class="citation-link-wrapper">
+        <a href={hrefLink} target="_blank" rel="noopener noreferrer" class="ref-url-link">
+          {displayLinkText}
+        </a>
+      </div>
     )}
   </span>
 </div>
@@ -107,14 +134,22 @@ const cleanYear = year ? year.trim() : '';
     color: var(--sl-color-white);
   }
   .ref-journal {
-    font-style: normal; /* Vancouver uses normal text for journals */
+    font-style: normal; 
+  }
+  .citation-link-wrapper {
+    margin-top: 0.25rem;
+    font-size: var(--sl-text-xs);
   }
   .ref-url-link {
     display: inline-block;
     word-break: break-all;
-    margin-left: 0.5rem;
-    font-size: var(--sl-text-xs);
     color: var(--sl-color-text-accent);
     text-decoration: underline;
+  }
+  
+  .reference-card:target {
+    background-color: var(--sl-color-gray-6);
+    padding-left: 0.5rem;
+    border-radius: 4px;
   }
 </style>

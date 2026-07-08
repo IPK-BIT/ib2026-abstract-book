@@ -16,7 +16,7 @@ references:
   - dey_up_2014
   - di_tommaso_nextflow_2017
   - community_galaxy_2024
-  - carp_elabftw_2017
+  - carpi_elabftw_2017
   - musen_center_2015
   - rocca-serra_isa_2010
   - shankaranarayanan_role_2006
@@ -36,7 +36,7 @@ One group of tools focuses on provenance inspection and visualization. Systems i
 
 A second group is centered on workflow provenance. Platforms and workflow systems such as Galaxy and Nextflow support reproducible computational analyses by organizing execution steps, inputs, outputs, configurations, reports, and workflow structures, while work on workflow- and trace-level provenance shows how dependencies can be made more precise by combining prospective workflow declarations with retrospective execution traces <Cite id="dey_up_2014, di_tommaso_nextflow_2017, community_galaxy_2024"/>. Such systems are effective for recording and re-executing computational pipelines and for linking workflow steps to produced data.
 
-Another big aspect is the support of human-centered metadata authoring and experimental documentation. The ISA software suite, CEDAR, and electronic laboratory notebook approaches such as eLabFTW provide structured forms, templates, ontology-based annotation, validation, and reusable metadata capture for experimental organization and repository submission <Cite id="carp_elabftw_2017, musen_center_2015, rocca-serra_isa_2010"/>. These systems lower the burden of metadata entry and support standards-compliant annotation, particularly when users need to curate experimental descriptions rather than inspect a large provenance graph.
+Another big aspect is the support of human-centered metadata authoring and experimental documentation. The ISA software suite, CEDAR, and electronic laboratory notebook approaches such as eLabFTW provide structured forms, templates, ontology-based annotation, validation, and reusable metadata capture for experimental organization and repository submission <Cite id="carpi_elabftw_2017, musen_center_2015, rocca-serra_isa_2010"/>. These systems lower the burden of metadata entry and support standards-compliant annotation, particularly when users need to curate experimental descriptions rather than inspect a large provenance graph.
 
 To complement the range of the existing capabilities, we propose a concept of an application, where users can work at an aggregated level. The goal is a relation-preserving grouped provenance editing model for scalable FAIR annotation with ontology support. The approach treats grouping not only as a visualization strategy but as an editable operation: entities can be grouped by shared metadata properties, repeated annotations can be represented once at the group level, and the concrete entity-level provenance relations remain recoverable beneath the abstraction. In addition, contextual collapse is applied to enable selected parts of the provenance graph to be folded into higher-level nodes, similar to semantic zoom, allowing users to view and edit the currently relevant context. The collapsed context remains attached to the corresponding nodes and preserves the provenance relations it represents. Groups become the main units used for navigation and editing without replacing the underlying provenance model.
 
