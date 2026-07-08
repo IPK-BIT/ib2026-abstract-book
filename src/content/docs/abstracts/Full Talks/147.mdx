@@ -7,17 +7,26 @@ authors:
   - tarcisio-mende-de-farias
   - pierre-marie-allard
   - emmanuel-defossez
+references:
+  - hortal_seven_2015
+  - tandon_metrin-kg_2026
+  - hart_defining_2025
+  - gaudry_sample-centric_2024
+  - kattge_try_2020
+  - poelen_global_2014
 ---
 
-The field of life sciences is facing a contradiction: vast quantities of mutli-quality, specialised datasets exist across various sub-fields, yet the nature of these resources prevents researchers from implementing the full explanatory power when combined. Biodiversity knowledge suffers from several shortfalls including the Raunkiæran and Eltonian[1], that is the lack of connected information on species traits, interactions, and their ecological functions, which in turn demands infrastructure beyond conventional data repositories. Knowledge graphs represent heterogeneous entities and relationships in a semantically rich, machine-readable and, if planned well, in a machine-understandable AI-ready form, offering a feasible solution.
+import Cite from '@components/Cite.astro';
 
-Here we present METRIN-KG (MEtabolomes, TRaits, and INteractions Knowledge Graph), a FAIR-compliant, openly accessible knowledge graph developed under the Earth Metabolome Initiative (EMI) that integrates plant metabolomics data with high-dimensional plant trait information and their pairwise interaction records[2].
+The field of life sciences is facing a contradiction: vast quantities of mutli-quality, specialised datasets exist across various sub-fields, yet the nature of these resources prevents researchers from implementing the full explanatory power when combined. Biodiversity knowledge suffers from several shortfalls including the Raunkiæran and Eltonian <Cite id="hortal_seven_2015" />, that is the lack of connected information on species traits, interactions, and their ecological functions, which in turn demands infrastructure beyond conventional data repositories. Knowledge graphs represent heterogeneous entities and relationships in a semantically rich, machine-readable and, if planned well, in a machine-understandable AI-ready form, offering a feasible solution.
 
-All organisms on Earth are composed of dense networks of chemical, and ecological relationships. The metabolome, that is the vast array of compounds produced by an organism occupies a central position in this network: it mediates biotic interactions, and provides a measurable bridge between genotype and phenotype. In the Plantae kingdom alone, the collective metabolite diversity is estimated to span between 1.5 and 25.7 million unique compounds across approximately 400,000 plant species[3], representing a rich and an underexplored source of information available to researchers in drug discovery, ecology, agriculture, and conservation biology.
+Here we present METRIN-KG (MEtabolomes, TRaits, and INteractions Knowledge Graph), a FAIR-compliant, openly accessible knowledge graph developed under the Earth Metabolome Initiative (EMI) that integrates plant metabolomics data with high-dimensional plant trait information and their pairwise interaction records <Cite id="tandon_metrin-kg_2026" />.
+
+All organisms on Earth are composed of dense networks of chemical, and ecological relationships. The metabolome, that is the vast array of compounds produced by an organism occupies a central position in this network: it mediates biotic interactions, and provides a measurable bridge between genotype and phenotype. In the Plantae kingdom alone, the collective metabolite diversity is estimated to span between 1.5 and 25.7 million unique compounds across approximately 400,000 plant species <Cite id="hart_defining_2025" />, representing a rich and an underexplored source of information available to researchers in drug discovery, ecology, agriculture, and conservation biology.
 
 Despite this richness, metabolomics datasets have historically been produced and consumed in isolation. Experimental results are rarely connected to the broader biological context of the organisms that produced them, for instance their functional traits, phylogenetic relationships, ecological roles, or known interactions with other species. METRIN-KG was designed to close this gap, providing a semantic integration layer that transforms distributed, heterogeneous datasets into a coherent, and queryable knowledge resource.
 
-METRIN-KG integrates data from three major, independently maintained resources. The metabolomics data is drawn from the Experimental Natural Products Knowledge Graph (ENPKG)[4], a previously published resource containing enriched metabolome datasets from over 1,600 tropical plant extracts produced using mass spectrometry. The plant trait data is sourced from the TRY Plant Trait Database[5], a repository of curated functional plant traits. Biotic interaction data are taken from the Global Biotic Interactions (GloBI) database[6], which aggregates pairwise interaction records including herbivory, pollination, parasitism, and predation across a broad taxonomic range.
+METRIN-KG integrates data from three major, independently maintained resources. The metabolomics data is drawn from the Experimental Natural Products Knowledge Graph (ENPKG) <Cite id="gaudry_sample-centric_2024" />, a previously published resource containing enriched metabolome datasets from over 1,600 tropical plant extracts produced using mass spectrometry. The plant trait data is sourced from the TRY Plant Trait Database <Cite id="karr_objtables_2020" />, a repository of curated functional plant traits. Biotic interaction data are taken from the Global Biotic Interactions (GloBI) database <Cite id="poelen_global_2014" />, which aggregates pairwise interaction records including herbivory, pollination, parasitism, and predation across a broad taxonomic range.
 
 The integration is carried out using the Resource Description Framework (RDF) in a knowledge graph, structured using a combination of established community ontologies and the Earth Metabolome Ontology, a purpose-built ontology developed to capture domain-specific concepts not adequately represented in existing controlled vocabularies. The graph is hosted with SPARQL query support, enabling federated queries across metabolome, trait, and interaction data from the endpoint.
 
@@ -45,17 +54,9 @@ Source code at https://github.com/earth-metabolome-initiative/metrin-kg; data at
 
 ## References
 
-[1] Hortal J, Bello F de, Diniz-Filho JAF, Lewinsohn TM, Lobo JM, Ladle RJ. Seven Shortfalls that Beset Large-Scale Knowledge of Biodiversity. Annu Rev Ecol Evol Syst. Annual Reviews; 2015; doi: 10.1146/annurev-ecolsys-112414-054400.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Tandon D, De Farias TM, Allard P-M, Defossez E. METRIN-KG: A knowledge graph integrating plant metabolites, traits, and biotic interactions. GigaScience. 2026; doi: 10.1093/gigascience/giag051.
-
-[3] Hart CE, Gadiya Y, Kind T, Krettler CA, Gaetz M, Misra BB, et al.. Defining the limits of plant chemical space: challenges and estimations. GigaScience. 2025; doi: 10.1093/gigascience/giaf033.
-
-[4] Gaudry A, Pagni M, Mehl F, Moretti S, Quiros-Guerrero L-M, Cappelletti L, et al.. A Sample-Centric and Knowledge-Driven Computational Framework for Natural Products Drug Discovery. ACS Cent Sci. American Chemical Society; 2024; doi: 10.1021/acscentsci.3c00800.
-
-[5] Kattge J, Bönisch G, Díaz S, Lavorel S, Prentice IC, Leadley P, et al.. TRY plant trait database – enhanced coverage and open access. Glob Change Biol. 2020; doi: 10.1111/gcb.14904.
-
-[6] Poelen JH, Simons JD, Mungall CJ. Global biotic interactions: An open infrastructure to share and analyze species-interaction datasets. Ecol Inform. 2014; doi: 10.1016/j.ecoinf.2014.08.005.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

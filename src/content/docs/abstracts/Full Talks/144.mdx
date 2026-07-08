@@ -3,13 +3,22 @@ title: An interactive platform for exploring structural variation across the bar
 authors:
   - victor-henrique-rabesquine-nogueira
   - amanda-souza-camara
+references:
+  - jumper_highly_2021
+  - abramson_accurate_2024
+  - varadi_alphafold_2022
+  - van_kempen_fast_2024
+  - barrio-hernandez_clustering_2023
+  - jayakodi_structural_2024
 ---
+
+import Cite from '@components/Cite.astro';
 
 Proteins play a central role in translating genetic information encoded in genomes into molecular functions and phenotypic traits. Genetic variation can influence protein sequence, structure, stability, localization, abundance and interaction specificity, thereby shaping biological diversity within a species, yet the systematic characterization of how naturally occurring allelic diversity propagates through protein structural space remains a critical and largely unaddressed challenge in plant genomics. Population genomic approaches can identify protein variants across accessions, but they provide limited mechanistic insight into downstream functional consequences. Bridging this gap requires frameworks that integrate genomic, proteomic, and structural information at scale.
 
-The increasing availability of pangenomes offers an opportunity to move beyond single-reference representations and capture species-wide genetic diversity across large, diverse panels of accessions. Extending this concept to the proteome, a panproteome analysis provides a framework for systematically studying how genetic variation may reshape protein function across a species. Recent advances in protein structure prediction, most notably in models such as AlphaFold [1,2], have enabled proteome-scale structural modelling [3], opening new opportunities to investigate how genomic variation is reflected in the three-dimensional protein universe of a species. Despite this potential, the structural consequences of naturally occurring allelic variation at panproteome scale remain poorly characterized, partially because existing methods for comparing large numbers of protein structures typically reduce complex multidimensional relationships to global similarity scores or rely on representations that do not show biologically meaningful variation in local conformation or structural divergence [4, 5].
+The increasing availability of pangenomes offers an opportunity to move beyond single-reference representations and capture species-wide genetic diversity across large, diverse panels of accessions. Extending this concept to the proteome, a panproteome analysis provides a framework for systematically studying how genetic variation may reshape protein function across a species. Recent advances in protein structure prediction, most notably in models such as AlphaFold <Cite id="jumper_highly_2021, abramson_accurate_2024" />, have enabled proteome-scale structural modelling <Cite id="varadi_alphafold_2022" />, opening new opportunities to investigate how genomic variation is reflected in the three-dimensional protein universe of a species. Despite this potential, the structural consequences of naturally occurring allelic variation at panproteome scale remain poorly characterized, partially because existing methods for comparing large numbers of protein structures typically reduce complex multidimensional relationships to global similarity scores or rely on representations that do not show biologically meaningful variation in local conformation or structural divergence <Cite id="van_kempen_fast_2024, barrio-hernandez_clustering_2023" />.
 
-Here, we present a framework for analyzing a predicted species-wide panproteome, applied to the barley (Hordeum vulgare) pangenome version 2 [6], which comprises 76 fully sequenced genotypes divided into 23 wild accessions, 36 landraces, and 17 cultivar lines. From over 3.79 million encoded proteins across this panel, we derived a non-redundant panproteome of 856,971 unique protein sequences, or proteoforms, a term that encompasses allelic variants, paralog-derived sequences, copy-number-associated products, and putative pseudogene-derived proteins. Barley was selected as a model system based on its global agricultural importance, broad adaptive range, and substantial genetic, phenotypic diversity, and data availability, making it well suited to a panproteome-scale investigation.
+Here, we present a framework for analyzing a predicted species-wide panproteome, applied to the barley (Hordeum vulgare) pangenome version 2 <Cite id="jayakodi_structural_2024" />, which comprises 76 fully sequenced genotypes divided into 23 wild accessions, 36 landraces, and 17 cultivar lines. From over 3.79 million encoded proteins across this panel, we derived a non-redundant panproteome of 856,971 unique protein sequences, or proteoforms, a term that encompasses allelic variants, paralog-derived sequences, copy-number-associated products, and putative pseudogene-derived proteins. Barley was selected as a model system based on its global agricultural importance, broad adaptive range, and substantial genetic, phenotypic diversity, and data availability, making it well suited to a panproteome-scale investigation.
 
 Our framework comprises two complementary analytical components. The first component addresses proteoform classification, mapping them across genotypes and distinguishing allelic variants, paralogs, and pseudogene-derived sequences. The second component addresses structural comparison at scale: we systematically compared hundreds of thousands of predicted protein structures by decomposing structural similarity into shared subregions rather than collapsing comparisons to a single global metric. This approach enables the resolution of complex structural relationships, including partial structural conservation, domain rearrangements, and conformational divergence, that are invisible to global similarity methods. Together, these two analyses help to reveal that natural allelic diversity can meaningfully reorganize protein structural landscapes in ways that are biologically interpretable, with implications for understanding molecular adaptation across accessions.
 
@@ -19,17 +28,9 @@ Taken together, this work establishes a reusable and extensible framework for pa
 
 ## References
 
-[1] Jumper, J. et al. Nature (2021) 596, 583–589.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Abramson, J. et al. Nature (2024) 630, 493–500.
-
-[3] Varadi, M. et al. Nucleic Acids Research (2022) 50 (D1): D439–D444.
-
-[4] van Kempen, M. et al. Nat Biotechnol (2024) 42, 243–246.
-
-[5] Barrio-Hernandez, I. et al. Nature (2023) 622, 637–645
-
-[6] Jayakodi, M. et al. Nature (2024) 636, 654–662.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

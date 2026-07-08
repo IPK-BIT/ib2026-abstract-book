@@ -8,21 +8,28 @@ authors:
   - henri-duempelmann
   - oliver-rupp
   - alexander-goesmann
+references:
+  - virshup_anndata_2024
+  - the_gene_ontology_consortium_gene_2023
+  - benjamini_controlling_1995
+  - emms_orthofinder_2019
 ---
+
+import Cite from '@components/Cite.astro';
 
 Comparative transcriptomics uses bulk RNA expression data to relate gene activity across species, tissues, developmental stages and experimental conditions. Its interpretation depends on data layers that are often produced separately: count and normalized expression matrices, sample annotations, gene descriptions, Gene Ontology terms, protein domains, transcription-factor classifications, orthogroup assignments, sequence files and phylogenetic trees. These layers are commonly inspected through scripts, spreadsheets or static plots. The result is a bottleneck between data generation and biological interpretation: candidate genes detected in an expression matrix must be linked manually to functional annotations, tissue metadata, orthologous genes and phylogenetic context before they can be evaluated across datasets.
 
 GenXBrowser addresses this bottleneck with an interactive web application for comparative analysis of bulk RNA expression datasets. It connects expression values, gene-level metadata, sample-level metadata and evolutionary context in one analysis environment. Users select species or datasets from a catalog, define filters over gene annotations or sample metadata, inspect expression heatmaps, compare expression distributions, test Gene Ontology enrichment for filtered gene sets and view phylogenetic trees for orthogroup families in Newick format. The platform promotes an iterative discovery workflow, shifting the focus from a linear pipeline toward the continuous refinement of gene sets and sample subsets based on real-time visual feedback.
 
-The application uses AnnData/H5AD as its central data representation, allowing expression matrices and associated observations, variables, layers and unstructured metadata to be stored in an annotated matrix format [1]. Each species or dataset can contain a primary expression matrix, optional normalized layers (e.g., TPM, TMM, or geTMM), sample annotations like tissue or condition, and gene annotations such as descriptions, GO terms, domains, transcription-factor families, and orthogroup identifiers. GenXBrowser uses this structure to apply the same identifiers and filters across heatmap visualization, enrichment analysis, expression comparison, and phylogenetic exploration.
+The application uses AnnData/H5AD as its central data representation, allowing expression matrices and associated observations, variables, layers and unstructured metadata to be stored in an annotated matrix format <Cite id="virshup_anndata_2024" />. Each species or dataset can contain a primary expression matrix, optional normalized layers (e.g., TPM, TMM, or geTMM), sample annotations like tissue or condition, and gene annotations such as descriptions, GO terms, domains, transcription-factor families, and orthogroup identifiers. GenXBrowser uses this structure to apply the same identifiers and filters across heatmap visualization, enrichment analysis, expression comparison, and phylogenetic exploration.
 
 Data preparation is handled by GenXPrep, a command-line workflow that validates user-provided files and builds the H5AD resources required by the browser. It checks matrix consistency, sample mappings, metadata columns and identifier overlap between expression data and optional annotation, sequence, orthogroup files and phylogenetic trees. Project configuration files define shared resources such as orthogroups and phylogenetic trees as well as species-specific expression matrices, sample mappings, metrics, sequences and custom metadata sources. After preparation, GenXBrowser can be run locally or it can be served through the containerized backend and frontend by adapting Docker Compose configurations to mount project-specific H5AD files, configuration files and ontology resources.
 
-The interface covers common steps in bulk RNA-seq interpretation. Heatmaps display expression patterns across genes and samples with selectable expression layers, color scales and hierarchical clustering. Metadata filters restrict analyses to genes associated with selected GO terms, descriptions, protein domains, enzyme classes, transcription-factor families or orthogroups. Over-representation analysis tests Gene Ontology term enrichment for the resulting gene sets [2]. GenXBrowser uses Fisher's exact test for contingency-table testing and applies the Benjamini-Hochberg procedure to control the false discovery rate across tested terms [3].
+The interface covers common steps in bulk RNA-seq interpretation. Heatmaps display expression patterns across genes and samples with selectable expression layers, color scales and hierarchical clustering. Metadata filters restrict analyses to genes associated with selected GO terms, descriptions, protein domains, enzyme classes, transcription-factor families or orthogroups. Over-representation analysis tests Gene Ontology term enrichment for the resulting gene sets <Cite id="the_gene_ontology_consortium_gene_2023" />. GenXBrowser uses Fisher's exact test for contingency-table testing and applies the Benjamini-Hochberg procedure to control the false discovery rate across tested terms <Cite id="benjamini_controlling_1995" />.
 
 Reproducible sharing of analytical states operates at two levels. The Share dialog generates a server-side permalink encoding the complete active filter configuration as a hash identifier, enabling exact reproduction of any view - including all applied metadata filters and the selected dataset - in a different browser session without manual reconstruction. The Export dialog provides tab-separated and comma-separated file download of the filtered gene or sample set, including all displayed metadata columns and expression values across loaded samples, with the applied filters documented in the file header.
 
-Comparative analysis is supported through multi-dataset selection, side-by-side expression comparison and orthogroup-based navigation between species-specific genes and conserved gene families. Orthogroup annotations and phylogenetic tree visualization connect expression differences to phylogenetic context. GenXBrowser therefore complements established orthology inference approaches such as OrthoFinder, which provide gene-family and phylogenetic information for comparative genomics [4].
+Comparative analysis is supported through multi-dataset selection, side-by-side expression comparison and orthogroup-based navigation between species-specific genes and conserved gene families. Orthogroup annotations and phylogenetic tree visualization connect expression differences to phylogenetic context. GenXBrowser therefore complements established orthology inference approaches such as OrthoFinder, which provide gene-family and phylogenetic information for comparative genomics <Cite id="emms_orthofinder_2019" />.
 
 Instead of a rigid metadata schema, the platform is designed for tailored data integration. Custom annotation tables can extend each dataset with user-defined gene- and sample-level fields, preserving project-specific terminology, grouping variables and categorical or quantitative descriptors. These metadata fields are exposed consistently for filtering, export, sharing and assistant-driven exploration, allowing each deployment to reflect the structure and vocabulary of the underlying biological project.
 
@@ -32,13 +39,9 @@ GenXBrowser occupies the step between upstream RNA-seq, annotation and orthology
 
 ## References
 
-[1] Virshup et al. (2024). anndata: Access and store annotated data matrices. Journal of Open Source Software, 9(101), 4371, https://doi.org/10.21105/joss.04371
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] The Gene Ontology Consortium. (2023). The Gene Ontology knowledgebase in 2023. Genetics, 224(1), iyad031. https://doi.org/10.1093/genetics/iyad031
-
-[3] Benjamini, Y., & Hochberg, Y. (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. Journal of the Royal Statistical Society Series B: Statistical Methodology, 57(1), 289-300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x
-
-[4] Emms, D.M., Kelly, S. (2019). OrthoFinder: phylogenetic orthology inference for comparative genomics. Genome Biol 20, 238. https://doi.org/10.1186/s13059-019-1832-y
+<ReferenceList references={frontmatter.references} />
  
 ## Authors
 

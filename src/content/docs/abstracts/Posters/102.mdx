@@ -6,19 +6,24 @@ authors:
   - gerd-u-balcke
   - alain-tissier
   - steffen-neumann
+references:
+  - liu_hordedane_2024
+  - thum_supervised_2014
 ---
 
-Plant responses to fungal infections involve coordinated changes in gene activity and metabolism, but linking these aspects across different genotypes and time remains difficult. Hordeum vulgare (barley) can produce diterpenoid defense compounds with anti-fungal properties [1]. In this study, using the pathogenic fungus Bipolaris sorokiniana, we examine how specific genotypes of the barley line Golden Promise respond to fungal root infection at different time points. This includes the wild type and diterpene pathway mutants, sampled at 2, 4, and 6 days after infection under both control and infected conditions.
+import Cite from '@components/Cite.astro';
 
-We integrate transcriptomic RNA-seq data with metabolomic profiles to investigate genotype-dependent metabolic regulation during disease progression. Supervised penalized canonical correlation analysis (spCCA) is applied to associate transcriptional programs with metabolite feature patterns while incorporating genotype information [2]. The resulting canonical variables are subsequently analyzed using Gene Ontology (GO) enrichment analysis, and transcript–metabolite associations are interpreted through mapping of genes and reactions using the pathway databases.
+Plant responses to fungal infections involve coordinated changes in gene activity and metabolism, but linking these aspects across different genotypes and time remains difficult. Hordeum vulgare (barley) can produce diterpenoid defense compounds with anti-fungal properties <Cite id="liu_hordedane_2024"/>. In this study, using the pathogenic fungus Bipolaris sorokiniana, we examine how specific genotypes of the barley line Golden Promise respond to fungal root infection at different time points. This includes the wild type and diterpene pathway mutants, sampled at 2, 4, and 6 days after infection under both control and infected conditions.
+
+We integrate transcriptomic RNA-seq data with metabolomic profiles to investigate genotype-dependent metabolic regulation during disease progression. Supervised penalized canonical correlation analysis (spCCA) is applied to associate transcriptional programs with metabolite feature patterns while incorporating genotype information <Cite id="thum_supervised_2014" />. The resulting canonical variables are subsequently analyzed using Gene Ontology (GO) enrichment analysis, and transcript–metabolite associations are interpreted through mapping of genes and reactions using the pathway databases.
 
 This integrative framework is designed to characterize multivariate relationships between gene expression and metabolite abundance across genotypes and timepoints, and to enable genotype-informed modeling of plant responses to pathogen infection.
 
 ## References
 
-[1] Liu, Yaming, et al. "Hordedane diterpenoid phytoalexins restrict Fusarium graminearum infection but enhance Bipolaris sorokiniana colonization of barley roots." Molecular Plant 17.8 (2024): 1307-1327.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Thum, Andrea, et al. "Supervised penalized canonical correlation analysis." arXiv preprint arXiv:1405.1534 (2014).
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

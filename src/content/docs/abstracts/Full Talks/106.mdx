@@ -1,12 +1,16 @@
 ---
 title: MIMSA – Minimal Information Metadata Standard for Animals
 hero: 
-  tagline:  MIAPPE Framework goes animal
+  tagline: MIAPPE Framework goes animal
 authors:
   - sarah-oranna-fischer-zielke
   - rica-rehfeld
   - manuel-feser
+references:
+  - fischer-zielke_minimal_2026
 ---
+
+import Cite from '@components/Cite.astro';
 
 Heterogeneity of data is a global challenge for Research data management. In the field of animal research, this is also a critical aspect that should be preserved and improved, as it has often been neglected in the past. Heterogeneity should therefore not be seen as an obstacle in research data management either, but rather as an opportunity.
 
@@ -22,11 +26,17 @@ In concrete numbers, 55 terms from the MIAPPE Data Model Checklists could be reu
 
 During this adaptation process, we identified a number of animal-specific terms that would be required in the minimum information standard, such as the animal's sex, husbandry, and even its date of birth. Overall, we reconstructed the source material entiteis, a subcategory for biological material, as well as including a new entity for standard operation procedures, but to obtain a community-accepted standard, these alterations need to be validated through the community. Therefore, a survey on these constructed terms and specifications is planned for 2026, with the results to be included in the next version of the checklist and the proposed talk.
 
-By using the MIAPPE checklist, we have succeeded in adapting a checklist for animal phenotypic data that forms the basis for the development of MIMSA. The initial results were published in a preprint [https://doi.org/10.37044/osf.io/ncrkm_v1]. A Git repository has been set up in which the first version, as well as the forthcoming second version of the MIMSA checklist, will be published, together with a README, an appendix, licence information, a graphical representation of the structure and a MIMSA template in an Excel file. The second version of the MIMSA checklist is being drawn up, taking the survey results into account. The survey draws on the expertise of various specialists in the animal research sector and ensures that the standard can be applied across different species.
+By using the MIAPPE checklist, we have succeeded in adapting a checklist for animal phenotypic data that forms the basis for the development of MIMSA. The initial results were published in a preprint <Cite id="fischer-zielke_minimal_2026"/>. A Git repository has been set up in which the first version, as well as the forthcoming second version of the MIMSA checklist, will be published, together with a README, an appendix, licence information, a graphical representation of the structure and a MIMSA template in an Excel file. The second version of the MIMSA checklist is being drawn up, taking the survey results into account. The survey draws on the expertise of various specialists in the animal research sector and ensures that the standard can be applied across different species.
 
 Using the MIMSA Checklist 2.0, the mapping of the terms will be updated to enable the use of ISA-based tooling such as the de.NBI / ELIXIR-DE service ISA Wizard or ARCitect of the NFDI consortium DataPLANT. To assess its usability, this tooling will be tested using the standard on a data set.
 
 Besides the survey for general term assessment with the community, potential differentiation also needs to be addressed. We aim to provide mandatory terms for all species, but to ensure better reusability, species-specific additional recommendations for terms need to be formulated. Additionally, when the MIMSA checklist is completed, the existing ISA-based tools should be adapted for the animal community to provide user-friendly services for animal data annotation. Lastly, the aim of MIMSA is the integration of this standard in existing and emerging animal data repositories and infrastructures, such as the ongoing further development from the FAANG - a mainly genomic-centred portal - to the inclusion of phenotypic data, as well as the planned repository of welfare data through the project KI-Tierwohl.
+
+## References
+
+import ReferenceList from '@components/ReferenceList.astro';
+
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

@@ -16,17 +16,28 @@ authors:
   - uwe-scholz
   - heinrich-lukas-weil
   - daniel-arend
+references:
+  - wilkinson_fair_2016
+  - arend_-premise_2020
+  - barysch_position_2025
+  - suchodoletz_dataplant_2021
+  - ewert_fairagro_2023
+  - glockner_nfdi4biodiversity_2020
+  - weil_plantdatahub_2023
+  - baum_terminology_2025
 ---
 
-The rapid increase in the volume, heterogeneity, and complexity of plant science research data requires robust research data management (RDM) and data publication infrastructures that support FAIR data principles [1], metadata standards, and scalable submission workflows. While numerous domain-specific repositories exist for selected data types, many datasets generated in the plant sciences remain difficult to publish, annotate, and integrate into reusable data ecosystems due to volume, delayed and fragmented submission workflows and inconsistent metadata practices. The de.NBI service and GFBio data center e!DAL-PGP [2] addresses this challenge by providing a repository for long-term resolvable, DOI features publication and exposing of heterogeneous plant research datasets for machine actionable access or harvesting. However, the current submission infrastructure is based on legacy desktop clients requiring platform-specific deployment and maintenance, thereby limiting usability, and long-term sustainability.
+import Cite from '@components/Cite.astro';
 
-To address these limitations, the BioHackathon Germany 2025 project “Enhancing e!DAL-PGP: A Modern Data Submission Platform for Plant Science Research Data” focused on the development of a modern, interoperable, and FAIR-oriented submission ecosystem for plant science research data. The project brought together contributors from de.NBI [3], DataPLANT [4], FAIRagro [5] and NFDI4Biodiversity [6] to collaboratively design and prototype solutions that improve usability, metadata quality, interoperability, and automated data publication workflows.
+The rapid increase in the volume, heterogeneity, and complexity of plant science research data requires robust research data management (RDM) and data publication infrastructures that support FAIR data principles <Cite id="wilkinson_fair_2016" />, metadata standards, and scalable submission workflows. While numerous domain-specific repositories exist for selected data types, many datasets generated in the plant sciences remain difficult to publish, annotate, and integrate into reusable data ecosystems due to volume, delayed and fragmented submission workflows and inconsistent metadata practices. The de.NBI service and GFBio data center e!DAL-PGP <Cite id="arend_-premise_2020" /> addresses this challenge by providing a repository for long-term resolvable, DOI features publication and exposing of heterogeneous plant research datasets for machine actionable access or harvesting. However, the current submission infrastructure is based on legacy desktop clients requiring platform-specific deployment and maintenance, thereby limiting usability, and long-term sustainability.
 
-The project was structured into three complementary workstreams: (i) development of a web-based submission platform for e!DAL-PGP, (ii) integration of automated validation and submission workflows with the PLANTdataHUB ecosystem of DataPLANT [7], and (iii) development of documentation, training resources, and community support structures to facilitate sustainable adoption.
+To address these limitations, the BioHackathon Germany 2025 project “Enhancing e!DAL-PGP: A Modern Data Submission Platform for Plant Science Research Data” focused on the development of a modern, interoperable, and FAIR-oriented submission ecosystem for plant science research data. The project brought together contributors from de.NBI <Cite id="barysch_position_2025" />, DataPLANT <Cite id="suchodoletz_dataplant_2021" />, FAIRagro <Cite id="ewert_fairagro_2023" /> and NFDI4Biodiversity <Cite id="glockner_nfdi4biodiversity_2020" /> to collaboratively design and prototype solutions that improve usability, metadata quality, interoperability, and automated data publication workflows.
+
+The project was structured into three complementary workstreams: (i) development of a web-based submission platform for e!DAL-PGP, (ii) integration of automated validation and submission workflows with the PLANTdataHUB ecosystem of DataPLANT <Cite id="weil_plantdatahub_2023" />, and (iii) development of documentation, training resources, and community support structures to facilitate sustainable adoption.
 
 A major outcome of the project was the implementation of a prototype web-based submission client designed to replace the desktop-based submission client. The new interface guides users through the complete submission process using a structured multi-step wizard that emphasizes usability, metadata completeness, and FAIR-compliant data publication practices.
 
-The redesigned e!DAL-PGP submission workflow starts with the mandatory acceptance of the Data Deposit and License Agreement (DLA), ensuring legal clarity and repository compliance before metadata entry or data upload are initiated. Subsequent steps transform the dataset documentation into highly interoperable, machine-readable assets. Users are guided through structured forms capturing core descriptors like titles, authors, abstracts, and licensing terms, with safeguards enforcing mandatory fields. To boost semantic interoperability for downstream AI discovery, the system embeds an autocomplete feature powered by the TS4NFDI terminology service [8] and TIB's DataPLANT ontology collection, while still permitting custom annotations. Precise author management is achieved by integrating ORCID and ROR persistent identifiers. Scalable data upload accommodates massive, heterogeneous datasets through browser-based uploads or direct, S3-compatible storage such as NFDI4Biodiversity’s Aruna Engine. Finally, automated validation routines block hidden files and enforce transparent directory structures instead of opaque archives, concluding with a dynamic citation preview before final submission.
+The redesigned e!DAL-PGP submission workflow starts with the mandatory acceptance of the Data Deposit and License Agreement (DLA), ensuring legal clarity and repository compliance before metadata entry or data upload are initiated. Subsequent steps transform the dataset documentation into highly interoperable, machine-readable assets. Users are guided through structured forms capturing core descriptors like titles, authors, abstracts, and licensing terms, with safeguards enforcing mandatory fields. To boost semantic interoperability for downstream AI discovery, the system embeds an autocomplete feature powered by the TS4NFDI terminology service <Cite id="baum_terminology_2025" /> and TIB's DataPLANT ontology collection, while still permitting custom annotations. Precise author management is achieved by integrating ORCID and ROR persistent identifiers. Scalable data upload accommodates massive, heterogeneous datasets through browser-based uploads or direct, S3-compatible storage such as NFDI4Biodiversity’s Aruna Engine. Finally, automated validation routines block hidden files and enforce transparent directory structures instead of opaque archives, concluding with a dynamic citation preview before final submission.
 
 In parallel, the project established an interoperable pipeline between e!DAL-PGP and the PLANTdataHUB ecosystem, focusing on automated submission and continuous integration (CI) workflows for Annotated Research Contexts (ARCs). To bridge data validation and repository submission, the project expanded the ARC ecosystem to support both F#- and Python-based validation frameworks. This unified approach automates quality checks against mandatory DataCite metadata standards directly within automated workflows, generating standardized validation reports and machine-readable summaries before datasets ever reach the repository. Once a dataset successfully passes this automated validation safeguard, an integrated submission pathway handles the data transfer. Relevant metadata such as titles, licenses, descriptions, and author attributions is automatically extracted from the validated ARC RO Crate and used to prepopulate the e!DAL-PGP submission interface. By linking automated CI validation directly to the submission process, this workflow significantly reduces manual data entry, prevents errors, and preserves user control over final publication, serving as a model for FAIR-compliant pipelines across distributed life science infrastructures.
 
@@ -36,21 +47,9 @@ Overall, the BioHackathon project demonstrates how collaborative and community-d
 
 ## References
 
-[1] Wilkinson MD, Dumontier M, Aalbersberg IjJ, Appleton G, Axton M, Baak A, et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data 2016;3:160018. https://doi.org/10.1038/sdata.2016.18.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Arend D, König P, Junker A, Scholz U, Lange M. The on-premise data sharing infrastructure e!DAL: Foster FAIR data for faster data acquisition. GigaScience 2020;9:giaa107. https://doi.org/10.1093/gigascience/giaa107.
-
-[3] Barysch S, Buchhalter I, Dammann-Kalinowski T, Goesmann A, Grüning B, Jünemann S, et al. Position paper on cooperation between NFDI and de.NBI & ELIXIR-DE 2025. https://doi.org/10.5281/ZENODO.17767573.
-
-[4] von Suchodoletz D, Mühlhaus T, Krüger J, Usadel B, Rodrigues CM. Dataplant–ein nfdi-konsortium der pflanzen-grundlagenforschung. Bausteine Forschungsdatenmanagement 2021:46–56.
-
-[5] Ewert F, Arend D, Asseng S, Boehm F, Feike T, Fluck J, et al. FAIRagro FAIR Data Infrastructure for Agrosystems - Proposal 2021 2023. https://doi.org/10.5281/ZENODO.7528172.
-
-[6] Glöckner FO, Diepenbroek M, Felden J, Güntsch A, Stoye J, Overmann J, et al. NFDI4BioDiversity - A Consortium for the National Research Data Infrastructure (NFDI) 2020. https://doi.org/10.5281/ZENODO.3943644.
-
-[7] Weil HL, Schneider K, Tschöpe M, Bauer J, Maus O, Frey K, et al. PLANTdataHUB : a collaborative platform for continuous FAIR data sharing in plant research. The Plant Journal 2023;116:974–88. https://doi.org/10.1111/tpj.16474.
-
-[8] Baum R, Bouazzouni S, Fillies J, Karam N, Koepler O, Oladazimi P, et al. Terminology Services in the DACH region landscape - What are the essential requirements 2025. https://doi.org/10.5281/ZENODO.15016364.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

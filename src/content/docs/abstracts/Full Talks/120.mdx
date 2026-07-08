@@ -4,15 +4,27 @@ authors:
   - angela-kranz
   - mohamed-abouzid
   - ulrich-loup
+references:
+  - dataplant_nfdi4plantsarc-specification_2025
+  - wilkinson_fair_2016
+  - johnson_isa_2021
+  - papoutsoglou_enabling_2020
+  - soiland-reyes_packaging_2022
+  - weil_plantdatahub_2023
+  - nagel_design_2021
+  - frey_nfdi4plantsswate_2026
+  - dumschott_ontologies_2023
 ---
+
+import Cite from '@components/Cite.astro';
 
 ## Background
 
 A central challenge in modern plant and life sciences data management is the isolation of richly annotated biological datasets from the geospatial and environmental data infrastructures that other disciplines depend on. Within the German National Research Data Infrastructure (NFDI), this gap is particularly evident between DataPLANT, which serves the fundamental plant science community, and the Helmholtz Earth & Environment (E&E) DataHub, the data infrastructure aligned with the NFDI4Earth consortium.
 
-DataPLANT structures research outputs as Annotated Research Contexts (ARCs) [1]: Findable, Accessible, Interoperable, and Reusable (FAIR) [2] Digital Objects that package raw experimental data, metadata, analytical workflows, and computational results in a unified, version-controlled Git repository. ARCs adopt and extend the Investigation, Study, Assay (ISA) model [3] using tabular ISA-XLSX serialisations enriched with plant-science ontologies such as MIAPPE [4], alongside JSON-LD metadata representations via RO-Crate profiles [5]. Despite this rich semantic structure, public ARCs remain primarily discoverable within the DataPLANT ecosystem via the PLANTdataHUB [6], limiting their reuse by agronomists, crop modellers, geoscientists, data stewards, and environmental researchers who need to link plant phenotypic or omics data with spatial, climate, and soil variables.
+DataPLANT structures research outputs as Annotated Research Contexts (ARCs) <Cite id="dataplant_nfdi4plantsarc-specification_2025" />: Findable, Accessible, Interoperable, and Reusable (FAIR) <Cite id="wilkinson_fair_2016" /> Digital Objects that package raw experimental data, metadata, analytical workflows, and computational results in a unified, version-controlled Git repository. ARCs adopt and extend the Investigation, Study, Assay (ISA) model <Cite id="johnson_isa_2021" /> using tabular ISA-XLSX serialisations enriched with plant-science ontologies such as MIAPPE <Cite id="papoutsoglou_enabling_2020" />, alongside JSON-LD metadata representations via RO-Crate profiles <Cite id="soiland-reyes_packaging_2022" />. Despite this rich semantic structure, public ARCs remain primarily discoverable within the DataPLANT ecosystem via the PLANTdataHUB <Cite id="weil_plantdatahub_2023" />, limiting their reuse by agronomists, crop modellers, geoscientists, data stewards, and environmental researchers who need to link plant phenotypic or omics data with spatial, climate, and soil variables.
 
-The E&E DataHub provides cross-centre metadata harmonisation and discovery across Helmholtz research institutions via the Earth Data Portal (EDP): a web-based, openly accessible platform that supports federated metadata harvesting, faceted spatial search, curated thematic collections, and highly configurable data viewers. DataPLANT and the E&E DataHub can both be regarded as Data Spaces [7], each centred on shared standards.
+The E&E DataHub provides cross-centre metadata harmonisation and discovery across Helmholtz research institutions via the Earth Data Portal (EDP): a web-based, openly accessible platform that supports federated metadata harvesting, faceted spatial search, curated thematic collections, and highly configurable data viewers. DataPLANT and the E&E DataHub can both be regarded as Data Spaces <Cite id="nagel_design_2021" />, each centred on shared standards.
 
 Bridging these two data spaces is directly relevant to cross-domain objectives, as life science datasets increasingly require integration with environmental and spatial covariates for multi-scale analysis, predictive modelling, and cross-domain reuse.
 
@@ -30,7 +42,7 @@ This ensures that newly published or updated ARCs are synchronised with the EDP 
 
 At the core of the pipeline is a semantic translation mapping that extracts spatial and temporal metadata from the ISA-JSON/XLSX schemas of each ARC. This metadata is then converted into records that comply with the API Records standard. This modern, resource-centric catalogue specification uses GeoJSON as its primary encoding and supports advanced querying using spatial bounding boxes, time ranges, and free-text attributes. The translated records are served via a customised instance of pygeoapi, an open-source Python reference implementation of the full OGC API suite.
 
-The metadata harvesting pipeline is ontology-aware, extracting not only descriptive fields such as titles and abstracts, but also the structured ontology term annotations embedded in each ARC’s ISA-XLSX tables via the Swate annotation tool [8]. This tool draws on a curated set of community-endorsed ontologies [9], including the DataPLANT Biology Ontology (DPBO), the Ontology for Biomedical Investigations (OBI), the Environment Ontology (ENVO), the Minimal Information About Plant Phenotyping Experiments standard (MIAPPE), the Plant Experimental Conditions Ontology (PECO), the Plant Trait Ontology (TO), the Plant Ontology (PO), the Chemical Entities of Biological Interest (ChEBI), the NCBI Taxonomy (NCBITAXON), and the Ontology of Microbial Phenotypes (OMP). The harvester preserves these ontology term accession numbers and source references, mapping them to the themes field in OGC API Records via SKOS concept URIs. This partially preserves the semantic richness of ARC metadata in the catalogue layer. However, the OGC API Records standard does not natively support the biological metadata dimensions that are central to life science data discovery. To adequately represent biodata in the EDP, the metadata schema will therefore need to be extended through the definition of a life-science application profile. This would expose these biologically meaningful fields alongside standard spatiotemporal extents.
+The metadata harvesting pipeline is ontology-aware, extracting not only descriptive fields such as titles and abstracts, but also the structured ontology term annotations embedded in each ARC’s ISA-XLSX tables via the Swate annotation tool <Cite id="frey_nfdi4plantsswate_2026" />. This tool draws on a curated set of community-endorsed ontologies <Cite id="dumschott_ontologies_2023" />, including the DataPLANT Biology Ontology (DPBO), the Ontology for Biomedical Investigations (OBI), the Environment Ontology (ENVO), the Minimal Information About Plant Phenotyping Experiments standard (MIAPPE), the Plant Experimental Conditions Ontology (PECO), the Plant Trait Ontology (TO), the Plant Ontology (PO), the Chemical Entities of Biological Interest (ChEBI), the NCBI Taxonomy (NCBITAXON), and the Ontology of Microbial Phenotypes (OMP). The harvester preserves these ontology term accession numbers and source references, mapping them to the themes field in OGC API Records via SKOS concept URIs. This partially preserves the semantic richness of ARC metadata in the catalogue layer. However, the OGC API Records standard does not natively support the biological metadata dimensions that are central to life science data discovery. To adequately represent biodata in the EDP, the metadata schema will therefore need to be extended through the definition of a life-science application profile. This would expose these biologically meaningful fields alongside standard spatiotemporal extents.
 
 The DataPLANT DataHUB hosts ARCs from a growing range of life science disciplines beyond fundamental plant science. For example, ARCs from the DFG Collaborative Research Centre MibiNet (Microbial Networks) capture microbial datasets annotated with OMP and NCBI Taxonomy. Additionally, plant datasets can be derived from controlled experiments and lack georeferenced spatial extent. Many ARCs on the DataHUB lack the bounding-box and temporal-extent fields expected by the EDP’s discovery interface. The OGC API Records standard permits a null geometry value, but the EDP’s map-based search and faceting risk marginalising datasets without coordinates. The INTERPLANT pipeline must therefore implement a graceful strategy for non-georeferenced records, for instance, by deriving an approximate administrative bounding box from the institution’s location metadata, or by flagging records with a controlled-vocabulary tag indicating the absence of precise spatial information. This ensures that the full breadth of life science data on the DataHUB remains discoverable within the EDP without misrepresenting spatial specificity.
 
@@ -44,23 +56,9 @@ INTERPLANT shows that standards-compliant metadata interfaces can be a scalable,
 
 ## References
 
-[1] DataPLANT. Nfdi4plants/ARC-Specification: Annotated Research Context Specification v3.0-draft.2. (Zenodo, 2025). doi:10.5281/ZENODO.15197625.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Wilkinson, M. D. et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci. Data 3, 160018 (2016).
-
-[3] Johnson, D. et al. ISA API: An open platform for interoperable life science experimental metadata. Gigascience 10, (2021).
-
-[4] Papoutsoglou, E. A. et al. Enabling reusability of plant phenomic datasets with MIAPPE 1.1. New Phytologist 227, 260–273 (2020).
-
-[5] Soiland-Reyes, S. et al. Packaging research artefacts with RO-Crate. Data Sci. 5, 97–138 (2022).
-
-[6] Weil, H. L. et al. PLANTdataHUB: a collaborative platform for continuous FAIR data sharing in plant research. The Plant Journal 116, 974–988 (2023).
-
-[7] Nagel, L., & Lycklama, D. (2021). Design Principles for Data Spaces - Position Paper (1.0). Zenodo. doi:10.5281/zenodo.5105744
-
-[8] Frey, K., Blume, P., Schneider, K. et al. Swate: Excel Add-In for Annotation of Experimental Data and Computational Workflows. (Github, 2020).
-
-[9] Dumschott, K. et al. Ontologies for increasing the FAIRness of plant research data. Front. Plant Sci. 14, 1279694 (2023).
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

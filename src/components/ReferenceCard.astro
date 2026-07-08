@@ -1,0 +1,120 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+  id: string;
+  number: number;
+}
+
+const { id, number } = Astro.props;
+const entry = await getEntry('references', id.toLowerCase());
+
+if (!entry) return null;
+
+const { type, author, title, journal, year, volume, pages, publisher, url } = entry.data;
+
+
+// --- Elsevier Vancouver Author Formatter ---
+function formatVancouverAuthors(authorStr: string | undefined): string {
+  if (!authorStr) return '';
+  
+  // Split authors separated by BibTeX 'and'
+  const authors = authorStr.split(/\s+and\s+/i).map(name => name.trim());
+  
+  const formattedArray = authors.map(name => {
+    if (name.includes(',')) {
+      // Handles "LastName, FirstName MiddleName"
+      const parts = name.split(',');
+      const lastName = parts[0].trim();
+      const firstNames = parts[1].trim().split(/\s+/);
+      const initials = firstNames.map(n => n[0].toUpperCase()).join('');
+      return `${lastName} ${initials}`;
+    } else {
+      // Handles "FirstName MiddleName LastName"
+      const parts = name.split(/\s+/);
+      if (parts.length === 1) return parts[0];
+      const lastName = parts.pop();
+      const initials = parts.map(n => n[0].toUpperCase()).join('');
+      return `${lastName} ${initials}`;
+    }
+  });
+
+  // Elsevier rule: If more than 6 authors, list first 3 followed by et al.
+  if (formattedArray.length > 6) {
+    return formattedArray.slice(0, 3).join(', ') + ', et al';
+  }
+  
+  return formattedArray.join(', ');
+}
+
+const formattedAuthors = formatVancouverAuthors(author);
+const cleanTitle = title ? title.replace(/[\{\}]/g, '') : '';
+const cleanYear = year ? year.trim() : '';
+---
+
+<div class="reference-card" id={`ref-${id.toLowerCase()}`}>
+  <span class="ref-citation-number">[{number}]</span>
+  <span class="ref-details">
+    {formattedAuthors && `${formattedAuthors}. `}
+    <span class="ref-title">{cleanTitle}{cleanTitle?.endsWith('.') ? '' : '.'}</span>
+    
+    {type === 'article' && (
+      <>
+        {journal && <span class="ref-journal"> {journal}</span>}
+        {cleanYear && ` ${cleanYear}`}
+        {volume && `;${volume}`}
+        {pages && `:${pages}`}
+        .
+      </>
+    )}
+
+    {(type === 'misc' || type === 'phdthesis' || type === 'book') && (
+      <>
+        {publisher && <span class="ref-publisher"> {publisher}</span>}
+        {publisher && cleanYear ? '; ' : ' '}
+        {cleanYear && `${cleanYear}.`}
+        {url && (
+          <a href={url} target="_blank" rel="noopener noreferrer" class="ref-url-link">
+            {url}
+          </a>
+        )}
+      </>
+    )}
+  </span>
+</div>
+
+<style>
+  .reference-card {
+    display: flex;
+    align-items: baseline; 
+    gap: 0.75rem; 
+    font-size: var(--sl-text-sm);
+    line-height: 1.5;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--sl-color-gray-6);
+    scroll-margin-top: 5rem;
+  }
+  .ref-citation-number {
+    font-weight: bold;
+    color: var(--sl-color-text-accent);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .ref-details {
+    color: var(--sl-color-gray-2);
+  }
+  .ref-title {
+    color: var(--sl-color-white);
+  }
+  .ref-journal {
+    font-style: normal; /* Vancouver uses normal text for journals */
+  }
+  .ref-url-link {
+    display: inline-block;
+    word-break: break-all;
+    margin-left: 0.5rem;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-text-accent);
+    text-decoration: underline;
+  }
+</style>

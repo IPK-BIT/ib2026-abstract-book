@@ -12,11 +12,13 @@ Sabina Leonelli is a Professor of Philosophy and History of Science and Technolo
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 Lorem ipsum
 
-## References
+import ReferenceList from '@components/ReferenceList.astro';
 
-[1] Title, Year, Journal, DOI
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

@@ -12,11 +12,13 @@ Dr. Can Türker is a leading database systems expert and the Head of Data Manage
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 Lorem ipsum
 
-## References
+import ReferenceList from '@components/ReferenceList.astro';
 
-[1] Title, Year, Journal, DOI
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

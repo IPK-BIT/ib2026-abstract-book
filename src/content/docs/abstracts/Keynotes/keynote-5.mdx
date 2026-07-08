@@ -12,11 +12,13 @@ Dr. Paul Shaw is a Senior Research Scientist and bioinformatician at The James H
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 Lorem ipsum
 
-## References
+import ReferenceList from '@components/ReferenceList.astro';
 
-[1] Title, Year, Journal, DOI
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

@@ -9,15 +9,29 @@ authors:
   - kevin-schneider
   - david-zimmer
   - timo-muehlhaus
+references:
+  - wilkinson_fair_2016
+  - de_smedt_fair_2020
+  - weil_nfdi4plantsarc-specification_2026
+  - soiland-reyes_packaging_2022
+  - crusoe_methods_2022
+  - sansone_toward_2012
+  - weil_nfdi4plantsarctrl_2026
+  - lukasczyk_nfdi4plantsarcitect_2026
+  - weil_nfdi4plantsarccommander_2026
+  - weil_plantdatahub_2023
+  - chadwick_biohackeu25_2026
 ---
 
-Over the past decade, the FAIR guiding principles have increasingly shaped Research Data Management (RDM), particularly in how research outputs are described, shared, and reused. [11]. Their influence now extends into more technical concepts such as FAIR Digital Objects (FDOs), which aim to represent research data and associated metadata in a persistently identifiable, semantically described, and machine-actionable form [5]. If adopted correctly, these concepts can boost the long-term value of research data by enabling automated reuse and integration in future scientific contexts. However, this does not come without cost, as it requires a reliable and technically sound transfer of knowledge from researchers and research-support personnel into these highly formalized data and metadata structures.
+import Cite from '@components/Cite.astro';
 
-The Annotated Research Context (ARC) addresses this challenge by combining a human-usable project structure with a machine-actionable representation of the same research context [3]. Its ARC Scaffold provides a version-controlled folder-and-file structure for managing research data and metadata, while ARC RO-Crate represents the ARC as a FAIR Digital Object based on RO-Crate [8]. By building upon standards such as ISA, CWL, and RO-Crate, the ARC integrates experimental metadata, computational workflows, and provenance in a form that supports both day-to-day research work and FAIR infrastructure integration [2,7].
+Over the past decade, the FAIR guiding principles have increasingly shaped Research Data Management (RDM), particularly in how research outputs are described, shared, and reused <Cite id="wilkinson_fair_2016" />. Their influence now extends into more technical concepts such as FAIR Digital Objects (FDOs), which aim to represent research data and associated metadata in a persistently identifiable, semantically described, and machine-actionable form <Cite id="de_smedt_fair_2020" />. If adopted correctly, these concepts can boost the long-term value of research data by enabling automated reuse and integration in future scientific contexts. However, this does not come without cost, as it requires a reliable and technically sound transfer of knowledge from researchers and research-support personnel into these highly formalized data and metadata structures.
+
+The Annotated Research Context (ARC) addresses this challenge by combining a human-usable project structure with a machine-actionable representation of the same research context <Cite id="weil_nfdi4plantsarc-specification_2026" />. Its ARC Scaffold provides a version-controlled folder-and-file structure for managing research data and metadata, while ARC RO-Crate represents the ARC as a FAIR Digital Object based on RO-Crate <Cite id="soiland-reyes_packaging_2022" />. By building upon standards such as ISA, CWL, and RO-Crate, the ARC integrates experimental metadata, computational workflows, and provenance in a form that supports both day-to-day research work and FAIR infrastructure integration <Cite id="crusoe_methods_2022, sansone_toward_2012" />.
 
 Realizing this role requires reliable tooling. Individual researchers and project teams benefit from tools with intuitive graphical user interfaces (GUIs) that support day-to-day project work. Data stewards and power users require scripted workflows and command-line access. Facility managers, infrastructure providers, and consortia need stable libraries that can be embedded into existing software stacks. These requirements are especially demanding in a rapidly evolving RDM landscape, where specifications both shape and are shaped by the expectations of RDM experts and the research communities that adopt them.
 
-In this contribution, we present the software library ARCtrl as the central reference implementation for the ARC data model [9]. ARCtrl provides the core functionality required to parse, manipulate, and convert ARCs across their different representations. It acts as an authoritative software layer between the ARC specification and applications that depend on ARC functionality. This is important because specifications alone cannot prevent divergent interpretations across independently developed tools. By centralizing core ARC behavior in a shared implementation, ARCtrl aims to reduce fragmentation within the ARC community, providing a stable foundation for a wide range of downstream applications.
+In this contribution, we present the software library ARCtrl as the central reference implementation for the ARC data model <Cite id="weil_nfdi4plantsarctrl_2026" />. ARCtrl provides the core functionality required to parse, manipulate, and convert ARCs across their different representations. It acts as an authoritative software layer between the ARC specification and applications that depend on ARC functionality. This is important because specifications alone cannot prevent divergent interpretations across independently developed tools. By centralizing core ARC behavior in a shared implementation, ARCtrl aims to reduce fragmentation within the ARC community, providing a stable foundation for a wide range of downstream applications.
 
 A central challenge in designing ARCtrl is the heterogeneity of use-cases and their deployment environments. These use cases range from GUI-based project management, through infrastructure-level automation, to validation packages and research-driven analysis pipelines that require programmatic access to ARC metadata. In practice, supporting these environments requires ARC functionality to be available in several specialized programming languages. At the same time, academic software teams are often small, funding is project-based, and long-term maintenance resources are limited. Maintaining several independent implementations of the same rapidly evolving data model would therefore be costly and would increase the risk of inconsistent behavior across tools.
 
@@ -27,33 +41,15 @@ The polyglot architecture requires careful API and testing design. Since source 
 
 Functionally, ARCtrl covers the core data structures and conversion pathways required for working with ARCs. It supports the ARC Scaffold as the user-facing file-system representation and ARC RO-Crate as the machine-actionable linked-data representation. The core data model is aligned with the conceptual requirements of the ARC Scaffold representation. It includes ISA, CWL, and Datamap types and methods, as well as a rich suite of functions for fine-grained table manipulation. For the RO-Crate layer, ARCtrl provides generic JSON-LD functionality, including representations of contexts, nodes, graphs, compaction, and flattening, while allowing static and dynamic properties to coexist. This is important because ARC metadata must combine well-defined schema elements with the extensibility required by evolving community standards. ARCtrl also implements import and export mechanisms for ARC-related formats, including ISA-JSON, ISA-XLSX, RO-Crate JSON, and CWL-YAML.
 
-The practical value of ARCtrl becomes visible in how it is used across different tools and programming environments. The TypeScript package forms the basis for SWATE, which supports fine-grained metadata annotation, and ARCitect, which manages complete ARCs, integrating the aforementioned SWATE functionality into a project-wide environment, including the necessary file-system interaction [6]. In F#/.NET, ARCtrl underlies command-line tools such as ARCCommander for creating and managing ARCs, as well as arc-export, which is used in the PLANTdataHUB to convert between ARC representations [4, 10]. The F# package has also been used for querying ARCs in downstream data-analysis scenarios. In Python, ARCtrl enables integration with established data-science and validation libraries. For example, it can be combined with Frictionless to extract data maps from an ARC, derive or improve tabular validation schemas from ARC metadata, and validate the corresponding data files [1]. It is also used in BrAPI2ARC, which allows researchers to submit phenotyping observations to a dataset stored as an ARC.
+The practical value of ARCtrl becomes visible in how it is used across different tools and programming environments. The TypeScript package forms the basis for SWATE, which supports fine-grained metadata annotation, and ARCitect, which manages complete ARCs, integrating the aforementioned SWATE functionality into a project-wide environment, including the necessary file-system interaction <Cite id="lukasczyk_nfdi4plantsarcitect_2026" />. In F#/.NET, ARCtrl underlies command-line tools such as ARCCommander for creating and managing ARCs, as well as arc-export, which is used in the PLANTdataHUB to convert between ARC representations <Cite id="weil_nfdi4plantsarccommander_2026, weil_plantdatahub_2023" />. The F# package has also been used for querying ARCs in downstream data-analysis scenarios. In Python, ARCtrl enables integration with established data-science and validation libraries. For example, it can be combined with Frictionless to extract data maps from an ARC, derive or improve tabular validation schemas from ARC metadata, and validate the corresponding data files <Cite id="chadwick_biohackeu25_2026" />. It is also used in BrAPI2ARC, which allows researchers to submit phenotyping observations to a dataset stored as an ARC.
 
 By providing a stable, tested, and reusable reference implementation for the ARC, ARCtrl contributes to the sustainability of FAIR RDM infrastructures. It lowers the barrier to adoption by making ARC functionality available in familiar programming environments, reduces fragmentation around an evolving data model, and supports interoperable tools around a shared software foundation. More broadly, ARCtrl demonstrates how a carefully designed polyglot core library can bridge the gap between FAIR data specifications and practical research workflows, strengthening the ARC as both a user-centered RDM entry point and a machine-actionable, AI-ready FAIR Digital Object.
 
 ## References
 
-[1] Chadwick E, Brouwer M, Schneider K, et al. 2026. BioHackEU25 report: Towards a Robust Validation Service for Data and Metadata in ARC RO-Crates. BioHackrXiv in press.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Crusoe MR, Abeln S, Iosup A, et al. 2022. Methods included: standardizing computational reuse and portability with the Common Workflow Language. Communications of the ACM 65, 54–63.
-
-[3] DataPLANT. 2025a. nfdi4plants/ARC-specification: Annotated Research Context Specification v3.0-draft.2.
-
-[4] DataPLANT. 2025b. nfdi4plants/ARCCommander.
-
-[5] De Smedt K, Koureas D, Wittenburg P. 2020. FAIR Digital Objects for Science: From Data Pieces to Actionable Knowledge Units. Publications 8, 21.
-
-[6] Lukasczyk J, Frey K, Brilhaus D, et al. 2026. nfdi4plants/ARCitect: 1.7.0.
-
-[7] Sansone S-A, Rocca-Serra P, Field D, et al. 2012. Toward interoperable bioscience data. Nature Genetics 44, 121–126.
-
-[8] Soiland-Reyes S, Sefton P, Crosas M, et al. 2022. Packaging research artefacts with RO-Crate. Data Science 5, 97–138.
-
-[9] Weil HL, Frey K, Schneider K, Ott C, Wetzels F, Mühlhaus T. 2026. nfdi4plants/ARCtrl: 3.0.1.
-
-[10] Weil HL, Schneider K, Tschöpe M, et al. 2023. PLANTdataHUB: a collaborative platform for continuous FAIR data sharing in plant research. The Plant Journal 116, 974–988.
-
-[11] Wilkinson MD, Dumontier M, Aalbersberg IjJ, et al. 2016. The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data 3, 160018.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

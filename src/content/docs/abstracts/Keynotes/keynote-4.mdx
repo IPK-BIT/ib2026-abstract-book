@@ -12,11 +12,13 @@ Micky Lindlar is the Head of Digital Preservation at the TIB in Hannover, where 
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 Lorem ipsum
 
-## References
+import ReferenceList from '@components/ReferenceList.astro';
 
-[1] Title, Year, Journal, DOI
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

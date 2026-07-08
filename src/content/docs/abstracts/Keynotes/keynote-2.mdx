@@ -12,7 +12,13 @@ Dr. Stephanie Jurburg is a microbial ecologist and data scientist at the Helmhol
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 The reuse of microbial metabarcoding data is limited by inconsistent metadata, fragmented archiving practices, and difficulties associated with sequence data processing. To address this, the Microbial Community Database (MiCoDa) and the Datathon project work in concert to foster a culture of open, harmonized, and community-driven data sharing in microbial ecology. MiCoDa currently houses 30,000 globally distributed, reprocessed 16S rRNA samples—standardized for comparability and linked to their source publications, and is the largest curated microbiome database in the world. Ongoing software development within MiCoDa focus on metadata extraction (HVRLocator) and bioinformatics for harmonization (MicroMacS). Datathons—launched in 2022—are regional, three-day events that train researchers in standardized metadata practices, support the archiving of amplicon sequencing data, and catalyze collaborative reuse. These events have engaged over 750 researchers across Latin America, China, and Africa, and upcoming editions are planned for the Polar regions (2027). Together, Datathons and MiCoDa form a pipeline from local data mobilization to global data integration that enhances the visibility, accessibility, and usability of microbial data, while promoting equitable participation in global microbiome research.
+
+import ReferenceList from '@components/ReferenceList.astro';
+
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

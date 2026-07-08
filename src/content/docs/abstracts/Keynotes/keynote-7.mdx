@@ -12,11 +12,13 @@ Doreen Ware, Adjunct Professor at CSHL and USDA computational biologist, is a pl
 
 ## Abstract
 
+import Cite from '@components/Cite.astro';
+
 Lorem ipsum
 
-## References
+import ReferenceList from '@components/ReferenceList.astro';
 
-[1] Title, Year, Journal, DOI
+<ReferenceList references={frontmatter.references} />
 
 import AuthorList from '@components/AuthorList.astro';
 

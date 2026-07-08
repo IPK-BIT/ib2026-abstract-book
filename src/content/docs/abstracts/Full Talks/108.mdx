@@ -3,36 +3,34 @@ title: An automated and interactive RNA-seq quality control pipeline for sample 
 authors:
   - oliver-rupp
   - alexander-goesmann
+references:
+  - conesa_survey_2016
+  - wang_rna-seq_2009
+  - molder_sustainable_2025
+  - rupp_rup_2025
+  - patro_salmon_2017
+  - robinson_scaling_2010 
+  - smid_gene_2018
+  - noauthor_conda_nodate
+  - wilkinson_fair_2016
 ---
 
-RNA sequencing (RNA-seq) has become a standard technology for transcriptome profiling across a broad range of biological fields. Despite continuous improvements in sequencing technologies and analysis methods, insufficient sample quality and technical artifacts remain major sources of bias in downstream analyses such as differential expression, co-expression analysis, or transcript discovery. Early identification of problematic samples is therefore essential to ensure reproducibility and biological interpretability. However, comprehensive RNA-seq quality control (QC) workflows often require substantial bioinformatics expertise, involve multiple independent tools, and frequently lack standardized, easily interpretable reporting interfaces [1,2].
-Here, we present a fully automated RNA-seq QC pipeline designed to identify samples that should be excluded before downstream analyses. The workflow integrates transcript quantification, normalization, statistical quality assessment, and interactive reporting into a single reproducible pipeline managed with Snakemake [3]. The pipeline builds upon concepts previously introduced for usability-oriented RNA-seq QC workflows [4] and emphasizes accessibility, portability, and reproducibility, enabling straightforward deployment across local workstations, high-performance computing environments, and collaborative research infrastructures.
-The workflow requires only four user-provided inputs: a genome sequence, a genome annotation in GTF or GFF3 format, a sample-to-condition mapping table, and RNA-seq reads in compressed FASTQ format. Both single-end and paired-end sequencing data are supported. Transcript quantification is performed using Salmon [5]. All major QC metrics are derived directly from Salmon quantification results, substantially reducing computational requirements compared to alignment-dependent approaches.
+import Cite from '@components/Cite.astro';
+
+RNA sequencing (RNA-seq) has become a standard technology for transcriptome profiling across a broad range of biological fields. Despite continuous improvements in sequencing technologies and analysis methods, insufficient sample quality and technical artifacts remain major sources of bias in downstream analyses such as differential expression, co-expression analysis, or transcript discovery. Early identification of problematic samples is therefore essential to ensure reproducibility and biological interpretability. However, comprehensive RNA-seq quality control (QC) workflows often require substantial bioinformatics expertise, involve multiple independent tools, and frequently lack standardized, easily interpretable reporting interfaces <Cite id="conesa_survey_2016, wang_rna-seq_2009" />.
+Here, we present a fully automated RNA-seq QC pipeline designed to identify samples that should be excluded before downstream analyses. The workflow integrates transcript quantification, normalization, statistical quality assessment, and interactive reporting into a single reproducible pipeline managed with Snakemake <Cite id="molder_sustainable_2025"/>. The pipeline builds upon concepts previously introduced for usability-oriented RNA-seq QC workflows <Cite id="rupp_rup_2025"/> and emphasizes accessibility, portability, and reproducibility, enabling straightforward deployment across local workstations, high-performance computing environments, and collaborative research infrastructures.
+The workflow requires only four user-provided inputs: a genome sequence, a genome annotation in GTF or GFF3 format, a sample-to-condition mapping table, and RNA-seq reads in compressed FASTQ format. Both single-end and paired-end sequencing data are supported. Transcript quantification is performed using Salmon <Cite id="patro_salmon_2017"/>. All major QC metrics are derived directly from Salmon quantification results, substantially reducing computational requirements compared to alignment-dependent approaches.
 To facilitate broad applicability, the pipeline additionally supports analyses in organisms missing reference annotations. In such cases, a genome-guided transcriptome assembly can be generated directly within the workflow, enabling downstream quantification and QC without requiring extensive external preprocessing. This feature is particularly relevant for emerging model systems and ecological or agricultural research projects where high-quality annotations may not yet be available.
-The QC framework combines multiple complementary metrics to identify outlier samples and technical inconsistencies. These include sequencing depth statistics, transcriptome complexity measures, library composition analyses, expression distribution characteristics, sample-to-sample similarity assessments, principal component analysis (PCA), hierarchical clustering, cumulative expression profiles, and normalization diagnostics. Both transcript-level and gene-level analyses are supported. The workflow exports raw counts as well as TPM-, TMM-, and geTMM-normalized expression matrices [6,7], thereby enabling direct integration with downstream differential expression or systems biology analyses.
-A major focus of the pipeline is usability and ease of deployment. The workflow is designed to minimize manual preprocessing and configuration steps, allowing users with limited bioinformatics experience to perform comprehensive RNA-seq QC analyses. Software dependencies can be automatically managed through Snakemake using Conda [8] environments, ensuring reproducible installations across operating systems and computational platforms. Combined with Snakemake-based workflow management, this enables transparent tracking of analysis steps, software versions, parameters, and generated outputs.
+The QC framework combines multiple complementary metrics to identify outlier samples and technical inconsistencies. These include sequencing depth statistics, transcriptome complexity measures, library composition analyses, expression distribution characteristics, sample-to-sample similarity assessments, principal component analysis (PCA), hierarchical clustering, cumulative expression profiles, and normalization diagnostics. Both transcript-level and gene-level analyses are supported. The workflow exports raw counts as well as TPM-, TMM-, and geTMM-normalized expression matrices <Cite id="robinson_scaling_2010, smid_gene_2018"/>, thereby enabling direct integration with downstream differential expression or systems biology analyses.
+A major focus of the pipeline is usability and ease of deployment. The workflow is designed to minimize manual preprocessing and configuration steps, allowing users with limited bioinformatics experience to perform comprehensive RNA-seq QC analyses. Software dependencies can be automatically managed through Snakemake using Conda <Cite id="noauthor_conda_nodate"/> environments, ensuring reproducible installations across operating systems and computational platforms. Combined with Snakemake-based workflow management, this enables transparent tracking of analysis steps, software versions, parameters, and generated outputs.
 All results are summarized in a stand-alone interactive HTML report that can be viewed locally in any web browser without requiring additional software or server infrastructure. Interactive visualizations enable rapid exploration of QC metrics and facilitate identification of problematic samples. This design allows experimental researchers and bioinformaticians to collaboratively evaluate dataset quality and document sample exclusion decisions in a transparent and reproducible manner.
-By combining minimal input requirements, automated execution, Conda-based software management, comprehensive QC analyses, and interactive reporting, the presented pipeline lowers the technical barrier for robust RNA-seq quality assessment. The workflow is particularly suited for projects involving large sample collections, collaborative environments, and non-model organisms, where standardized and reproducible QC procedures are essential. The pipeline contributes toward FAIR and reproducible bioinformatics practices by providing a transparent, portable, and extensible framework for pre-analysis RNA-seq sample evaluation [9].
+By combining minimal input requirements, automated execution, Conda-based software management, comprehensive QC analyses, and interactive reporting, the presented pipeline lowers the technical barrier for robust RNA-seq quality assessment. The workflow is particularly suited for projects involving large sample collections, collaborative environments, and non-model organisms, where standardized and reproducible QC procedures are essential. The pipeline contributes toward FAIR and reproducible bioinformatics practices by providing a transparent, portable, and extensible framework for pre-analysis RNA-seq sample evaluation <Cite id="wilkinson_fair_2016"/>.
 
-## Refernces
+## References
 
-[1] Conesa A, Madrigal P, Tarazona S, et al. A survey of best practices for RNA-seq data analysis. *Genome Biology*. 2016;17:13.
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Wang Z, Gerstein M, Snyder M. RNA-Seq: a revolutionary tool for transcriptomics. *Nature Reviews Genetics*. 2009;10:57–63.
-
-[3] Mölder F, Jablonski KP, Letcher B, et al. Sustainable data analysis with Snakemake. *F1000Research*. 2021;10:33.
-
-[4] Rupp O, Roessner L-H, Kong D, Becker A. Rup (RNA-seq Usability Assessment Pipeline) – Quality Control for Bulk RNA-seq Experiments in Eukaryotes. *Journal of Visualized Experiments*. 2025;(225). doi:10.3791/69253.
-
-[5] Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C. Salmon provides fast and bias-aware quantification of transcript expression. *Nature Methods*. 2017;14:417–419.
-
-[6] Robinson MD, Oshlack A. A scaling normalization method for differential expression analysis of RNA-seq data. *Genome Biology*. 2010;11:R25.
-
-[7] Smid M, Coebergh van den Braak RRJ, van de Werken HJG, et al. Gene length corrected trimmed mean of M-values (GeTMM) processing of RNA-seq data performs similarly in intersample analyses while improving intrasample comparisons. *BMC Bioinformatics*. 2018;19:236.
-
-[8] Anaconda Software Distribution. [https://docs.conda.io]
-
-[9] Wilkinson MD, Dumontier M, Aalbersberg IJJ, et al. The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data*. 2016;3:160018.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 

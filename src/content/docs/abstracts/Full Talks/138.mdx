@@ -4,13 +4,22 @@ authors:
   - wolfgang-mueller
   - timo-muehlhaus
   - birgitta-koenig-ries
+references:
+  - muller_restorunt_2023
+  - doniparthi_integrating_2024
+  - verborgh_using_2025
+  - panko_what_1998
+  - karr_objtables_2020
+  - bendre_towards_2018
 ---
 
-Database scientists have long criticized the use of spreadsheets for scientific data management because spreadsheets lack amongst others explicit schemas, transactions, and declarative query mechanisms [4-6]. Nevertheless, spreadsheets remain among the most widely used tools for research data collection, transformation, annotation, and exchange across many scientific disciplines. Since Lotus 1-2-3, the first spreadsheet system that also considered the spreadsheet as a data collection, continuous improvements in usability and flexibility have further increased their attractiveness as temporary and collaborative data stores.
+import Cite from '@components/Cite.astro';
+
+Database scientists have long criticized the use of spreadsheets for scientific data management because spreadsheets lack amongst others explicit schemas, transactions, and declarative query mechanisms <Cite id="panko_what_1998, karr_objtables_2020, bendre_towards_2018" />. Nevertheless, spreadsheets remain among the most widely used tools for research data collection, transformation, annotation, and exchange across many scientific disciplines. Since Lotus 1-2-3, the first spreadsheet system that also considered the spreadsheet as a data collection, continuous improvements in usability and flexibility have further increased their attractiveness as temporary and collaborative data stores.
 
 A key strength of spreadsheets is the workbook concept. Workbooks are ordered collections of sheets that allow researchers to combine data, calculations, metadata, annotations, and workflow context within a single portable research object. However, while spreadsheet software simplifies data entry and ad hoc analysis, it does not solve the problem of data harmonization. Due to their flexibility, spreadsheets created by different researchers frequently differ substantially in structure and semantics unless harmonization efforts are applied explicitly.
 
-This motivates the development of tools that facilitate spreadsheet FAIRification, transformation, annotation, and provenance tracking. Existing tools, however, focus on different aspects of spreadsheet workflows. Transformation-oriented tools such as OpenRefine ( https://openrefine.org/) and ReStoRunT [1] support reshaping and documenting processing workflows. Annotation-oriented tools such as RightField and (ARC-)SWATE (https://arc-rdm.org/details/tools-and-services/SWATE/ , [2]) support ontology-based semantic enrichment of spreadsheet data.
+This motivates the development of tools that facilitate spreadsheet FAIRification, transformation, annotation, and provenance tracking. Existing tools, however, focus on different aspects of spreadsheet workflows. Transformation-oriented tools such as OpenRefine ( https://openrefine.org/) and ReStoRunT <Cite id="muller_restorunt_2023" /> support reshaping and documenting processing workflows. Annotation-oriented tools such as RightField and (ARC-)SWATE (https://arc-rdm.org/details/tools-and-services/SWATE/) <Cite id="doniparthi_integrating_2024" /> support ontology-based semantic enrichment of spreadsheet data.
 
 At first sight, these tools appear complementary. However, closer inspection reveals substantial interoperability problems. We argue that one major reason for these limitations is that different tools implicitly operate on different provenance and metadata layers without clearly distinguishing them.
 
@@ -34,19 +43,9 @@ Rather than replacing spreadsheets, our goal is to preserve the advantages of sp
 
 ## References
 
-[1] Wolfgang Müller, Lukrécia Mertová: ReStoRunT: Simple Recording, Storing, Running and Tracing changes in Spreadsheets. BTW 2023: 865-877
+import ReferenceList from '@components/ReferenceList.astro';
 
-[2] Gajendra Doniparthi, Timo Mühlhaus, Stefan Deßloch:
-
-Integrating FAIR Experimental Metadata for Multi-omics Data Analysis. Datenbank-Spektrum 24(2): 107-115(2024)
-
-[3] Verborgh, R., De Wilde, M. : (2013). Using openrefine (Vol. 1). Birmingham: Packt Publishing.
-
-[4] Panko, R. R. (1998). What we know about spreadsheet errors. Journal of Organizational and End User Computing (JOEUC), 10(2), 15-21.
-
-[5] Karr, J. R., Liebermeister, W., Goldberg, A. P., Sekar, J. A., & Shaikh, B. (2020). ObjTables: structured spreadsheets that promote data quality, reuse, and integration. arXiv preprint arXiv:2005.05227.
-
-[6] Bendre, M., Venkataraman, V., Zhou, X., Chang, K., & Parameswaran, A. (2018, April). Towards a holistic integration of spreadsheets with databases: A scalable storage engine for presentational data management. In 2018 IEEE 34th International Conference on Data Engineering (ICDE) (pp. 113-124). IEEE.
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 
