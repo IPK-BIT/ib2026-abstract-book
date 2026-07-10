@@ -28,6 +28,7 @@ btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    white-space: nowrap;
+    white-space: normal;
+    flex-wrap: wrap;
   }
 }
