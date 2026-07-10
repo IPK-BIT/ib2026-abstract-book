@@ -33,10 +33,10 @@ export default defineConfig({
                 Footer: '@components/starlight/Footer.astro',
             },
             editLink: {
-                baseUrl: 'https://github.com/IPK-BIT/edal-pgp-knowledgebase/edit/main/'
+                baseUrl: 'https://github.com/IPK-BIT/ib2026-abstract-book/edit/main/'
             },
             social: [
-                { icon: 'github', href: 'https://github.com/IPK-BIT/edal-pgp-knowledgebase', label: 'GitHub' },
+                { icon: 'github', href: 'https://github.com/IPK-BIT/ib2026-abstract-book', label: 'GitHub' },
             ],
             plugins: [
                 starlightLinksValidator(),
