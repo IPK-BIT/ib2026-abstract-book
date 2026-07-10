@@ -1,6 +1,6 @@
 # Contribution Guide
 
-Your contribution to the e!DAL-PGP Knowledge Base is highly appreciated. This guide is intended to show you how to contribute new articles and tutorials or review and adapt parts of existing ones. For changes and suggestions, feel free to open a GitHub issue or pull request.
+Your contribution to the IB 2026 Abstract Book is highly appreciated. This guide is intended to show you how to contribute new articles and tutorials or review and adapt parts of existing ones. For changes and suggestions, feel free to open a GitHub issue or pull request.
 
 - [Setup](#setup)
   - [Installation](#installation)
@@ -18,7 +18,7 @@ Your contribution to the e!DAL-PGP Knowledge Base is highly appreciated. This gu
 
 ## Setup
 
-The e!DAL-PGP Knowledge Base is built on [astro starlight](https://starlight.astro.build). 
+The IB 2026 Abstract Book is built on [Astro Starlight](https://starlight.astro.build). 
 Additional custom components and styling were reused from https://github.com/nfdi4plants/nfdi4plants.knowledgebase create by [Kevin Freymaurer](https://github.com/Freymaurer). Many features not covered here specifically may be found in their docs.
 
 Starlight itself builds on [Astro](https://astro.build). Please check out [their website](https://docs.astro.build/en/install-and-setup/) for detailed installation instructions.
@@ -26,12 +26,12 @@ Starlight itself builds on [Astro](https://astro.build). Please check out [their
 ### Installation
 
 1. Install [Node JS](https://nodejs.org/)
-2. Clone the Knowledge Base repository via `git clone https://github.com/IPK-BIT/edal-pgp-knowledgebase`
+2. Clone the repository via `git clone https://github.com/IPK-BIT/ib2026-abstract-book`
 
 ### Create content and watch locally
 
 1. Install package dependencies via `npm install`
-2. Start the knowledge base in watch mode via `npm run dev`
+2. Start the site in watch mode via `npm run dev`
 
 ### Check for dead links
 
