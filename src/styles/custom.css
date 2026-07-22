@@ -22,13 +22,3 @@ btn {
   line-height:1.4;
   white-space:nowrap;
 }
-
-@media (min-width: 768px) {
-  .heading-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    white-space: normal;
-    flex-wrap: wrap;
-  }
-}
