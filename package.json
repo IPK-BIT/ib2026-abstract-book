@@ -30,11 +30,11 @@
     "sharp": "^0.35.3",
     "starlight-image-zoom": "^0.15.0",
     "starlight-links-validator": "^0.25.2",
-    "starlight-openapi": "^0.26.0",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2"
+    "starlight-openapi": "^0.24.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.21"
+    "@types/leaflet": "^1.9.21",
+    "typescript": "^6.0.3"
   }
 }
