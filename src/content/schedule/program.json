@@ -349,14 +349,14 @@
           "location": "Foyer"
         },
         {
-          "time": "11:35 - 16:25",
+          "time": "11:35 - 16:30",
           "title": "Session 5: FAIR Assessment & Computational Workflows",
           "description": "A concentration on evaluating machine-actionability and processing raw biological data reliably. Presentations on API-driven FAIR assessment, automated metadata extraction via multi-agent systems, and domain-agnostic workflow engines.",
           "chair": "TBD",
           "location": "Lecture Hall",
           "contributions": [
             {
-              "durationMinutes": 40,
+              "durationMinutes": 45,
               "title": "From Bits to Bites (and maybe some drinking too…)",
               "speaker": "Shaw, Paul",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-5/",
