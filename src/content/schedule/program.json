@@ -17,7 +17,7 @@
           "type": "Break"
         },
         {
-          "time": "09:15 - 12:45",
+          "time": "09:15 - 12:35",
           "title": "Session 1: Community, Stewardship, and Governance",
           "description": "A focus on the foundational human and organizational aspects of Research Data Management (RDM). Discussions on data stewardship, community engagement, legal metadata, and quality management frameworks.",
           "chair": "TBD",
@@ -306,7 +306,7 @@
           "type": "Break"
         },
         {
-          "time": "09:05 - 12:25",
+          "time": "09:05 - 11:05",
           "title": "Session 4: Robust Architectures and Domain-Specific Data Standards",
           "description": "A dive into the technical backbone required to structure massive biological datasets. Advanced database architectures for multi-omics research and the implementation of scalable metadata standards for specific domains.",
           "chair": "TBD",
