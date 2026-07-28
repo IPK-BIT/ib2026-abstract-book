@@ -67,8 +67,17 @@
             {
               "time": "12:10 - 12:35",
               "title": "Poster Pitches",
-              "speaker": "TBD",
-              "type": "Poster"
+              "type": "Poster",
+              "posters": [
+                { "title": "Decoding Gene-Metabolite Interactions through Integrative Bioinformatics", "speaker": "Bhat, Anjana", "abstractSlug": "ib2026-abstract-book/abstracts/posters/102/" },
+                { "title": "Label-Free Quantitative Proteomics Reveals Stress-Responsive Molecular Signatures in Contrasting Plant Genotypes", "speaker": "Zarabizadeh, Homa", "abstractSlug": "ib2026-abstract-book/abstracts/posters/104/" },
+                { "title": "Towards FAIR NGS Data Management Across the Data Life Cycle: A Needs Analysis and Conceptual Framework", "speaker": "Wohlers, Inken", "abstractSlug": "ib2026-abstract-book/abstracts/posters/105/" },
+                { "title": "Cross-Consortia Synergy: The Geo-Chem-Life Science Helpdesk Cluster", "speaker": "Rey Mazón, Elena", "abstractSlug": "ib2026-abstract-book/abstracts/posters/107/" },
+                { "title": "GenXBrowser: An interactive platform for comparative analysis of bulk RNA expression data", "speaker": "Keßler, Micha Frederick", "abstractSlug": "ib2026-abstract-book/abstracts/posters/109/" },
+                { "title": "Enhancing e!DAL-PGP: Towards a FAIR, Interoperable and AI-Ready Submission Platform for Plant Science Research Data", "speaker": "Arend, Daniel", "abstractSlug": "ib2026-abstract-book/abstracts/posters/112/" },
+                { "title": "Collaborative Metadata Documentation as a Sociotechnical Practice", "speaker": "Ferradosa, Eva Eleonora", "abstractSlug": "ib2026-abstract-book/abstracts/posters/117/" },
+                { "title": "Data stewards as bridge builders between RDM Services and the Community", "speaker": "Rey Mazón, Elena", "abstractSlug": "ib2026-abstract-book/abstracts/posters/118/" }
+              ]
             }
           ]
         },
@@ -115,8 +124,17 @@
             {
               "time": "15:35 - 16:00",
               "title": "Poster Pitches",
-              "speaker": "TBD",
-              "type": "Poster"
+              "type": "Poster",
+              "posters": [
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/121/"},
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/122/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/124/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/125/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/126/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/127/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/129/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/130/" }
+              ]
             }
           ]
         },
@@ -157,8 +175,16 @@
             {
               "time": "18:05 - 18:30",
               "title": "Poster Pitches",
-              "speaker": "TBD",
-              "type": "Poster"
+              "type": "Poster",
+              "posters": [
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/133/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/136/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/140/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/142/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/143/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/145/" },
+                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/" }
+              ]
             }
           ]
         },
