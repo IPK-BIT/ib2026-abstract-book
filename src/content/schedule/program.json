@@ -24,59 +24,91 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "09:15 - 10:00",
+              "durationMinutes": 45,
               "title": "TBD",
               "speaker": "Lindlar, Micky",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-4/",
               "type": "Keynote"
             },
             {
-              "time": "10:00 - 10:25",
+              "durationMinutes": 25,
               "title": "Living the NFDI on Campus - Data Stewardship Between Infrastructure and Community",
               "speaker": "Brilhaus, Dominik",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/115/",
               "type": "Full Talk"
             },
             {
-              "time": "10:25 - 10:50",
+              "durationMinutes": 25,
               "title": "User Engagement in Service Development - A Framework for Sustainable Research Data Services - Collaboration by Design",
               "speaker": "Reinhardt, Martin",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/137/",
               "type": "Full Talk"
             },
             {
-              "time": "10:50 - 11:20",
+              "durationMinutes": 30,
               "title": "Coffee Break",
               "type": "Break",
-              "location":"Foyer"
+              "location": "Foyer"
             },
             {
-              "time": "11:20 - 11:45",
+              "durationMinutes": 25,
               "title": "Legal Metadata in FAIRagro",
               "speaker": "Breß, Constantin",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/139/",
               "type": "Full Talk"
             },
             {
-              "time": "11:45 - 12:10",
+              "durationMinutes": 25,
               "title": "From Project to Infrastructure: A Comprehensive Quality Management Framework for NFDI4Biodiversity Services",
               "speaker": "Meister, Maria",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/114/",
               "type": "Full Talk"
             },
             {
-              "time": "12:10 - 12:35",
+              "durationMinutes": 25,
               "title": "Poster Pitches",
               "type": "Poster",
               "posters": [
-                { "title": "Decoding Gene-Metabolite Interactions through Integrative Bioinformatics", "speaker": "Bhat, Anjana", "abstractSlug": "ib2026-abstract-book/abstracts/posters/102/" },
-                { "title": "Label-Free Quantitative Proteomics Reveals Stress-Responsive Molecular Signatures in Contrasting Plant Genotypes", "speaker": "Zarabizadeh, Homa", "abstractSlug": "ib2026-abstract-book/abstracts/posters/104/" },
-                { "title": "Towards FAIR NGS Data Management Across the Data Life Cycle: A Needs Analysis and Conceptual Framework", "speaker": "Wohlers, Inken", "abstractSlug": "ib2026-abstract-book/abstracts/posters/105/" },
-                { "title": "Cross-Consortia Synergy: The Geo-Chem-Life Science Helpdesk Cluster", "speaker": "Rey Mazón, Elena", "abstractSlug": "ib2026-abstract-book/abstracts/posters/107/" },
-                { "title": "GenXBrowser: An interactive platform for comparative analysis of bulk RNA expression data", "speaker": "Keßler, Micha Frederick", "abstractSlug": "ib2026-abstract-book/abstracts/posters/109/" },
-                { "title": "Enhancing e!DAL-PGP: Towards a FAIR, Interoperable and AI-Ready Submission Platform for Plant Science Research Data", "speaker": "Arend, Daniel", "abstractSlug": "ib2026-abstract-book/abstracts/posters/112/" },
-                { "title": "Collaborative Metadata Documentation as a Sociotechnical Practice", "speaker": "Ferradosa, Eva Eleonora", "abstractSlug": "ib2026-abstract-book/abstracts/posters/117/" },
-                { "title": "Data stewards as bridge builders between RDM Services and the Community", "speaker": "Rey Mazón, Elena", "abstractSlug": "ib2026-abstract-book/abstracts/posters/118/" }
+                {
+                  "title": "Decoding Gene-Metabolite Interactions through Integrative Bioinformatics",
+                  "speaker": "Bhat, Anjana",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/102/"
+                },
+                {
+                  "title": "Label-Free Quantitative Proteomics Reveals Stress-Responsive Molecular Signatures in Contrasting Plant Genotypes",
+                  "speaker": "Zarabizadeh, Homa",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/104/"
+                },
+                {
+                  "title": "Towards FAIR NGS Data Management Across the Data Life Cycle: A Needs Analysis and Conceptual Framework",
+                  "speaker": "Wohlers, Inken",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/105/"
+                },
+                {
+                  "title": "Cross-Consortia Synergy: The Geo-Chem-Life Science Helpdesk Cluster",
+                  "speaker": "Rey Mazón, Elena",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/107/"
+                },
+                {
+                  "title": "GenXBrowser: An interactive platform for comparative analysis of bulk RNA expression data",
+                  "speaker": "Keßler, Micha Frederick",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/109/"
+                },
+                {
+                  "title": "Enhancing e!DAL-PGP: Towards a FAIR, Interoperable and AI-Ready Submission Platform for Plant Science Research Data",
+                  "speaker": "Arend, Daniel",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/112/"
+                },
+                {
+                  "title": "Collaborative Metadata Documentation as a Sociotechnical Practice",
+                  "speaker": "Ferradosa, Eva Eleonora",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/117/"
+                },
+                {
+                  "title": "Data stewards as bridge builders between RDM Services and the Community",
+                  "speaker": "Rey Mazón, Elena",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/118/"
+                }
               ]
             }
           ]
@@ -84,6 +116,7 @@
         {
           "time": "12:35 - 13:35",
           "title": "Lunch Break",
+          "location": "Casino",
           "type": "Break"
         },
         {
@@ -94,46 +127,78 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "13:35 - 14:20",
+              "durationMinutes": 45,
               "title": "MiCoDa a second life for the invisible majority",
               "speaker": "Jurburg, Stephanie",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-2/",
               "type": "Keynote"
             },
             {
-              "time": "14:20 - 14:45",
+              "durationMinutes": 25,
               "title": "Collaborative Metadata Documentation as a Sociotechnical Practice: Lessons from a Data Harvest Day in a Plant Systems Biology Research Consortium",
               "speaker": "Ferradosa, Eva Eleonora",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/116/",
               "type": "Full Talk"
             },
             {
-              "time": "14:45 - 15:10",
+              "durationMinutes": 25,
               "title": "Bringing research data artifacts to life through federated curation",
               "speaker": "Schneider, Kevin",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/128/",
               "type": "Full Talk"
             },
             {
-              "time": "15:10 - 15:35",
+              "durationMinutes": 25,
               "title": "Provenance-Aware Spreadsheet FAIRification Using Layered Metadata Integration and RDM-based Storage ",
               "speaker": "Müller, Wolfgang",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/138/",
               "type": "Full Talk"
             },
             {
-              "time": "15:35 - 16:00",
+              "durationMinutes": 25,
               "title": "Poster Pitches",
               "type": "Poster",
               "posters": [
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/121/"},
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/122/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/124/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/125/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/126/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/127/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/129/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/130/" }
+                {
+                  "title": "A dynamic health-state manifold maps instability and heterogeneous aging progression from longitudinal clinical records",
+                  "speaker": "Zhang, Shilong",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/121/"
+                },
+                {
+                  "title": "Integration of Genomics, Metabolomics and Transcriptomics Data of 56 rosemary accessions for the elucidation of group-specific pathways",
+                  "speaker": "Rüscher, David",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/122/"
+                },
+                {
+                  "title": "From Services to Adoption: Benchmarks for Service-Community Integration",
+                  "speaker": "Sennhenn, Anne",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/124/"
+                },
+                {
+                  "title": "Joining forces — scaling impact: Connecting RDM capacity building across FAIRagro and de.NBI / ELIXIR-DE",
+                  "speaker": "Schnitzer, Helena",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/125/"
+                },
+                {
+                  "title": "Mining Biochemical Relationships from Tandem MS Data Using Deep Learning",
+                  "speaker": "Jafarirameshti, Zahra",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/126/"
+                },
+                {
+                  "title": "Beyond Symbolic Commitment: FAIRagro and NFDI4Earth FAIRness & Openness Commitments as Living Frameworks for Peer Learning and FAIR Data Culture",
+                  "speaker": "Sennhenn, Anne",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/127/"
+                },
+                {
+                  "title": "Elab2ARC: A browser-based workspace for converting free-text protocols into rich FAIR digital objects",
+                  "speaker": "Zander, Sabrina",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/129/"
+                },
+                {
+                  "title": "Object Store meets Laboratory Information System: Implementing Self-Service Digital Shadow Infrastructure for Multidomain Plant Data",
+                  "speaker": "Strauch, Theodor",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/130/"
+                }
               ]
             }
           ]
@@ -152,38 +217,66 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "16:30 - 17:15",
+              "durationMinutes": 45,
               "title": "TBD",
               "speaker": "Ware, Doreen",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-7/",
               "type": "Keynote"
             },
             {
-              "time": "17:15 - 17:40",
+              "durationMinutes": 25,
               "title": "ARCtrl: Polyglot reference implementation for a rapidly evolving FAIR digital object",
               "speaker": "Weil, Heinrich Lukas",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/132/",
               "type": "Full Talk"
             },
             {
-              "time": "17:40 - 18:05",
+              "durationMinutes": 25,
               "title": "An Interoperable Metadata Interface between DataPLANT and the Helmholtz Earth Data Portal",
               "speaker": "Kranz, Angela",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/120/",
               "type": "Full Talk"
             },
             {
-              "time": "18:05 - 18:30",
+              "durationMinutes": 25,
               "title": "Poster Pitches",
               "type": "Poster",
               "posters": [
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/133/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/136/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/140/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/142/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/143/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/145/" },
-                { "title": "TBD", "speaker": "TBD", "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/" }
+                {
+                  "title": "SciWIn: Enabling FAIR for scientific analysis workflows",
+                  "speaker": "Leidel, Antonia",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/133/"
+                },
+                {
+                  "title": "Contigo: Context-Preserving Grouped Editing for FAIR Provenance",
+                  "speaker": "Ott, Caroline",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/136/"
+                },
+                {
+                  "title": "From Data Management to Data Publication: Lessons learned from fostering cultural change towards FAIR and AI-ready research data",
+                  "speaker": "Von Suchodoletz, Dirk",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/140/"
+                },
+                {
+                  "title": "METRIN-KG: A FAIRly Rooted Knowledge Graph of Plant Metabolomes, Traits, and Interactions",
+                  "speaker": "Tandom, Disha",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/142/"
+                },
+                {
+                  "title": "What Is Your Favourite Bird? Using Biodiversity Data to Teach Data Literacy Across Disciplines",
+                  "speaker": "Büker, Sarah",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/143/"
+                },
+                {
+                  "title": "An interactive platform for exploring structural variation across the barley panproteome",
+                  "speaker": "Rabesquine Nogueira, Victor Henrique",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/145/"
+                },
+                {
+                  "title": "Including legal information in RO-Crates",
+                  "speaker": "Breß, Constantin",
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/"
+                }
               ]
             }
           ]
@@ -191,7 +284,7 @@
         {
           "time": "18:30 - 21:00",
           "title": "Poster Session 1 & Welcome Reception",
-          "location":"Casino",
+          "location": "Casino",
           "type": "Poster"
         },
         {
@@ -220,28 +313,28 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "09:05 - 09:50",
+              "durationMinutes": 45,
               "title": "The Loom of a Modern Life Sciences Core Facility: Stitching Instruments, Data, Science, and Business Together",
               "speaker": "Türker, Can",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-6/",
               "type": "Keynote"
             },
             {
-              "time": "09:50 - 10:15",
+              "durationMinutes": 25,
               "title": "MIMSA - Minimal Information Metadata Standard for Animals - MIAPPE Framework goes animal",
               "speaker": "Rehfeld, Rica Johanna",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/106/",
               "type": "Full Talk"
             },
             {
-              "time": "10:15 - 10:40",
+              "durationMinutes": 25,
               "title": "One Tool, Many Domains: Harmonizing FAIR Metadata Collection with the ISA-Wizard",
               "speaker": "Feser, Manuel",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/111/",
               "type": "Full Talk"
             },
             {
-              "time": "10:40 - 11:05",
+              "durationMinutes": 25,
               "title": "Understanding the Bioimaging Standardization Runway",
               "speaker": "Moore, Josh",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/131/",
@@ -253,7 +346,7 @@
           "time": "11:05 - 11:35",
           "title": "Coffee Break",
           "type": "Break",
-          "location":"Foyer"
+          "location": "Foyer"
         },
         {
           "time": "11:35 - 16:25",
@@ -263,66 +356,66 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "11:35 - 12:15",
+              "durationMinutes": 40,
               "title": "From Bits to Bites (and maybe some drinking too…)",
               "speaker": "Shaw, Paul",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-5/",
               "type": "Keynote"
             },
             {
-              "time": "12:15 - 12:40",
+              "durationMinutes": 25,
               "title": "Methodology for FAIRness Investigation to feature Multi-Dimensional Examination of Research Data Infrastructures in Agronomy",
               "speaker": "Haleem, Ata Ul",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/134/",
               "type": "Full Talk"
             },
             {
-              "time": "12:40 - 12:50",
+              "durationMinutes": 10,
               "title": "Best Poster Award",
               "location": "Lecture Hall",
               "type": "Break"
             },
             {
-              "time": "12:50 - 13:00",
+              "durationMinutes": 10,
               "title": "Group Picture",
               "location": "Lecture Hall",
               "type": "Break"
             },
             {
-              "time": "13:00 - 13:45",
+              "durationMinutes": 45,
               "title": "Lunch Break",
-              "location":"Casino",
+              "location": "Casino",
               "type": "Break"
             },
             {
-              "time": "13:45 - 14:45",
+              "durationMinutes": 60,
               "title": "Visits of IPK Facilities",
-              "location":"Foyer",
+              "location": "Foyer",
               "type": "Break"
             },
             {
-              "time": "14:45 - 15:10",
+              "durationMinutes": 25,
               "title": "Metadata Extraction from Electronic Lab Notebooks: Designing and Evaluating a Multi-Agent System for ISA-Compliant Research Data",
               "speaker": "Backer, Suzanne",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/135/",
               "type": "Full Talk"
             },
             {
-              "time": "15:10 - 15:35",
+              "durationMinutes": 25,
               "title": "A FAIR Workflow Engine for Reproducible Life Science Research",
               "speaker": "Perzlmaier, Lena",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/110/",
               "type": "Full Talk"
             },
             {
-              "time": "15:35 - 16:00",
+              "durationMinutes": 25,
               "title": "The MaRDI Packaging System",
               "speaker": "Kaushik, Aaruni ",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/123/",
               "type": "Full Talk"
             },
             {
-              "time": "16:00 - 16:25",
+              "durationMinutes": 25,
               "title": "An automated and interactive RNA-seq quality control pipeline for sample assessment prior to downstream analyses",
               "speaker": "Rupp, Oliver",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/108/",
@@ -333,7 +426,7 @@
         {
           "time": "16:30 - 16:45",
           "title": "Coffee Break",
-          "location":"Foyer",
+          "location": "Foyer",
           "type": "Break"
         },
         {
@@ -374,28 +467,28 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "09:05 - 09:50",
+              "durationMinutes": 45,
               "title": "Biodata for Discovery: Cultivating Environmental Intelligence",
               "speaker": "Leonelli, Sabina",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-3/",
               "type": "Keynote"
             },
             {
-              "time": "9:50 - 10:15",
+              "durationMinutes": 25,
               "title": "An interactive platform for exploring structural variation across the barley panproteome",
               "speaker": "Rabesquine Nogueira, Victor Henrique",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/144/",
               "type": "Full Talk"
             },
             {
-              "time": "10:15 - 10:40",
+              "durationMinutes": 25,
               "title": "Challenges and solutions in data integration when building a crop-specific pan-omics data visualization portal",
               "speaker": "König, Patrick",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/149/",
               "type": "Full Talk"
             },
             {
-              "time": "10:40 - 11:05",
+              "durationMinutes": 25,
               "title": "The Type (Strain) Genome Server (TYGS): Recent Developments in Genome-Based Prokaryote Taxonomy",
               "speaker": "Afolayan, Ayorinde",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/103/",
@@ -407,7 +500,7 @@
           "time": "11:05 - 11:30",
           "title": "Coffee Break",
           "type": "Break",
-          "location":"Foyer"
+          "location": "Foyer"
         },
         {
           "time": "11:30 - 13:30",
@@ -417,28 +510,28 @@
           "location": "Lecture Hall",
           "contributions": [
             {
-              "time": "11:30 - 12:15",
+              "durationMinutes": 45,
               "title": "Can a Machine Have a Good Idea? Hypothesis Generation at the Fusion of Knowledge Graphs and AI Agents",
               "speaker": "Hassani-Pak, Keywan",
               "abstractSlug": "ib2026-abstract-book/abstracts/keynotes/keynote-1/",
               "type": "Keynote"
             },
             {
-              "time": "12:15 - 12:40",
+              "durationMinutes": 25,
               "title": "METRIN-KG: A FAIRly Rooted Knowledge Graph of Plant Metabolomes, Traits, and Interactions",
               "speaker": "Tandon, Disha",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/147/",
               "type": "Full Talk"
             },
             {
-              "time": "12:40 - 13:05",
+              "durationMinutes": 25,
               "title": "Keeping Semantic Authority Human: Agent-Operated Construction of FAIR Knowledge Graphs from Croissant-Described Data with Biotope",
               "speaker": "Lobentanzer, Sebastian",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/148/",
               "type": "Full Talk"
             },
             {
-              "time": "13:05 - 13:30",
+              "durationMinutes": 25,
               "title": "GenNA: Conditional generation of nucleotide sequences guided by natural-language annotations",
               "speaker": "Shen, Yi",
               "abstractSlug": "ib2026-abstract-book/abstracts/full-talks/119/",

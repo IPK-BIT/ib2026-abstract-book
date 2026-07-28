@@ -19,6 +19,35 @@ const getBadgeVariant = (type?: string) => {
     default: return 'default';
   }
 };
+
+// Turn "HH:MM" into minutes since midnight
+const parseTimeToMinutes = (time: string) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+// Turn minutes since midnight back into "HH:MM"
+const formatMinutesToTime = (totalMinutes: number) => {
+  const hours = Math.floor(totalMinutes / 60) % 24;
+  const minutes = totalMinutes % 60;
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+};
+
+// Contributions no longer carry their own "HH:MM - HH:MM" string. Instead each
+// one only stores durationMinutes, and its actual start/end is derived here by
+// walking the array in order from the parent slot's start time. This means
+// moving a contribution (within a session, or into a different one) or
+// reordering the list is just an array edit — no times to hand-correct.
+type Contribution = NonNullable<(typeof program.days)[number]['slots'][number]['contributions']>[number];
+
+const withComputedTimes = (contributions: Contribution[] | undefined, slotStartTime: string) => {
+  let cursor = parseTimeToMinutes(slotStartTime);
+  return (contributions ?? []).map((contrib) => {
+    const start = cursor;
+    cursor += contrib.durationMinutes;
+    return { contrib, displayTime: `${formatMinutesToTime(start)} - ${formatMinutesToTime(cursor)}` };
+  });
+};
 ---
 
 <div class="interactive-schedule">
@@ -31,6 +60,7 @@ const getBadgeVariant = (type?: string) => {
             const isBreak = slot.type === 'Break';
             // Parse time segment "HH:MM - HH:MM" into distinct start and end chunks
             const [startTime, endTime] = slot.time.split(' - ').map(t => t.trim());
+            const contributionsWithTimes = withComputedTimes(slot.contributions, startTime);
             
             return (
               <div 
@@ -63,12 +93,12 @@ const getBadgeVariant = (type?: string) => {
                   {slot.description && <p class="session-description">{slot.description}</p>}
 
                   {/* Grouped Consecutive Presentations */}
-                  {slot.contributions && slot.contributions.length > 0 && (
+                  {contributionsWithTimes.length > 0 && (
                     <div class="nested-contributions">
-                      {slot.contributions.map((contrib) => (
+                      {contributionsWithTimes.map(({ contrib, displayTime }) => (
                         <div class={`contribution-card ${contrib.posters ? 'contribution-card--compact' : ''}`}>
                           <div class="contrib-top">
-                            <span class="contrib-time">{contrib.time}</span>
+                            <span class="contrib-time">{displayTime}</span>
                             <div class="contrib-badges">
                               {contrib.location && (
                                 <span class="modern-location-tag sub-loc">

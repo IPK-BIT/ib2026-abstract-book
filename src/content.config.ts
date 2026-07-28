@@ -91,7 +91,11 @@ const posterSchema = z.object({
 });
 
 const contributionSchema = z.object({
-  time: z.string(), 
+  // Contribution start/end times are computed in the component from the parent
+  // slot's start time plus each contribution's durationMinutes (in array order).
+  // This means moving/reordering a contribution never requires manually
+  // re-typing the times of every contribution after it.
+  durationMinutes: z.number().positive(),
   title: z.string(),
   speaker: z.string().optional(),
   abstractSlug: z.string().optional(),
