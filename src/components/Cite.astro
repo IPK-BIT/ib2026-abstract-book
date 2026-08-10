@@ -69,9 +69,72 @@ function formatRanges(nums: number[]): string {
 const displayString = formatRanges(indices);
 // For the anchor link, link to the first ID in the multiple sequence
 const primaryAnchor = targetIds[0] || '';
+// Full list of target ids, for the client script to highlight every reference in the group
+const refIdsAttr = targetIds.join(',');
 ---
 
-<a href={`#ref-${primaryAnchor}`} class="inline-citation" title={`Jump to reference section`}>[{displayString}]</a>
+<a
+  href={`#ref-${primaryAnchor}`}
+  class="inline-citation"
+  title={`Jump to reference section`}
+  data-ref-ids={refIdsAttr}
+>[{displayString}]</a>
+
+<script>
+  // Highlights every reference belonging to a (possibly multi-id) citation.
+  // Native :target / anchor scrolling still only ever jumps to the first id
+  // (that's the href), this just adds the highlight class to the rest too.
+
+  function highlightReferences(ids: string[]) {
+    document.querySelectorAll('.reference-card.is-cited-target').forEach((el) => {
+      el.classList.remove('is-cited-target');
+    });
+    ids.forEach((id) => {
+      const target = document.getElementById(`ref-${id}`);
+      if (target) target.classList.add('is-cited-target');
+    });
+  }
+
+  function highlightFromCurrentHash() {
+    const match = window.location.hash.match(/^#ref-(.+)$/);
+    if (match) highlightReferences([decodeURIComponent(match[1])]);
+  }
+
+  let skipNextHashChange = false;
+
+  function handleCitationClick(event: MouseEvent) {
+    const link = (event.target as HTMLElement)?.closest?.('.inline-citation');
+    if (!link) return;
+    const idsAttr = link.getAttribute('data-ref-ids');
+    if (!idsAttr) return;
+    // The browser is about to update the hash to the primary id on its own;
+    // skip the resulting hashchange so it doesn't overwrite our full highlight.
+    skipNextHashChange = true;
+    highlightReferences(idsAttr.split(','));
+  }
+
+  function handleHashChange() {
+    if (skipNextHashChange) {
+      skipNextHashChange = false;
+      return;
+    }
+    highlightFromCurrentHash();
+  }
+
+  // Click handling is delegated on document, so it stays valid across all
+  // Cite instances; guard against re-binding if this script runs again
+  // (e.g. after a client-side navigation).
+  const win = window as unknown as { __citeHighlightInit?: boolean };
+  if (!win.__citeHighlightInit) {
+    win.__citeHighlightInit = true;
+    document.addEventListener('click', handleCitationClick);
+    window.addEventListener('hashchange', handleHashChange);
+  }
+
+  // Re-apply on initial load and on Astro client-side page transitions.
+  highlightFromCurrentHash();
+  document.addEventListener('astro:page-load', highlightFromCurrentHash);
+</script>
 
 <style>
   .inline-citation {
