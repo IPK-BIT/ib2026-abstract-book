@@ -6,27 +6,66 @@ authors:
   - martin-reinhardt
   - sandra-zaenkert
   - najla-rettberg
+references:
+  - altenhoner_concept_2024
+  - plomin_base4nfdi-toolkit_2025
+  - pid4nfdi_pid4nfdi_2024
+  - baum_ts4nfdi_2024
+  - bohm_survey_2024
+  - baum_terminology_2025
+  - consortium_jupyter4nfdi_2025
+  - manske_base4nfdi_2025
+  - shigapov_terminology_2024
+  - scharfenberg_final_2025 
+  - noauthor_nbi_nodate
+  - noauthor_improved_nodate
+  - noauthor_enabling_2026
+  - noauthor_less_nodate
+  - hausen_23_2025
+  - manske_23_2025
+  - manske_23_2025-1
+  - gonzalez_ocanto_dmp4nfdi_2026
+  - manske_empowering_2025
+  - gonzalez_ocanto_fairagrodmp4nfdi_2026
+  - schrader_workshop_2023
 ---
+import Cite from '@components/Cite.astro';
 
 Long-term sustainability of research data services depends strongly on an active and engaged user community. Understanding user needs early on and continuing to involve users as services mature helps ensure that solutions remain relevant across different scientific domains.
 
-Base4NFDI is a joint initiative of all 26 NFDI consortia, including NFDI4Earth, to establish NFDI-wide basic services for FAIR research data management. The project currently coordinates nine basic services and supports their maturation into sustainable offerings, bringing together multiple scientific communities to build interoperable, cross-disciplinary infrastructure. As part of this work, we are developing a comprehensive framework to guide service development from initial concept through to mature service stages.
+Base4NFDI is a joint initiative of all 26 NFDI consortia, including DataPLANT, NFDI4Biodiversity and FAIRagro, to establish NFDI-wide basic services for FAIR research data management. The project currently coordinates nine basic services and supports their maturation into sustainable offerings, bringing together multiple scientific communities to build interoperable, cross-disciplinary infrastructure. As part of this work, we are developing a comprehensive framework to guide service development from initial concept through to mature service stages.
 
-Recognising the importance of users for sustainability and long-term operation of a RDM service, we have also developed a user engagement component to our framework, comprising all kinds of activities centered around the potential users of a basic service:
+Recognising the importance of users for the sustainability and long-term operation of RDM services, we have developed a User Engagement Framework as part of the broader Base4NFDI service development framework. User engagement is not a one-size-fits-all activity: as a service matures, both its users and the questions addressed through engagement change. During early development, the focus is on understanding communities, identifying requirements and validating service concepts. As services move towards integration and operation, engagement increasingly supports testing in real-world settings, adoption, training, feedback and outreach to new communities.
 
-**Requirement analysis** is used to systematically capture and structure the needs of different stakeholder groups at an early stage of service development. It typically combines qualitative and quantitative methods such as interviews and surveys to ensure that both explicit and implicit requirements are identified. Base4NFDI support services with tooling, survey design, distribution in NFDI consortia and legal aspects in data protection.
+The User Engagement Framework therefore comprises a set of recommended activities that can be applied according to the maturity, needs and context of each Basic Service. Their implementation is accompanied by professional Base4NFDI staff, including designated Service Stewards <Cite id="altenhoner_concept_2024"/>, who support individual services throughout their maturation. They help service teams select and apply appropriate user engagement approaches, connect with relevant communities, and transfer experiences and lessons learned across services. This allows Basic Service teams to concentrate on their core service development while benefiting from professional user engagement support.
 
-**Persona workshops** are collaborative formats in which representative user archetypes are developed based on empirical observations and community input. These personas help translate diverse user needs into more concrete and relatable profiles, making it easier for development teams to prioritise features. Base4NFDI helps service teams with the introduction of the persona concept in new teams, frameworks for creation of persona archetypes and well developed prompts to bring the personas to life using structured templates.
+At the same time, experiences gained from applying the framework are shared across services and used to continuously refine its activities and approaches. The framework thereby establishes a shared learning process: subsequent services benefit from methods and experiences developed with earlier services, while each new application contributes to improving the User Engagement Framework for all Basic Services.
 
-**Success stories** are short, structured descriptions of functionality from the perspective of the user, typically following an agile development approach. They help to iteratively refine requirements and ensure that development remains focused on user value rather than purely technical considerations. Within Base4NFDI, user stories are used to maintain traceability between community needs and implemented service features across development cycles.
+**Requirement analysis** is used to systematically capture and structure the needs of different stakeholder groups at an early stage of service development. It typically combines qualitative and quantitative methods such as interviews and surveys to ensure that both explicit and implicit requirements are identified <Cite id="plomin_base4nfdi-toolkit_2025"/>. Base4NFDI support services with tooling, survey design, distribution in NFDI consortia and legal aspects in data protection. Requirements analysis have been conducted by most services and mark an important step to understand communities needs <Cite id="pid4nfdi_pid4nfdi_2024, baum_ts4nfdi_2024, bohm_survey_2024, baum_terminology_2025, consortium_jupyter4nfdi_2025"/>
 
-**Training materials** are developed to support onboarding and capacity building for users with varying levels of expertise. These materials include tutorials, documentation, examples, and hands-on guides tailored to different scientific contexts. In Base4NFDI, they are considered essential for lowering barriers to adoption and ensuring that services can be effectively used across disciplines. Especially when created and curated along early service stages, users engage early.
+**Persona workshops** are collaborative formats in which representative user archetypes are developed based on empirical observations and community input, including findings from requirement analysis. These personas help translate diverse user needs into concrete and relatable profiles, making it easier for development teams to prioritise features. Base4NFDI supports service teams by introducing the persona concept and providing frameworks for creating persona archetypes <Cite id="manske_base4nfdi_2025"/>. Persona workshops are conducted throughout all phases of the Base4NFDI service model, allowing new personas to emerge and existing ones to evolve based on the latest user engagements. Modern technologies such as LLMs and carefully developed prompts can further bring these personas to life using structured templates.
 
-**Incubator projects** provide a structured environment for co-developing and testing early-stage service ideas in close collaboration with NFDI consortia. These projects allow iterative refinement of functionality under realistic conditions before full-scale deployment. Within Base4NFDI, incubators serve as a key mechanism for validating assumptions and accelerating the transition from concept to production-ready service.
+**Incubator projects** provide a structured environment for co-developing and testing early-stage service ideas in close collaboration with NFDI consortia. Needs and contacts from consortia are the result from requirement analysis activities. These projects allow iterative refinement of functionality under realistic conditions before full-scale deployment. Within Base4NFDI, incubators serve as a key mechanism for validating assumptions and accelerating the transition from concept to production-ready service. Also, the basic service candidates become accessible to users from different consortia <Cite id="shigapov_terminology_2024, scharfenberg_final_2025"/> as well as users outside of the NFDI <Cite id="noauthor_nbi_nodate"/>.
 
-**Marketing and outreach** encompass targeted communication strategies, community engagement activities, and dissemination efforts to increase visibility and adoption of services. These activities help build awareness within and across scientific communities and support the formation of sustainable user bases. Service stewards within Base4NFDI help to make Base services well known in new communities when they reach out on conferences, plenaries and workshops in a broad RDM community.
+**Success stories** are short, structured descriptions of functionality from the perspective of the user, typically following an agile development approach. They help to iteratively refine requirements and ensure that development remains focused on user value rather than purely technical considerations. Within Base4NFDI, success stories are usually based on incubator projects and show the impact of user engagement through such projects. So far 3 basic services became NFDI wide success stories: TS4NFDI <Cite id="noauthor_improved_nodate"/>, DMP4NFDI <Cite id="noauthor_enabling_2026"/> and IAM4NFDI <Cite id="noauthor_less_nodate"/>.
 
-During our talk we would like to present these aspects and show practical examples how services used the engagement to find new users.
+**Training materials** are developed to support onboarding and capacity building for users with varying levels of expertise. These materials include tutorials, documentation, examples, and hands-on guides tailored to different scientific contexts. In Base4NFDI, they are considered essential for lowering barriers to adoption and ensuring that services can be effectively used across disciplines. Especially when created and curated along early service stages, users engage early <Cite id="hausen_23_2025, manske_23_2025, manske_23_2025-1, gonzalez_ocanto_dmp4nfdi_2026"/>. Base4NFDI actively helps services through a task force in all three maturing phases <Cite id="manske_empowering_2025"/>.
+
+**Marketing and outreach** encompass targeted communication strategies, community engagement activities, and dissemination efforts to increase visibility and adoption of services. These activities help build awareness within and across scientific communities and support the formation of sustainable user bases. Especially Service stewards within Base4NFDI help to make Base services well known in new communities when they reach out on conferences, plenaries and workshops in a broad RDM community <Cite id="gonzalez_ocanto_fairagrodmp4nfdi_2026, schrader_workshop_2023"/>. Further strategies are the development of outreach material like Explainer videos, which are professional productions which describe the service. In this way wider user groups can be addressed.
+
+Together, these building blocks form an integrated User Engagement Strategy that accompanies Basic Services throughout their maturation. The activities are not applied in isolation or in a fixed sequence, but build on and reinforce each other according to the needs and maturity of a service. Requirement analyses and persona workshops provide an understanding of users and communities that can inform incubator projects; experiences from these collaborations can be captured in success stories and translated into training and outreach activities. Feedback and new contacts generated through these activities, in turn, provide input for subsequent engagement and service development. In this way, the framework establishes a continuous cycle between understanding users, co-developing with communities, supporting adoption and reaching new user groups.
+
+We see strong potential for this approach to support the development of sustainable research data services in the life sciences and beyond. By sharing our framework, practical experiences and openly available materials, we invite other service providers to adapt these building blocks to their own communities and to contribute their experiences to a shared practice of user-centred service development.
+
+# Acknowledgments
+
+This work has been made possible through the support and funding of the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under project numbers 521453681, 521460392, 521462155, 521463400, 521466146, 521471126, 521473512, 521474032, 521475185 and 521476232. We also wish to thank our colleagues across the NFDI consortia and the broader national and international RDM community. Their ongoing engagement and expertise will continue to be essential as Base4NFDI moves forward in shaping and delivering sustainable, cross-cutting basic services.
+
+## References
+
+import ReferenceList from '@components/ReferenceList.astro';
+
+<ReferenceList references={frontmatter.references} />
 
 ## Authors
 
