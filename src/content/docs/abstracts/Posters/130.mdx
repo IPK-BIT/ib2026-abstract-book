@@ -24,6 +24,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/130/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Research is conducted in a collaborative manner across organisational boundaries and domains to share experimental facilities, technologies and resources. This common set-up for scientific projects is on the same hand challenging for an efficient data life cycle to manage and preserve data and streamline the creation of interoperable and consistent data sets towards trusted dataspaces implemented as FAIR Digital Objects (FDOs) <Cite id="de_smedt_fair_2020" />. Challenges arise from the sovereignty of research units with heterogeneous data management policies, the heterogeneity of research domains with diverse data types, scales, formats and metadata standards. This complexity is amplified further in public-private research partnerships, where the partners have diverse governance systems, data management and IT readiness levels.

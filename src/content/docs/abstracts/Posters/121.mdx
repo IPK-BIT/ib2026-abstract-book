@@ -20,6 +20,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/121/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Longitudinal clinical records offer a direct view of how human health changes over time, yet most computational models compress this information into endpoint-specific risk estimates or single-time biological-age scores. Such summaries are useful, but they do not fully describe where an individual is located in health-state space. To address this gap, we developed VitaFlux, a dynamic state-space framework for modelling aging trajectories from irregular longitudinal clinical data. VitaFlux learns visit-level latent health states by forecasting next-visit clinical representations rather than by directly supervising the model with chronological age or predefined disease labels. This design uses temporal transition as the organizing signal, allowing the model to learn a reusable coordinate system in which health-state position, short-term instability, and longer-term progression can be analysed together.
 
 We applied VitaFlux to the Zhejiang Population Health Cohort, a population-scale longitudinal health-examination resource containing 178,970 individuals and 4,439,390 aligned visits. The model integrated static baseline attributes, historical exposure and event records, repeated clinical measurements, and observation-structure descriptors. Routine health-examination variables were harmonized into a common patient-specific timeline. For each training sample, model inputs were restricted to information available at or before an anchor visit, while supervision was derived only from measurements observed at the subsequent visit. Continuous values, short categorical text, and longer clinical text were encoded through modality-specific representation pipelines and then projected into a shared latent token space. The VitaFlux architecture summarized baseline context, historical measurement profiles, exposure and event histories, and scalar descriptors before using a gated temporal transition module to predict the future latent state. Training optimized contrastive alignment between predicted and observed next-visit representations, together with auxiliary abnormality supervision and temporal smoothness regularization.

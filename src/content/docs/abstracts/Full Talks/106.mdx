@@ -18,6 +18,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/106/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Heterogeneity of data is a global challenge for Research data management. In the field of animal research, this is also a critical aspect that should be preserved and improved, as it has often been neglected in the past. Heterogeneity should therefore not be seen as an obstacle in research data management either, but rather as an opportunity.

@@ -32,6 +32,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/128/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 # Background

@@ -18,9 +18,9 @@ references:
   - shigapov_terminology_2024
   - scharfenberg_final_2025 
   - noauthor_nbi_nodate
-  - noauthor_improved_nodate
+  - noauthor_improved_2026
   - noauthor_enabling_2026
-  - noauthor_less_nodate
+  - noauthor_less_2026
   - hausen_23_2025
   - manske_23_2025
   - manske_23_2025-1
@@ -36,6 +36,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   tagline={frontmatter.hero?.tagline} 
   authors={frontmatter.authors} 
   type="talk" 
+/>
+
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/137/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
 />
 
 import Cite from '@components/Cite.astro';
@@ -56,7 +65,7 @@ At the same time, experiences gained from applying the framework are shared acro
 
 **Incubator projects** provide a structured environment for co-developing and testing early-stage service ideas in close collaboration with NFDI consortia. Needs and contacts from consortia are the result from requirement analysis activities. These projects allow iterative refinement of functionality under realistic conditions before full-scale deployment. Within Base4NFDI, incubators serve as a key mechanism for validating assumptions and accelerating the transition from concept to production-ready service. Also, the basic service candidates become accessible to users from different consortia <Cite id="shigapov_terminology_2024, scharfenberg_final_2025"/> as well as users outside of the NFDI <Cite id="noauthor_nbi_nodate"/>.
 
-**Success stories** are short, structured descriptions of functionality from the perspective of the user, typically following an agile development approach. They help to iteratively refine requirements and ensure that development remains focused on user value rather than purely technical considerations. Within Base4NFDI, success stories are usually based on incubator projects and show the impact of user engagement through such projects. So far 3 basic services became NFDI wide success stories: TS4NFDI <Cite id="noauthor_improved_nodate"/>, DMP4NFDI <Cite id="noauthor_enabling_2026"/> and IAM4NFDI <Cite id="noauthor_less_nodate"/>.
+**Success stories** are short, structured descriptions of functionality from the perspective of the user, typically following an agile development approach. They help to iteratively refine requirements and ensure that development remains focused on user value rather than purely technical considerations. Within Base4NFDI, success stories are usually based on incubator projects and show the impact of user engagement through such projects. So far 3 basic services became NFDI wide success stories: TS4NFDI <Cite id="noauthor_improved_2026"/>, DMP4NFDI <Cite id="noauthor_enabling_2026"/> and IAM4NFDI <Cite id="noauthor_less_2026"/>.
 
 **Training materials** are developed to support onboarding and capacity building for users with varying levels of expertise. These materials include tutorials, documentation, examples, and hands-on guides tailored to different scientific contexts. In Base4NFDI, they are considered essential for lowering barriers to adoption and ensuring that services can be effectively used across disciplines. Especially when created and curated along early service stages, users engage early <Cite id="hausen_23_2025, manske_23_2025, manske_23_2025-1, gonzalez_ocanto_dmp4nfdi_2026"/>. Base4NFDI actively helps services through a task force in all three maturing phases <Cite id="manske_empowering_2025"/>.
 

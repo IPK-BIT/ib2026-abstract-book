@@ -16,6 +16,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/148/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 # Abstract
 
 FAIR metadata standards such as Croissant make individual datasets findable and machine-readable, but they do not by themselves specify how heterogeneous datasets should be integrated into a queryable graph. The step from many well-described files to a semantically coherent knowledge graph still depends on many modelling decisions: which fields denote entities or relations, how identifiers are reconciled, which transformations are applied, and which source components are relevant for a given research purpose. These decisions are often encoded implicitly in bespoke ingestion code, where they are difficult to inspect, reproduce, or govern. We present Biotope, a command-line tool for the BioCypher ecosystem that constructs knowledge graphs from Croissant-described data while recording the construction process itself as version-controlled metadata.

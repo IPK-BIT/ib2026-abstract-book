@@ -27,6 +27,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/133/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 As the volume and complexity of scientific data grows, researchers increasingly rely on custom scripts to analyze and extract findings from these data. While these scripts can be highly efficient, they often do not adhere to the FAIR principles <Cite id="wilkinson_fair_2016" />, making it difficult for others to find, access, and reuse the data and the results. The lack of provenance and of a defined execution environment makes it difficult for others to reproduce results. A recent study analyzing Jupyter Notebooks from biomedical publications revealed that only 1,203 notebooks out of 22,578 Python notebooks defined all software dependencies in a manner that allowed error‑free installation and re‑execution <Cite id="samuel_computational_2024" />.

@@ -87,6 +87,7 @@ const extendedDocsSchema = defineCollection({
 const posterSchema = z.object({
   title: z.string(),
   speaker: z.string().optional(),
+  authors: z.array(z.string()).optional(),
   abstractSlug: z.string().optional(),
 });
 
@@ -98,6 +99,7 @@ const contributionSchema = z.object({
   durationMinutes: z.number().positive(),
   title: z.string(),
   speaker: z.string().optional(),
+  authors: z.array(z.string()).optional(),
   abstractSlug: z.string().optional(),
   type: z.enum(['Keynote', 'Full Talk', 'Poster', 'Panel', 'Break']),
   location: z.string().optional(),

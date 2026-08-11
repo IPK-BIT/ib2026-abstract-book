@@ -16,6 +16,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/123/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 As the capabilities of computer devices have grown, so have their use as tools in scientific research. It is now possible to do wild and wonderful things by relying on computers computers to generate useful results in the support of both research goals, as well as complex analysis required to reach these goals. This is usually done by the use of bespoke research software developed for the specific use case, or repurposing software already tailor made for research, but in new and innovative ways. However, this also means that computer programs play a more central role in the defense of a thesis. As good science require a peer review of the results, the computer programs so central to new computational results must also be readily available to the reviewers. But quite often, thought is not spent on ensuring proper reproducibility of software research.

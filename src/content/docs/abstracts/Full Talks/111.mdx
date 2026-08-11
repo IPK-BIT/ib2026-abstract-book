@@ -31,6 +31,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/111/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 The rapid acceleration of high-throughput technologies in the life sciences has created a paradox: while we are generating more data than ever before, the vast majority of it remains “dark data” defined by Gartner as the “information assets organizations collect, process and store during regular business activities, but generally fail to use for other purposes” <Cite id="forker_informativeness_2023" />. In fields ranging from crop science to systems biology, the value of raw data is strongly dependent on the quality of its surrounding context. Without rigorous metadata, the most sophisticated genomic or phenomic dataset cannot be effectively integrated, compared or reused. This challenge sits at the heart of Research Data Management (RDM), representing the foundational hurdle between raw biological observations and reproducible science. The ISA Wizard <Cite id="arend_improving_2023" /> was developed specifically to bridge this gap, serving as an intuitive, user-centered gateway for researchers. By addressing the very backbone of the data lifecycle, it transforms the complex burden of FAIR (Findable, Accessible, Interoperable, Reusable) data stewardship <Cite id="wilkinson_fair_2016" /> into a streamlined, guided experience for researchers. Rather than treating metadata as a final, bureaucratic step in the publication process, the tool integrates curation into the active research phase. It leverages the Investigation / Study / Assay (ISA) framework <Cite id="rocca-serra_isa_2010" />, a robust and established standard for describing the metadata of biological experiments. However, the true innovation of the ISA Wizard lies in its accessibility. Historically, the technical barriers associated with metadata syntax such as the details of ISA-Tab or the structural requirements of ISA-JSON have acted as a deterrent for scientists. By utilizing a survey-like interface, the wizard effectively abstracts these complexities. It guides the user through a logical progression of questions, ensuring that the resulting metadata is aligned with established community ontologies and minimum information standards.

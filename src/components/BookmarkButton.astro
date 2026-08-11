@@ -1,0 +1,118 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  tagline?: string;
+  authors?: string[]; // author slugs, e.g. "manuel-feser"
+  compact?: boolean;
+}
+
+const { id, title, tagline, authors = [], compact = false } = Astro.props;
+
+const formatAuthorName = (slug: string) => {
+  return slug
+    // .split('-')
+    // .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    // .join(' ');
+};
+
+const fullTitle = tagline ? `${title}: ${tagline}` : title;
+const formattedAuthors = authors.map(formatAuthorName).join(', ');
+---
+
+<div class="highlight-wrapper">
+  <button
+    class="highlight-toggle"
+    data-highlight-id={id}
+    data-title={fullTitle}
+    data-authors={formattedAuthors}
+    aria-pressed="false"
+    aria-label="Save this abstract to My Highlights"
+    type="button"
+  >
+    <svg class="star" viewBox="0 0 24 24" aria-hidden="true">
+      <path 
+        d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.8l7.1-.7z" 
+      />
+    </svg>
+    {!compact && <span class="label">Save</span>}
+  </button>
+</div>
+
+<style>
+  .highlight-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .highlight-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: 1px solid var(--sl-color-gray-5, #ccc);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    color: var(--sl-color-gray-2, #444);
+    font-size: 0.85rem;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  
+  .highlight-toggle:hover { 
+    border-color: var(--sl-color-accent, #b45309); 
+  }
+
+  .highlight-toggle .star { 
+    width: 1rem; 
+    height: 1rem; 
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .highlight-toggle.is-saved .star {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  .highlight-toggle.is-saved {
+    color: var(--sl-color-accent, #b45309);
+    border-color: var(--sl-color-accent, #b45309);
+  }
+</style>
+
+<script>
+  import {
+    isHighlighted,
+    toggleHighlight,
+    HIGHLIGHTS_EVENT,
+  } from '../scripts/highlights-store.js';
+
+  function syncButton(btn: HTMLElement) {
+    const id = btn.dataset.highlightId;
+    const saved = isHighlighted(id);
+    btn.classList.toggle('is-saved', saved);
+    btn.setAttribute('aria-pressed', String(saved));
+    const label = btn.querySelector('.label');
+    if (label) label.textContent = saved ? 'Saved' : 'Save';
+  }
+
+  function initButtons() {
+    document.querySelectorAll<HTMLElement>('.highlight-toggle').forEach((btn) => {
+      syncButton(btn);
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => {
+        const { highlightId: id, title, authors } = btn.dataset;
+        toggleHighlight(id, title, authors ? { authors } : {});
+      });
+    });
+  }
+
+  initButtons();
+  window.addEventListener(HIGHLIGHTS_EVENT, initButtons);
+  document.addEventListener('astro:page-load', initButtons);
+</script>

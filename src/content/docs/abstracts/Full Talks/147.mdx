@@ -24,6 +24,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/147/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Vast quantities of mutli-quality, specialised datasets exist across various sub-fields in life sciences, yet the nature of these resources prevents researchers from utilizing the full explanatory power when combined. For instance, biodiversity knowledge suffers from several shortfalls including the Raunkiæran and Eltonian <Cite id="hortal_seven_2015"/>, that are primarily focussed on the lack of connected information on species traits, interactions, and their ecological functions. Knowledge graphs represent heterogeneous entities and relationships in a semantically rich, machine-readable and, if planned well, in a machine-understandable AI-ready form, offering a feasible solution. 

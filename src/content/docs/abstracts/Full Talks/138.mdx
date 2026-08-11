@@ -21,6 +21,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/138/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Database scientists have long criticized the use of spreadsheets for scientific data management because spreadsheets lack amongst others explicit schemas, transactions, and declarative query mechanisms <Cite id="panko_what_1998, karr_objtables_2020, bendre_towards_2018" />. Nevertheless, spreadsheets remain among the most widely used tools for research data collection, transformation, annotation, and exchange across many scientific disciplines. Since Lotus 1-2-3, the first spreadsheet system that also considered the spreadsheet as a data collection, continuous improvements in usability and flexibility have further increased their attractiveness as temporary and collaborative data stores.

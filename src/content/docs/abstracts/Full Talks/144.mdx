@@ -20,6 +20,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/144/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Proteins play a central role in translating genetic information encoded in genomes into molecular functions and phenotypic traits. Genetic variation can influence protein sequence, structure, stability, localization, abundance and interaction specificity, thereby shaping biological diversity within a species, yet the systematic characterization of how naturally occurring allelic diversity propagates through protein structural space remains a critical and largely unaddressed challenge in plant genomics. Population genomic approaches can identify protein variants across accessions, but they provide limited mechanistic insight into downstream functional consequences. Bridging this gap requires frameworks that integrate genomic, proteomic, and structural information at scale.

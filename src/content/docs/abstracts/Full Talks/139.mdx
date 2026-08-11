@@ -23,6 +23,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/139/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 FAIRagro is one of the consortia within the German National Research Data Infrastructure (NFDI). The consortium brings together a broad range of Research Data Infrastructures (RDIs), scientific institutions, and domain experts covering diverse domains such as plant science, soil science, biodiversity research, agricultural systems, and environmental monitoring. <Cite id="specka_fairagro_2023"/> A central objective of FAIRagro is to enhance the findability, accessibility, interoperability, and reusability (FAIRness) of research data across heterogeneous infrastructures and disciplinary boundaries. In order to achieve this, FAIRagro develops harmonised metadata standards, technical integration workflows, and domain-specific FAIR Digital Object approaches. Within this context, legal metadata play an increasingly important role, as transparent information about licensing conditions, access restrictions, and regulatory obligations is essential for enabling legally compliant and FAIR reuse of agrosystems data.

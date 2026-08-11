@@ -32,6 +32,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/136/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Scientific data management increasingly requires research outputs to be documented not only as data files but as reusable digital objects whose content, context, and provenance can be interpreted by both humans and machines. The FAIR principles articulate this requirement by emphasizing findability, accessibility, interoperability, and reusability, including machine-actionable metadata and detailed provenance as conditions for future discovery, assessment, and reuse <Cite id="wilkinson_fair_2016"/>. Provenance is therefore central to reproducible and reusable research, because it records how data products were generated, transformed, combined, and interpreted across experimental or computational processes <Cite id="herschel_survey_2017"/>. At the same time, constructing high-quality provenance remains difficult in practice. Provenance is often handled across several representation levels, from conceptual provenance models to tabular records, graph-based semantic representations, and exchange serializations such as JSON or XML. These representation levels serve different technical and human purposes.

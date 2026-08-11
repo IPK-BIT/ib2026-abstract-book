@@ -14,6 +14,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/126/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Mass spectrometry–based metabolomics is widely used to investigate plant metabolism, biochemical pathways, and cellular responses to environmental and developmental changes. In particular, tandem mass spectrometry (MS/MS) has become one of the central technologies for detecting and characterizing small molecules in complex biological samples. However, despite major advances in instrumentation and computational analysis methods, interpreting metabolomics data remains a significant challenge. One of the major bottlenecks in metabolomics workflows is the identification of metabolites from MS/MS spectra and the integration of these metabolites into biochemical and metabolic network contexts.
 
 Current metabolomics workflows typically rely on matching experimentally measured MS/MS spectra against spectral reference libraries such as MassBank or GNPS. If a metabolite can be identified, its chemical structure and associated identifiers can then be integrated into genome-scale metabolic networks and pathway analysis pipelines. However, existing spectral libraries cover only a limited fraction of known metabolites, while many experimentally observed spectra remain unannotated. As a result, large amounts of metabolomics data cannot be fully interpreted using conventional metabolite-centric approaches. Furthermore, metabolite identification is often labor-intensive, error-prone, and difficult to scale to increasingly large metabolomics datasets.

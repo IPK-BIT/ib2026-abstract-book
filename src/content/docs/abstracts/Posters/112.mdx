@@ -35,6 +35,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/112/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 The rapid increase in the volume, heterogeneity, and complexity of plant science research data requires robust research data management (RDM) and data publication infrastructures that support FAIR data principles <Cite id="wilkinson_fair_2016" />, metadata standards, and scalable submission workflows. While numerous domain-specific repositories exist for selected data types, many datasets generated in the plant sciences remain difficult to publish, annotate, and integrate into reusable data ecosystems due to volume, delayed and fragmented submission workflows and inconsistent metadata practices. The de.NBI service and GFBio data center e!DAL-PGP <Cite id="arend_-premise_2020" /> addresses this challenge by providing a repository for long-term resolvable, DOI features publication and exposing of heterogeneous plant research datasets for machine actionable access or harvesting. However, the current submission infrastructure is based on legacy desktop clients requiring platform-specific deployment and maintenance, thereby limiting usability, and long-term sustainability.

@@ -13,6 +13,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/146/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Data sets may be associated with various legal details, such as licence information or usage restrictions. Standards have now been established for the former, including for integration into RO-Crates. This is not yet the case for usage restrictions and further legal information.
 
 Such information may, for example, relate to the entities authorised to use a dataset, such as a restriction to specific institutions. Until now, such restrictions have been enforced manually, for instance by sending an email request to a repository. However, this enforcement could also be carried out more quickly via the infrastructure.

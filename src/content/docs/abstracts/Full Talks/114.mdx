@@ -24,6 +24,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/114/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 The establishment of the National Research Data Infrastructure (NFDI) represents a cultural change in how scientific data is managed, preserved, and utilized across Germany. Central to the success of this initiative is the transition of consortia from project-based entities into reliable, long-term providers for different service areas. However, reliability is not an inherent property of infrastructure; it is the result of rigorous, transparent, and continuous Quality Assurance (QA). While the NFDI community has made significant strides in defining Data Quality through the application of the FAIR (Findable, Accessible, Interoperable, Reusable) principles <Cite id="wilkinson_fair_2016" />, there remains a critical gap in the systematic Quality Assessment for its other services. This presentation addresses that gap by detailing the comprehensive Quality Management (QM) framework developed within the NFDI4Biodiversity consortium.

@@ -31,6 +31,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/132/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Since their publication a decade ago, the FAIR guiding principles have increasingly shaped Research Data Management (RDM), particularly in how research outputs are described, shared, and reused <Cite id="wilkinson_fair_2016"/>. Their influence has also informed more technical concepts such as FAIR Digital Objects (FDOs), which aim to represent research data and associated metadata in a persistently identifiable, semantically described, and machine-actionable form <Cite id="de_smedt_fair_2020"/>. If adopted correctly, these concepts can boost the long-term value of research data by enabling automated reuse and integration in future scientific contexts. However, this does not come without cost, as it requires a reliable and technically sound transfer of knowledge from researchers and research-support personnel into these highly formalized data and metadata structures.

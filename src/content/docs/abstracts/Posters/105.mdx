@@ -18,6 +18,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/105/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 # Background
 
 Sequencing data underpins the generation of a wide range of so-called OMICS data types. Thereby, OMICS refers to the comprehensive characterization and quantification of biological entities using high-throughput technologies. Next-generation sequencing (NGS) represents a key high-throughput technology and produces massive volumes of data. Core molecular layers, such as the genome and transcriptome, are routinely analysed using sequencing approaches. Beyond these layers, numerous sequencing-based protocols exist to characterize regulatory mechanisms and functional interactions, for example, by quantifying chemical modifications of DNA and RNA. Almost all NGS applications generate large data volumes per sample, ranging from gigabytes to terabytes. Moreover, different sequencing technologies yield data with distinct characteristics, often requiring specialized, technology-specific processing pipelines to be executed within high-performance computing environments.

@@ -19,6 +19,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/102/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Plant responses to fungal infections involve coordinated changes in gene activity and metabolism, but linking these aspects across different genotypes and time remains difficult. Hordeum vulgare (barley) can produce diterpenoid defense compounds with anti-fungal properties <Cite id="liu_hordedane_2024"/>. In this study, using the pathogenic fungus Bipolaris sorokiniana, we examine how specific genotypes of the barley line Golden Promise respond to fungal root infection at different time points. This includes the wild type and diterpene pathway mutants, sampled at 2, 4, and 6 days after infection under both control and infected conditions.

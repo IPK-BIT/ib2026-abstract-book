@@ -12,6 +12,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/131/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Bioimaging has become a central modality in the life sciences, spanning applications from molecular and cellular biology to plant phenotyping, clinical research, and increasingly AI-driven analysis. Yet despite major advances in imaging technologies, the surrounding data ecosystem remains highly fragmented. Data are often stored in proprietary formats, metadata practices vary substantially between communities, and interoperability across infrastructures, tools, and computational workflows remains difficult.
 
 Over the past two decades, the bioimaging community has developed a progressively broader set of open standards and shared infrastructure to address these challenges. Beginning with the Open Microscopy Environment (OME) data model and OME-TIFF, and continuing through newer cloud-oriented approaches such as OME-Zarr, these efforts have increasingly shifted from isolated file format development toward a wider ecosystem of specifications, reference implementations, governance processes, and community coordination.

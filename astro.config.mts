@@ -1,21 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi'
 import { unified } from '@astrojs/markdown-remark'; 
 import rehypeSlug from 'rehype-slug';
 import { rehypeAutolink } from './plugins/rehype-autolink';
-import tailwindcss from '@tailwindcss/vite'; // <-- Modern Tailwind v4 Vite compiler plugin
+import tailwindcss from '@tailwindcss/vite';
 import starlightLinksValidator from 'starlight-links-validator'
 import starlightImageZoom from 'starlight-image-zoom'
 import icon from "astro-icon";
+import starlightUiTweaks from 'starlight-ui-tweaks';
 
 import react from '@astrojs/react';
 
-// Safely execute the plugin helper and handle typing mismatches after upgrades
 const extraRehypePlugins = /** @type {any} */ (rehypeAutolink()) || [];
 
-// https://astro.build/config
 export default defineConfig({
     base: '/ib2026-abstract-book',
     integrations: [
@@ -24,7 +22,6 @@ export default defineConfig({
             title: 'nfdi4ls',
             favicon: "favicon.png",
             customCss: [
-                // Relative path to your custom CSS file
                 './src/styles/tailwind.css',
                 './src/styles/custom.css',
             ],
@@ -40,7 +37,12 @@ export default defineConfig({
             ],
             plugins: [
                 starlightLinksValidator(),
-                starlightImageZoom()
+                starlightImageZoom(),
+                starlightUiTweaks({
+                    navbarLinks: [
+                        { label: 'My Bookmarks', href: '/ib2026-abstract-book/bookmarks/'}
+                    ]
+                }),
             ],
             sidebar: [
                 {
@@ -59,17 +61,15 @@ export default defineConfig({
             ],
             expressiveCode: {
                 defaultProps: {
-                    // Enable wrap for specific languages
                     overridesByLang: {
                         'txt,md,bash': { wrap: true },
                     },
                 },
             },
         }),
-        react() // Old tailwind() integration completely removed from here
+        react()
     ],
     markdown: {
-        // Leverages the modern pluggable markdown pipeline config structure
         processor: unified({
             rehypePlugins: [
                 rehypeSlug, 
@@ -79,10 +79,9 @@ export default defineConfig({
     },
     vite: {
         plugins: [
-            tailwindcss() // <-- Handles Tailwind v4 compilation cleanly inside Vite
+            tailwindcss()
         ],
         resolve: {
-            // Forces Vite to process CSS assets imported by tailwind / starlight packages across all environments
             noExternal: ['@astrojs/starlight-tailwind'],
         },
     },

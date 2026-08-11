@@ -18,6 +18,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/115/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Data stewardship plays a central role in translating the NFDI endeavor of making research data FAIR into everyday scientific practice. Within DataPLANT, stewardship activities initially emerged from a data-centric perspective focused on supporting researchers close to the laboratory bench: guiding and improving metadata annotation of experimental workflows and helping researchers transform daily routines into FAIR research data.
 
 Over time, this role evolved beyond technical data management support. Data stewards engage as mediators between research practice and infrastructure development, translators between community needs and technical implementation, trainers for researchers with diverse levels of data literacy and AI-readiness, and advocates for FAIR and digital research practices. Through workshops, hands-on support, and continuous interaction with researchers, data stewardship activities identified practical gaps, such as missing annotation concepts for various data types, missing ontology terms, missing functionalities, usability barriers, and limitations in existing workflows and tooling. This feedback loop directly informs the development and adoption of DataPLANT concepts, tools, and services.

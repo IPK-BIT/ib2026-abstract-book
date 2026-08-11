@@ -32,6 +32,7 @@
     "starlight-image-zoom": "^0.15.0",
     "starlight-links-validator": "^0.25.2",
     "starlight-openapi": "^0.24.0",
+    "starlight-ui-tweaks": "^0.2.2",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

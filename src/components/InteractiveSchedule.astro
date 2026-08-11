@@ -2,6 +2,8 @@
 import { getEntry } from 'astro:content';
 import { Tabs, TabItem, Badge } from '@astrojs/starlight/components';
 
+import BookmarkButton from './BookmarkButton.astro';
+
 const programEntry = await getEntry('schedule', 'program');
 const program = programEntry?.data;
 
@@ -116,7 +118,15 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
                             <p class="contrib-speaker">👤 {contrib.speaker}</p>
                           )}
                           {!contrib.posters && contrib.abstractSlug && (
-                            <a href={`/${contrib.abstractSlug}`} class="abstract-link">Read Abstract →</a>
+                            <div class="contrib-actions">
+                              <a href={`/${contrib.abstractSlug}`} class="abstract-link">Read Abstract →</a>
+                              <BookmarkButton 
+                                id={`/${contrib.abstractSlug}`} 
+                                title={contrib.title} 
+                                authors={contrib.authors ? contrib.authors : contrib.speaker ? [contrib.speaker]:[]} 
+                                compact={true} 
+                              />
+                            </div>
                           )}
 
                           {/* Poster Pitches case: several posters bundled into one slot */}
@@ -129,9 +139,19 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
                                     {poster.speaker && (
                                       <span class="poster-item-speaker">👤 {poster.speaker}</span>
                                     )}
-                                    {poster.abstractSlug && (
-                                      <a href={`/${poster.abstractSlug}`} class="abstract-link poster-item-link">Read Abstract →</a>
-                                    )}
+                                    <div class="poster-item-actions">
+                                      {poster.abstractSlug && (
+                                        <BookmarkButton 
+                                          id={`/${poster.abstractSlug}`} 
+                                          title={poster.title} 
+                                          authors={poster.authors ? poster.authors : poster.speaker ? [poster.speaker]:[]} 
+                                          compact={true} 
+                                        />
+                                      )}
+                                      {poster.abstractSlug && (
+                                        <a href={`/${poster.abstractSlug}`} class="abstract-link poster-item-link">Read Abstract →</a>
+                                      )}
+                                    </div>
                                   </div>
                                 </li>
                               ))}
@@ -417,6 +437,7 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
   }
 
   .abstract-link {
+    white-space: nowrap;
     font-size: var(--sl-text-xs);
     color: var(--sl-color-text-accent);
     text-decoration: none;
@@ -476,5 +497,19 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
     flex-shrink: 0;
     white-space: nowrap;
     font-size: 0.65rem;
+  }
+
+  .contrib-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .poster-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
   }
 </style>

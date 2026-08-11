@@ -15,6 +15,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/116/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 # Introduction
 
 In large-scale research consortia involving collaborations between academia and industry, the ability to find, reuse, and integrate experimental data depends critically on the availability of high-quality, standardised metadata. In such settings, experimental researchers are increasingly expected to document their data in accordance with community standards before publication, as a prerequisite for internal collaboration and long-term reuse. However, metadata documentation is routinely relegated to the bottom of researchers’ priority lists not only because it is a labour-intensive and cognitively demanding activity, but also because its purpose and value are unclear to researchers compared to the effort it requires. Metadata documentation calls for familiarisation with standards through extensive reading of often difficult-to-interpret material, mapping complex experimental designs onto subjective metadata models, and the repetitive manual entry of metadata values. Since researchers perceive future data reuse as uncertain, pre-emptive metadata documentation is often seen as not being worth the trouble. This leads to standard metadata being frequently forgotten, left incomplete, or inconsistent, limiting the potential for data-driven collaboration in transdisciplinary research environments.

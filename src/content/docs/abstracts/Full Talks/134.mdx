@@ -28,6 +28,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/134/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 In the current era of big data and artificial intelligence, the Findability, Accessibility, Interoperability, and Reusability (FAIR) of datasets are foundational requirements for scientific progress. However, translating high-level FAIR principles into universal interpretable indicators remains a significant challenge. This is particularly evident in the multidisciplinary agrosystem domain, where decentralized Research Data Infrastructures (RDIs) were implemented for very specific use cases or demands. This often leads to fragmented FAIR properties that hinders overarching data discovery and integration. This is exacerbated by incomplete cataloguing of domain specific repositories. For instance, a considerable number of specialized German agrosystem RDIs are entirely absent from global registries, like re3data. To bridge these gaps, we propose a machine readable property catalogue that systematically documents repository features, including their core FAIRness properties. Complementing existing automated assessment tools <Cite id="azevedo_analysis_2025, candela_fair_2024, devaraju_f-uji_2020, gaignard_fair-checker_2023" />, this talk will present a collaborative methodology with actively including RDI operators to complement their infrastructure’s metadata beyond what is currently registered in re3data, presenting the final dataset in the form of an interactively explorable RDI inventory.

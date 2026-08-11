@@ -3,6 +3,7 @@
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
+@import "starlight-ui-tweaks/styles";
 
 :root {
   --color-accent-200: #a3d5c6;

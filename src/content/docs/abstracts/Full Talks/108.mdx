@@ -23,6 +23,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/108/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 RNA sequencing (RNA-seq) has become a standard technology for transcriptome profiling across a broad range of biological fields. Despite continuous improvements in sequencing technologies and analysis methods, insufficient sample quality and technical artifacts remain major sources of bias in downstream analyses such as differential expression, co-expression analysis, or transcript discovery. Early identification of problematic samples is therefore essential to ensure reproducibility and biological interpretability. However, comprehensive RNA-seq quality control (QC) workflows, that cover more than sequencing quality, often require substantial bioinformatical or statistical expertise, involve multiple independent tools, and frequently lack standardized, easily interpretable reporting interfaces <Cite id="conesa_survey_2016, wang_rna-seq_2009"/>.

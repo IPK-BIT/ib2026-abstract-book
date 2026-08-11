@@ -16,6 +16,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="talk" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/full-talks/119/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Deciphering how nucleotide sequences encode biological function remains a central challenge in genomics and synthetic biology. Recent foundation models have shown that DNA and RNA can be treated as learnable languages, but most generative nucleotide models are conditioned mainly on local sequence context, prefixes, or a limited set of structured labels. Such inputs are useful for continuation and reconstruction, yet they provide only a restricted interface for expressing complex biological intentions. Natural language offers a more flexible way to specify gene-associated function, species context, and design goals. We therefore developed GenNA, a generative nucleotide foundation model that directly integrates natural-language annotations with nucleotide sequence generation.
 
 GenNA is a decoder-only Transformer with approximately 3.6 billion parameters. It was pretrained from scratch on a multimodal corpus derived from NCBI RefSeq, covering 2,221 eukaryotic species and approximately 416 billion characters. Each training example combines nucleotide sequence, natural-language functional descriptions, species information, gene identifiers, and XML-style structural tags. A unified cross-modal byte-pair encoding tokenizer maps all of these elements into one shared vocabulary, allowing the model to learn their relationships through a single causal language-modeling objective. In this framework, text is not an external label added after generation; it is part of the same autoregressive context used to predict every subsequent token.

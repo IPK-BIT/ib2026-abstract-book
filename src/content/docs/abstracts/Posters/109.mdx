@@ -23,6 +23,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/109/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 import Cite from '@components/Cite.astro';
 
 Comparative transcriptomics uses bulk RNA expression data to relate gene activity across species, tissues, developmental stages and experimental conditions. Its interpretation depends on data layers that are often produced separately: count and normalized expression matrices, sample annotations, gene descriptions, Gene Ontology terms, protein domains, transcription-factor classifications, orthogroup assignments, sequence files and phylogenetic trees. These layers are commonly inspected through scripts, spreadsheets or static plots. The result is a bottleneck between data generation and biological interpretation: candidate genes detected in an expression matrix must be linked manually to functional annotations, tissue metadata, orthologous genes and phylogenetic context before they can be evaluated across datasets.

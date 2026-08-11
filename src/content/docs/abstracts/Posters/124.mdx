@@ -20,6 +20,15 @@ import ZoteroMetadata from '@components/ZoteroMetadata.astro';
   type="poster" 
 />
 
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/124/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
 Research data management (RDM) service landscapes are becoming increasingly diverse. Across research communities, infrastructures, consortia, and institutions, many services, tools, training formats, guidance materials, and community-driven solutions already exist or are currently being developed. However, the mere existence of services does not automatically lead to their use. Results from community needs assessments and ongoing service coordination activities highlight a persistent gap between technical service development and user adoption: services may remain difficult to discover, insufficiently explained, poorly linked to practical guidance, or disconnected from the everyday workflows of researchers and institutions.
 
 This contribution presents an emerging FAIRagro concept for Service–Community Integration. It addresses the question of how RDM services and tools can move from isolated development or single-service promotion towards coordinated, user-oriented implementation along supporting the researcher journey. The concept builds on ongoing FAIRagro activities, including service meetings, needs analyses, the development of service portfolio management structures, and first approaches to documenting and coordinating services in a shared service pipeline.
