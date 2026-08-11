@@ -1,5 +1,7 @@
 ---
+// src/components/ReferenceCard.astro (or your respective component file name)
 import { getEntry } from 'astro:content';
+import citations from '../data/citations.json'; // 1. Import build-time citation counts
 
 interface Props {
   id: string;
@@ -29,6 +31,9 @@ if (doi) {
   hrefLink = url;
   displayLinkText = url;
 }
+
+// --- Lookup Citation Count from Build Cache ---
+const citationCount = (cleanDoi && citations[cleanDoi as keyof typeof citations]) ? citations[cleanDoi as keyof typeof citations] : 0;
 
 // --- Elsevier Vancouver Author Formatter ---
 function formatVancouverAuthors(authorStr: string | undefined): string {
@@ -108,62 +113,20 @@ const cleanYear = year ? year.trim() : '';
           href={`https://doi.org/${cleanDoi}`}
           target="_blank" 
           rel="noopener noreferrer" 
-          class="openalex-badge loading" 
-          data-doi={cleanDoi}
-          title="Loading citation metrics from OpenAlex..."
+          class="openalex-badge" 
+          title="View citation metrics on OpenAlex"
         >
           <svg class="openalex-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="12"></line>
             <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
-          <span class="badge-text">Loading...</span>
+          <span class="badge-text">Cited by <strong>{citationCount}</strong></span>
         </a>
       )}
     </div>
   </span>
 </div>
-
-<script>
-  async function initOpenAlexBadges() {
-    const badges = document.querySelectorAll('.openalex-badge.loading');
-    
-    badges.forEach(async (badge) => {
-      const doi = badge.getAttribute('data-doi');
-      if (!doi) return;
-
-      try {
-        const response = await fetch(`https://api.openalex.org/works/https://doi.org/${doi}`);
-        if (!response.ok) {
-          badge.remove(); // Remove badge if lookup fails
-          return;
-        }
-
-        const data = await response.json();
-        const count = data.cited_by_count ?? 0;
-        const workUrl = data.id;
-
-        if (workUrl) {
-          badge.setAttribute('href', workUrl);
-        }
-        
-        const textSpan = badge.querySelector('.badge-text');
-        if (textSpan) {
-          textSpan.innerHTML = `Cited by <strong>${count}</strong>`;
-        }
-        
-        badge.setAttribute('title', 'View citation metrics on OpenAlex');
-        badge.classList.remove('loading');
-      } catch (err) {
-        badge.remove();
-      }
-    });
-  }
-
-  // Run on initial load and support view transitions if enabled
-  initOpenAlexBadges();
-  document.addEventListener('astro:after-swap', initOpenAlexBadges);
-</script>
 
 <style>
   .reference-card {
@@ -221,21 +184,12 @@ const cleanYear = year ? year.trim() : '';
     border: 1px solid var(--sl-color-gray-5);
     transition: background-color 0.2s ease;
   }
-  .openalex-badge.loading {
-    opacity: 0.6;
-    animation: pulse 1.5s infinite;
-  }
-  .openalex-badge:not(.loading):hover {
+  .openalex-badge:hover {
     background-color: var(--sl-color-gray-5);
     color: var(--sl-color-white);
   }
   .openalex-icon {
     opacity: 0.7;
-  }
-  @keyframes pulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.4; }
   }
   .reference-card:target,
   .reference-card.is-cited-target {
