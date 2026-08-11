@@ -7,6 +7,14 @@ authors:
   - guangshuo-cao
   - ming-chen
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 Deciphering how nucleotide sequences encode biological function remains a central challenge in genomics and synthetic biology. Recent foundation models have shown that DNA and RNA can be treated as learnable languages, but most generative nucleotide models are conditioned mainly on local sequence context, prefixes, or a limited set of structured labels. Such inputs are useful for continuation and reconstruction, yet they provide only a restricted interface for expressing complex biological intentions. Natural language offers a more flexible way to specify gene-associated function, species context, and design goals. We therefore developed GenNA, a generative nucleotide foundation model that directly integrates natural-language annotations with nucleotide sequence generation.
 

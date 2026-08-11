@@ -7,6 +7,14 @@ hero:
 authors:
   - keywan-hassani-pak
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="keynote" 
+/>
 
 Keywan Hassani-Pak, Head of Bioinformatics at Rothamsted Research and Founder/CEO of KnetMiner Ltd., has over 15 years of experience in integrative bioinformatics. His work focuses on turning massive, fragmented multi-omics data into actionable discoveries for crop improvement. He is the lead architect of KnetMiner, an open-source gene discovery platform that uses advanced knowledge graphs and AI to scan millions of relationships in biological databases and literature. This software allows researchers to intuitively explore hidden genetic networks behind complex plant traits. Dr. Hassani-Pak advocates for evidence-based hypothesis generation, integrating FAIR data principles with modern AI to accelerate candidate gene discovery and drive sustainable agriculture innovations.
 

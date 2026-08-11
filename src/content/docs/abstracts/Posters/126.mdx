@@ -5,6 +5,14 @@ authors:
   - rene-meier
   - steffen-neumann
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Mass spectrometry–based metabolomics is widely used to investigate plant metabolism, biochemical pathways, and cellular responses to environmental and developmental changes. In particular, tandem mass spectrometry (MS/MS) has become one of the central technologies for detecting and characterizing small molecules in complex biological samples. However, despite major advances in instrumentation and computational analysis methods, interpreting metabolomics data remains a significant challenge. One of the major bottlenecks in metabolomics workflows is the identification of metabolites from MS/MS spectra and the integration of these metabolites into biochemical and metabolic network contexts.
 

@@ -6,6 +6,14 @@ authors:
   - ayorinde-afolayan
   - markus-goeker
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 The Type (Strain) Genome Server (TYGS) is a widely used high-throughput web platform established in 2019 to enable genome-based prokaryote taxonomy without requiring specialist knowledge. TYGS provides users with comprehensive genomic, taxonomic, and nomenclatural information derived from submitted genome sequences and offers continuously updated access to type (strain) data, nomenclature, synonymy, and taxonomic literature.
 

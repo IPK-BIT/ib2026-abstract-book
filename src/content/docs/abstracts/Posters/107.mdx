@@ -8,6 +8,14 @@ authors:
   - klaus-getzlaff
   - marcus-schmidt
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 The German National Research Data Infrastructure (NFDI) aims to break down domain-specific silos to build a FAIR data ecosystem. This poster presents the operational framework of the Geo-Chem-Life Science Helpdesk Cluster—a collaborative initiative between the ten consortia DataPlant, FAIRagro, GHGA, NFDI4Biodiversity, NFDI4BIOIMAGE, NFDI4Chem, NFDI4Earth, NFDI4Health, NFDI4Immuno, NFDI4Microbiota.
 

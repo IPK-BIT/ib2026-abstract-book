@@ -14,6 +14,14 @@ references:
   - benjamini_controlling_1995
   - emms_orthofinder_2019
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 import Cite from '@components/Cite.astro';
 

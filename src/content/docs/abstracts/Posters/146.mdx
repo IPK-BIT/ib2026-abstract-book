@@ -4,6 +4,14 @@ authors:
   - constantin-bress
   - carmen-scheuner
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Data sets may be associated with various legal details, such as licence information or usage restrictions. Standards have now been established for the former, including for integration into RO-Crates. This is not yet the case for usage restrictions and further legal information.
 

@@ -3,6 +3,14 @@ title: What Is Your Favourite Bird? Using Biodiversity Data to Teach Data Litera
 authors:
   - sarah-bueker
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 *What is your favourite bird?* At first glance, this question may seem unexpected and confusing, but in our experience, it is a highly effective entry point into a central challenge of bioinformatics and data science education: how can we teach data competences in a way that is accessible, memorable, interdisciplinary, and relevant to researchers with different background? 
 

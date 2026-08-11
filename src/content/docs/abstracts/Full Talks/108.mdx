@@ -14,6 +14,14 @@ references:
   - anaconda_inc_conda_nodate
   - wilkinson_fair_2016
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 import Cite from '@components/Cite.astro';
 

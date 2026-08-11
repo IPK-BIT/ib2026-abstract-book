@@ -11,6 +11,14 @@ references:
   - barrio-hernandez_clustering_2023
   - jayakodi_structural_2024
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 import Cite from '@components/Cite.astro';
 

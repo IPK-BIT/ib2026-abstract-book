@@ -14,29 +14,40 @@ if (!entry) return null;
 // Destructure the raw data fields, explicitly including doi
 const { type, author, title, journal, year, volume, pages, publisher, url, doi } = entry.data;
 
+// --- Link & Fallback Logic ---
+let hrefLink = '';
+let displayLinkText = '';
+let isDoi = false;
+let cleanDoi = '';
+
+if (doi) {
+  cleanDoi = doi.replace(/^https?:\/\/doi\.org\//, '');
+  hrefLink = `https://doi.org/${cleanDoi}`;
+  displayLinkText = `doi:${cleanDoi}`;
+  isDoi = true;
+} else if (url) {
+  hrefLink = url;
+  displayLinkText = url;
+}
+
 // --- Elsevier Vancouver Author Formatter ---
 function formatVancouverAuthors(authorStr: string | undefined): string {
   if (!authorStr) return '';
   
-  // Split authors separated by BibTeX 'and'
   const authors = authorStr.split(/\s+and\s+/i).map(name => name.trim());
   
   const formattedArray = authors.map(name => {
-    // Escape hatch for institutional/literal authors wrapped in braces (e.g., {Anaconda Inc.})
     if (name.startsWith('{') && name.endsWith('}')) {
-      // Remove all leading and trailing curly braces and return as-is
       return name.replace(/^\{+|\}+$/g, '').trim();
     }
 
     if (name.includes(',')) {
-      // Handles "LastName, FirstName MiddleName"
       const parts = name.split(',');
       const lastName = parts[0].trim();
       const firstNames = parts[1].trim().split(/\s+/);
       const initials = firstNames.map(n => n[0].toUpperCase()).join('');
       return `${lastName} ${initials}`;
     } else {
-      // Handles "FirstName MiddleName LastName"
       const parts = name.split(/\s+/);
       if (parts.length === 1) return parts[0];
       const lastName = parts.pop();
@@ -45,7 +56,6 @@ function formatVancouverAuthors(authorStr: string | undefined): string {
     }
   });
 
-  // Elsevier rule: If more than 6 authors, list first 3 followed by et al.
   if (formattedArray.length > 6) {
     return formattedArray.slice(0, 3).join(', ') + ', et al';
   }
@@ -56,22 +66,6 @@ function formatVancouverAuthors(authorStr: string | undefined): string {
 const formattedAuthors = formatVancouverAuthors(author);
 const cleanTitle = title ? title.replace(/[\{\}]/g, '') : '';
 const cleanYear = year ? year.trim() : '';
-
-// --- Link & Fallback Logic ---
-let hrefLink = '';
-let displayLinkText = '';
-let isDoi = false;
-
-if (doi) {
-  // Strip any accidental absolute domain roots inside the DOI string field
-  const cleanDoi = doi.replace(/^https?:\/\/doi\.org\//, '');
-  hrefLink = `https://doi.org/${cleanDoi}`;
-  displayLinkText = `doi:${cleanDoi}`;
-  isDoi = true;
-} else if (url) {
-  hrefLink = url;
-  displayLinkText = url;
-}
 ---
 
 <div class="reference-card" id={`ref-${id.toLowerCase()}`}>
@@ -99,16 +93,77 @@ if (doi) {
       </>
     )}
 
-    {/* Render the link block according to the updated display rules */}
-    {hrefLink && (
-      <div class="citation-link-wrapper">
-        <a href={hrefLink} target="_blank" rel="noopener noreferrer" class="ref-url-link">
-          {displayLinkText}
+    {/* Metadata & OpenAlex Metrics Row */}
+    <div class="citation-meta-row">
+      {hrefLink && (
+        <div class="citation-link-wrapper">
+          <a href={hrefLink} target="_blank" rel="noopener noreferrer" class="ref-url-link">
+            {displayLinkText}
+          </a>
+        </div>
+      )}
+
+      {isDoi && (
+        <a 
+          href={`https://doi.org/${cleanDoi}`}
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="openalex-badge loading" 
+          data-doi={cleanDoi}
+          title="Loading citation metrics from OpenAlex..."
+        >
+          <svg class="openalex-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span class="badge-text">Loading...</span>
         </a>
-      </div>
-    )}
+      )}
+    </div>
   </span>
 </div>
+
+<script>
+  async function initOpenAlexBadges() {
+    const badges = document.querySelectorAll('.openalex-badge.loading');
+    
+    badges.forEach(async (badge) => {
+      const doi = badge.getAttribute('data-doi');
+      if (!doi) return;
+
+      try {
+        const response = await fetch(`https://api.openalex.org/works/https://doi.org/${doi}`);
+        if (!response.ok) {
+          badge.remove(); // Remove badge if lookup fails
+          return;
+        }
+
+        const data = await response.json();
+        const count = data.cited_by_count ?? 0;
+        const workUrl = data.id;
+
+        if (workUrl) {
+          badge.setAttribute('href', workUrl);
+        }
+        
+        const textSpan = badge.querySelector('.badge-text');
+        if (textSpan) {
+          textSpan.innerHTML = `Cited by <strong>${count}</strong>`;
+        }
+        
+        badge.setAttribute('title', 'View citation metrics on OpenAlex');
+        badge.classList.remove('loading');
+      } catch (err) {
+        badge.remove();
+      }
+    });
+  }
+
+  // Run on initial load and support view transitions if enabled
+  initOpenAlexBadges();
+  document.addEventListener('astro:after-swap', initOpenAlexBadges);
+</script>
 
 <style>
   .reference-card {
@@ -129,6 +184,7 @@ if (doi) {
   }
   .ref-details {
     color: var(--sl-color-gray-2);
+    width: 100%;
   }
   .ref-title {
     color: var(--sl-color-white);
@@ -136,8 +192,14 @@ if (doi) {
   .ref-journal {
     font-style: normal; 
   }
-  .citation-link-wrapper {
+  .citation-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
     margin-top: 0.25rem;
+  }
+  .citation-link-wrapper {
     font-size: var(--sl-text-xs);
   }
   .ref-url-link {
@@ -146,7 +208,35 @@ if (doi) {
     color: var(--sl-color-text-accent);
     text-decoration: underline;
   }
-  
+  .openalex-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    background-color: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid var(--sl-color-gray-5);
+    transition: background-color 0.2s ease;
+  }
+  .openalex-badge.loading {
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
+  }
+  .openalex-badge:not(.loading):hover {
+    background-color: var(--sl-color-gray-5);
+    color: var(--sl-color-white);
+  }
+  .openalex-icon {
+    opacity: 0.7;
+  }
+  @keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
   .reference-card:target,
   .reference-card.is-cited-target {
     background-color: var(--sl-color-gray-6);

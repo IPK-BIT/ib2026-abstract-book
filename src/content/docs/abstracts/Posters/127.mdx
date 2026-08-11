@@ -6,6 +6,14 @@ authors:
   - anne-sennhenn
   - daniel-nuest
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 FAIR research data management (RDM) is widely recognised as a prerequisite for transparent, reusable, and high-quality research. Yet, translating FAIR and Open Science principles into everyday research practice remains difficult. While many initiatives focus on infrastructures, standards, and tools, less attention has been paid to instruments that create shared values, trust, ownership, and coordinated action across institutions and research communities.
 

@@ -1,0 +1,60 @@
+---
+export interface Props {
+  title: string;
+  tagline?: string;
+  authors: string[];
+  date?: string;
+  conferenceTitle?: string;
+  type?: 'talk' | 'poster' | 'keynote';
+}
+
+const { 
+  title, 
+  tagline, 
+  authors = [], 
+  date = "2026", 
+  conferenceTitle = "NFDI4LS - IB2026",
+  type = "talk"
+} = Astro.props;
+
+const formatAuthorName = (slug: string) => {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+const formattedAuthors = authors.map(formatAuthorName);
+const fullTitle = tagline ? `${title}: ${tagline}` : title;
+
+const getPresentationType = (t: string) => {
+  switch (t) {
+    case 'poster':
+      return 'Poster';
+    case 'keynote':
+      return 'Invited Talk';
+    case 'talk':
+    default:
+      return 'Full Talk';
+  }
+};
+
+const presentationType = getPresentationType(type);
+---
+
+<meta name="DC.title" content={fullTitle} />
+{tagline && <meta name="DC.description" content={tagline} />}
+<meta name="DC.date" content={date} />
+
+<meta name="z.itemType" content="presentation" />
+<meta name="z.presentationType" content={presentationType} />
+<meta name="z.meetingName" content={conferenceTitle} />
+
+{formattedAuthors.map((author) => (
+  <>
+    <meta name="z.presenters" content={author} />
+    <meta name="DC.creator" content={author} />
+  </>
+))}
+
+<meta name="DC.type" content="event" />

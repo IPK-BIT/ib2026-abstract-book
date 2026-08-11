@@ -23,6 +23,14 @@ references:
   - weil_plantdatahub_2023
   - ott_nfdi4plantsarc-wr-ro-crate-profile_2025
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 import Cite from '@components/Cite.astro';
 

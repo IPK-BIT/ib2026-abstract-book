@@ -18,6 +18,14 @@ references:
   - leo_recording_2024
   - weil_plantdatahub_2023
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 import Cite from '@components/Cite.astro';
 

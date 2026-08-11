@@ -5,6 +5,14 @@ authors:
   - wahib-sahwan
   - marcus-schmidt
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Technical RDM tools and services go hand in hand with personal support. Only when such tools can be well explained, presented and recommended do they reach the community and their full potential. On the other hand, data stewards in contact with customers are often asked for tools that can solve a specific problem they want to solve.
 

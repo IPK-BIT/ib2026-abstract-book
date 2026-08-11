@@ -7,6 +7,14 @@ authors:
   - reza-haghi
   - mohamadreza-hajirezai
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Medicinal and oilseed plants are valuable sources of bioactive compounds with antioxidant, anti-inflammatory, and pharmaceutical properties. However, drought stress is one of the major environmental factors limiting plant growth, productivity, and metabolic homeostasis. Understanding the molecular mechanisms underlying drought tolerance is therefore essential for the development of stress-resilient crops and sustainable agriculture.
 

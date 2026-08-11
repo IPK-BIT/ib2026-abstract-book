@@ -19,6 +19,14 @@ references:
   - pampel_re3data_2023
   - fair_data_maturity_model_working_group_fair_2020
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 import Cite from '@components/Cite.astro';
 

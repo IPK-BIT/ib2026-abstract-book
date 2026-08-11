@@ -11,6 +11,14 @@ authors:
   - ulrike-stahl
   - oliver-kirchgessner
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Research data management (RDM) service landscapes are becoming increasingly diverse. Across research communities, infrastructures, consortia, and institutions, many services, tools, training formats, guidance materials, and community-driven solutions already exist or are currently being developed. However, the mere existence of services does not automatically lead to their use. Results from community needs assessments and ongoing service coordination activities highlight a persistent gap between technical service development and user adoption: services may remain difficult to discover, insufficiently explained, poorly linked to practical guidance, or disconnected from the everyday workflows of researchers and institutions.
 

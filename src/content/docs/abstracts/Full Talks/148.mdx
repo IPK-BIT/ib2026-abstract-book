@@ -7,6 +7,14 @@ authors:
   - peyman-vahidi
   - sebastian-lobentanzer
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 # Abstract
 

@@ -7,6 +7,14 @@ authors:
   - nils-stein
   - uwe-scholz
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 The rapid accumulation of crop genomic resources has necessitated a shift from passive data archiving to active, scalable data engineering. Here, we present PanBARLEX, an interactive web portal designed to explore the pan-omics layers of barley. PanBARLEX integrates a massive, multi-modal dataset , including an annotated pan-gene space of 76 chromosome-scale assemblies, pan-gene clusters with multiple sequence alignments, and corresponding gene expression and epigenetic data for a subset of 20 genotypes. Operating at the intersection of integrative systems biology and multi-modal modeling, the portal aims to condense these massive data quantities to allow researchers to uncover fundamental biological mechanisms and agronomic traits from interconnected omics layers. However, building such a comprehensive multi-modal system introduces significant data management and integration challenges. During the development of PanBARLEX, several critical bottlenecks were encountered:
 

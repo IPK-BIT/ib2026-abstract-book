@@ -20,6 +20,14 @@ references:
   - noauthor_helium_nodate
   - noauthor_gridscore_nodate
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="keynote" 
+/>
 
 Dr. Paul Shaw is a Senior Research Scientist and bioinformatician at The James Hutton Institute and the International Barley Hub. He leads the development of information systems for plant genetic resources, focusing on pragmatic data visualization to transform large-scale genomic and phenotypic data into accessible, interactive tools. Dr. Shaw is the lead developer of major platforms, including the open-source database Germinate and the pedigree visualization tool Helium. He also champions efficient data gathering via mobile applications like GridScore. Collaborating with international initiatives like the Global Crop Diversity Trust and DivSeek, his work integrates FAIR data principles into agricultural workflows, supporting global crop resilience and food security.
 

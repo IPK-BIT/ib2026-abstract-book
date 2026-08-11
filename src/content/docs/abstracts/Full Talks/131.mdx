@@ -3,6 +3,14 @@ title: Understanding the Bioimaging Standardization Runway
 authors:
   - josh-moore
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 Bioimaging has become a central modality in the life sciences, spanning applications from molecular and cellular biology to plant phenotyping, clinical research, and increasingly AI-driven analysis. Yet despite major advances in imaging technologies, the surrounding data ecosystem remains highly fragmented. Data are often stored in proprietary formats, metadata practices vary substantially between communities, and interoperability across infrastructures, tools, and computational workflows remains difficult.
 

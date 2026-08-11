@@ -22,6 +22,14 @@ references:
   - selby_brapi_2025
   - fischer-zielke_minimal_2026
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 import Cite from '@components/Cite.astro';
 

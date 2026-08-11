@@ -8,6 +8,14 @@ authors:
   - steffen-neumann
   - arianne-schnabel
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Rosemary (Salvia rosmarinus Spenn.) is a specialty crop that produces many bioactive compounds such as diterpenoids (e.g. carnosic acid), phenylpropanoids (e.g. rosmarinic acid) and volatile substances, which create the characteristic scent of the plant. In the DiP-NA-WIR project one of our tasks is to select a biochemically and genetically diverse panel of rosemary genotypes for further investigation. To this end, an initial panel of 56 rosemary genotypes was collected and subjected to genomic sequencing, as well as untargeted LC-TIMS-MS/MS and GC-MS measurements.
 

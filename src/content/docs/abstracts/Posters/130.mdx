@@ -15,6 +15,14 @@ references:
   - schuler_data_2025
   - arend_-premise_2020
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 import Cite from '@components/Cite.astro';
 

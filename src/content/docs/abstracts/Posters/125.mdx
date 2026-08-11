@@ -7,6 +7,14 @@ authors:
   - anne-sennhenn
   - sophie-bosse
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
 
 Research data management (RDM) landscapes often evolve through many parallel activities across domains, communities, institutions and infrastructures. While valuable services, training opportunities, and expertise already exist in the life sciences and agriculture science, their impact may remain limited when efforts are disconnected and difficult to discover.
 

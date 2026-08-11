@@ -14,6 +14,15 @@ references:
   - schneider_making_2025
   - leendertse_strategic_2025
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
+
 import Cite from '@components/Cite.astro';
 
 The FAIR principles have become widely accepted as a framework for improving the management and reuse of research data. However, despite substantial progress in research data management, the publication of research data as a recognised scholarly output remains far from routine practice in many scientific disciplines. While technical solutions for storing and sharing data have matured considerably, cultural, organisational, and incentive-related barriers continue to limit the widespread adoption of data publication workflows.

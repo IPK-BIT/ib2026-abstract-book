@@ -9,6 +9,14 @@ authors:
   - eik-dahms
   - cristina-schmale-rodrigues
 ---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero.tagline} 
+  authors={frontmatter.authors} 
+  type="talk" 
+/>
 
 Data stewardship plays a central role in translating the NFDI endeavor of making research data FAIR into everyday scientific practice. Within DataPLANT, stewardship activities initially emerged from a data-centric perspective focused on supporting researchers close to the laboratory bench: guiding and improving metadata annotation of experimental workflows and helping researchers transform daily routines into FAIR research data.
 
