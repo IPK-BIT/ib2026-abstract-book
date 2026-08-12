@@ -110,9 +110,9 @@ export default defineConfig({
                     navigateFallback: '/ib2026-abstract-book/',
                 },
                 manifest: {
-                    name: 'nfdi4ls Abstract Book',
-                    short_name: 'Abstract Book',
-                    description: 'nfdi4ls conference abstract book application',
+                    name: 'nfdi4ls - IB2026 Abstract Book',
+                    short_name: 'NFDI4LS',
+                    description: 'Official mobile abstract book and program guide for the nfdi4LS - Integrative Bioinformatics 2026 conference.',
                     theme_color: '#ffffff',
                     background_color: '#ffffff',
                     display: 'standalone',
