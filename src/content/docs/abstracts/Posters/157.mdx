@@ -1,0 +1,52 @@
+---
+title: Building the Biodata Bridge from Silos to Synergy
+hero:
+  tagline: How the Biodata Interest Group unites six consortia for seamless RDM integration across the biological sciences.
+authors:
+  - mary-ann-ebeling
+  - biodata-interest-group
+references:
+  - ebert_memorandum_2026
+---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero?.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
+
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/146/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
+import Cite from '@components/Cite.astro';
+
+Biological research runs from remote ecological field sites to tightly controlled molecular laboratories, and no single consortium in Germany's Nationale Forschungsdateninfrastruktur (NFDI) covers that span. In their Memorandum of Understanding (MoU) <Cite id="ebert_memorandum_2026"/>, the speakers of six consortia set out what follows. DataPLANT, NFDI4Microbiota, NFDI4Biodiversity, FAIRagro, NFDI4Objects, and NFDI4BIOIMAGE agree that despite different subject areas and research contexts, field and laboratory alike, their target communities use similar methods and similar data types are relevant for their research.
+
+The MoU builds its case on complementarity rather than overlap. Across five major biological data types, from collection and species occurrence data through taxon data, biological and ecological study data, non-molecular analysis data, and molecular sequence data, the six consortia's investment in the first three years of operation was quite complementary. Where one consortium invested heavily, others had no priority. The MoU's conclusion is that this provides a solid basis to leverage resources.
+
+Biological data, together with related software, tools, workflows, models, and other digital infrastructure, is therefore named as the connecting element for harmonising research data management strategies across research contexts. Synergies are to include education and training, outreach and communication, service portfolio reuse and co-development, user support, and activities in the UN policy arena regarding digital sequence information. The cooperation is explicitly open to further consortia working with biological data.
+
+Eight areas of joint activity carry this: shared partners and staff, an aligned helpdesk connected to the Base4NFDI proposal Support4RDM, joint infrastructure including de.NBI cloud provision and an intent to explore a shared long-term data hub, joint programming around FAIR Digital Objects and workflow systems, a joint conference series, coordinated publication, pooled outreach know-how, and harmonised training.
+
+To govern this, the consortia will implement a Biodata Interest Group within the NFDI, integrated into their work programmes rather than run alongside them, with coordination alternating between consortia. Its remit is to make synergies visible, align operational goals, develop cross-consortia collaborations on essential services, and advocate for sustained funding of biodata services.
+rom DataPLANT's efforts to promote data publication as a routine component of scientific practice. We discuss both successes and remaining obstacles, examine how AI has changed the conversation around research data, and explore the implications for research infrastructures and institutions. We argue that the future of scholarly communication will increasingly depend on the ability to treat data publications as genuine research outputs and that sustainable cultural change requires the combined evolution of technologies, infrastructures, incentives, and community practices.
+
+## References
+
+import ReferenceList from '@components/ReferenceList.astro';
+
+<ReferenceList references={frontmatter.references} />
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />

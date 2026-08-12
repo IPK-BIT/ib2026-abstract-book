@@ -142,18 +142,6 @@
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/107/"
                 },
                 {
-                  "title": "GenXBrowser: An interactive platform for comparative analysis of bulk RNA expression data",
-                  "speaker": "Keßler, Micha Frederick",
-                  "authors": [
-                    "micha-frederick-kessler",
-                    "rabia-ayche-serradj",
-                    "henri-duempelmann",
-                    "oliver-rupp",
-                    "alexander-goesmann"
-                  ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/109/"
-                },
-                {
                   "title": "Enhancing e!DAL-PGP: Towards a FAIR, Interoperable and AI-Ready Submission Platform for Plant Science Research Data",
                   "speaker": "Arend, Daniel",
                   "authors": [
@@ -174,14 +162,29 @@
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/112/"
                 },
                 {
-                  "title": "Data stewards as bridge builders between RDM Services and the Community",
-                  "speaker": "Rey Mazón, Elena",
+                  "title": "A dynamic health-state manifold maps instability and heterogeneous aging progression from longitudinal clinical records",
+                  "speaker": "Zhang, Shilong",
                   "authors": [
-                    "elena-rey-mazon",
-                    "wahib-sahwan",
-                    "marcus-schmidt"
+                    "shilong-zhang",
+                    "zhimeng-zhao",
+                    "luyao-xie",
+                    "qing-yang",
+                    "huiyun-pan",
+                    "jie-wu",
+                    "dusan-usjak",
+                    "cong-feng",
+                    "ming-chen"
                   ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/118/"
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/121/"
+                },
+                {
+                  "title": "Beyond Symbolic Commitment: FAIRagro and NFDI4Earth FAIRness & Openness Commitments as Living Frameworks for Peer Learning and FAIR Data Culture",
+                  "speaker": "Sennhenn, Anne",
+                  "authors": [
+                    "anne-sennhenn",
+                    "daniel-nuest"
+                  ],
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/127/"
                 }
               ]
             }
@@ -254,20 +257,14 @@
               "type": "Poster",
               "posters": [
                 {
-                  "title": "A dynamic health-state manifold maps instability and heterogeneous aging progression from longitudinal clinical records",
-                  "speaker": "Zhang, Shilong",
+                  "title": "Data stewards as bridge builders between RDM Services and the Community",
+                  "speaker": "Rey Mazón, Elena",
                   "authors": [
-                    "shilong-zhang",
-                    "zhimeng-zhao",
-                    "luyao-xie",
-                    "qing-yang",
-                    "huiyun-pan",
-                    "jie-wu",
-                    "dusan-usjak",
-                    "cong-feng",
-                    "ming-chen"
+                    "elena-rey-mazon",
+                    "wahib-sahwan",
+                    "marcus-schmidt"
                   ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/121/"
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/118/"
                 },
                 {
                   "title": "Integration of Genomics, Metabolomics and Transcriptomics Data of 56 rosemary accessions for the elucidation of group-specific pathways",
@@ -317,15 +314,6 @@
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/126/"
                 },
                 {
-                  "title": "Beyond Symbolic Commitment: FAIRagro and NFDI4Earth FAIRness & Openness Commitments as Living Frameworks for Peer Learning and FAIR Data Culture",
-                  "speaker": "Sennhenn, Anne",
-                  "authors": [
-                    "anne-sennhenn",
-                    "daniel-nuest"
-                  ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/127/"
-                },
-                {
                   "title": "Elab2ARC: A browser-based workspace for converting free-text protocols into rich FAIR digital objects",
                   "speaker": "Zander, Sabrina",
                   "authors": [
@@ -341,17 +329,6 @@
                     "bjoern-usadel"
                   ],
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/129/"
-                },
-                {
-                  "title": "Object Store meets Laboratory Information System: Implementing Self-Service Digital Shadow Infrastructure for Multidomain Plant Data",
-                  "speaker": "Strauch, Theodor",
-                  "authors": [
-                    "theodor-strauch",
-                    "danuta-schueler",
-                    "lars-erik-thomsen",
-                    "matthias-lange"
-                  ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/130/"
                 }
               ]
             }
@@ -413,6 +390,17 @@
               "type": "Poster",
               "posters": [
                 {
+                  "title": "Object Store meets Laboratory Information System: Implementing Self-Service Digital Shadow Infrastructure for Multidomain Plant Data",
+                  "speaker": "Strauch, Theodor",
+                  "authors": [
+                    "theodor-strauch",
+                    "danuta-schueler",
+                    "lars-erik-thomsen",
+                    "matthias-lange"
+                  ],
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/130/"
+                },
+                {
                   "title": "SciWIn: Enabling FAIR for scientific analysis workflows",
                   "speaker": "Leidel, Antonia",
                   "authors": [
@@ -462,6 +450,16 @@
                     "carmen-scheuner"
                   ],
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/"
+                },
+                {
+                  "title": "Tracing Digital Sequence Information of Plants Through Science: Why it Matters and What We are Missing",
+                  "speaker": "Zala, Kinnari",
+                  "authors": [
+                    "kinnari-zala",
+                    "uwe-scholz",
+                    "matthias-lange"
+                  ],
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/"
                 }
               ]
             }
@@ -469,9 +467,15 @@
         },
         {
           "time": "18:30 - 21:00",
-          "title": "Poster Session 1 & Welcome Reception",
-          "location": "Casino",
-          "type": "Poster"
+          "title": "Session 4: Poster",
+          "description": "",
+          "contributions": [
+            {
+              "durationMinutes": 150,
+              "title": "Poster Session & Welcome Reception",
+              "location": "Casino",
+              "type": "Poster"            }
+          ]
         },
         {
           "time": "21:15 - 21:30",
@@ -493,7 +497,7 @@
         },
         {
           "time": "09:05 - 11:05",
-          "title": "Session 4: Robust Architectures and Domain-Specific Data Standards",
+          "title": "Session 5: Robust Architectures and Domain-Specific Data Standards",
           "description": "A dive into the technical backbone required to structure massive biological datasets. Advanced database architectures for multi-omics research and the implementation of scalable metadata standards for specific domains.",
           "chair": "TBD",
           "location": "Lecture Hall",
@@ -559,7 +563,7 @@
         },
         {
           "time": "11:35 - 16:30",
-          "title": "Session 5: FAIR Assessment & Computational Workflows",
+          "title": "Session 6: FAIR Assessment & Computational Workflows",
           "description": "A concentration on evaluating machine-actionability and processing raw biological data reliably. Presentations on API-driven FAIR assessment, automated metadata extraction via multi-agent systems, and domain-agnostic workflow engines.",
           "chair": "TBD",
           "location": "Lecture Hall",
@@ -715,7 +719,7 @@
         },
         {
           "time": "09:05 - 11:05",
-          "title": "Session 6: Large-Scale Genomics and Discovery Portals",
+          "title": "Session 7: Large-Scale Genomics and Discovery Portals",
           "description": "A showcase of how complex biological structures are mapped and made accessible. An overview of large-scale portals, interactive platforms, and taxonomy tools.",
           "chair": "TBD",
           "location": "Lecture Hall",
@@ -776,7 +780,7 @@
         },
         {
           "time": "11:30 - 13:30",
-          "title": "Session 7: Knowledge Graphs and Generative AI",
+          "title": "Session 8: Knowledge Graphs and Generative AI",
           "description": "A deep dive into semantic networks and machine learning. Exploration of purpose-bound knowledge graphs and LLM-driven generative tools for metadata extraction and biological sequence prediction.",
           "chair": "TBD",
           "location": "Lecture Hall",

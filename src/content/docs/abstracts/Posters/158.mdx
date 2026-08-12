@@ -1,0 +1,46 @@
+---
+title: Tracing Digital Sequence Information of Plants Through Science
+hero:
+  tagline: Why it Matters and What We are Missing
+authors:
+  - kinnari-zala
+  - uwe-scholz
+  - matthias-lange
+---
+import ZoteroMetadata from '@components/ZoteroMetadata.astro';
+
+<ZoteroMetadata 
+  title={frontmatter.title} 
+  tagline={frontmatter.hero?.tagline} 
+  authors={frontmatter.authors} 
+  type="poster" 
+/>
+
+import BookmarkButton from '@components/BookmarkButton.astro';
+
+<BookmarkButton
+  id="/ib2026-abstract-book/abstracts/posters/146/"
+  title={frontmatter.title}
+  tagline={frontmatter.hero?.tagline}
+  authors={frontmatter.authors}
+/>
+
+The ‘Digital Sequence information (DSI)’ from plant genetic resources are central part of discussion for unresolved policies. The Kunming Montrel Global Biodiversity framework (Target 13) explicitly mentions benefit sharing from genetic resources and DSI, and COP16 agreed with it. Any such system assumes that benefits from the use of genetic resources can be linked with the material they come from, is an assumption that is unverified at the organizational level. The genebank of IPK, an ex-situ collection of 151,775 accessions, is taken as a complete institutional case study to answer if the sequence data arriving from its material can be traced from physical specimen through public repositories to the papers citing them.
+
+Rebuilding the institutional data lifecycle through surveys and questionnaires to IPK researcher, shows that no automated backtracing exists in any two consecutive steps of the data lifecycle. The published descriptors of the Genebank Information System (GBIS) covers no sequence data in its ten data domains. In the complete passport export of 179,450 accessions, out of 55 field standard – the MCPD OTHERNUMB descriptor (which is defined as external identifier), is spread around 73.3% of records, exclusively with other genebanks’ accession number; meaning no sequence identifier occurs in any record. An internal survey within IPK (36 responses and 18 research groups) found 20 significant deposition destinations, unused by more than half of participants, the most frequent being a code hosting service (GitHub) than a data repository.
+
+The next step was to parse, download and mine the institute’s own corpus. From 8,779 library records (from the year 1976 to 2026), full text was retrieved for 2529 publications as PDF and 1,254 as JATS XML; each PDF was additionally converted to markdown and structured JSON, totalling 8,841 document representations. The key principle of regex pattern or format is used for identifier detection using separator-tolerant patterns which are derived from each respective issuing authority’s documentation. Mining results returned 6,544 identifier occurrences resolving to 1,889 distinct identifiers across 515 publications. Separator tolerance proved necessary: 75 identifiers occur in more than one written form, including separators inserted inside the identifier itself. The four document representations correspond to only 70% of recovered identifiers, with recall between 78% and 92% per each format.
+
+Every unique identifier was channelled by accession prefix to its corresponding resolving authors which are ENA, identifiers.org, DataCite or the GBIS passport data. Out of 1,687 identifiers submitted, 1,673 (99.2%) resolved to existing records, without false matches. Of 6,544 instances, 6,506 instances were methodically assigned to rule-based classification leaving 38 as an uncertain instance.
+
+The mining results shown asymmetrical evidence: e!DAL-PGP (Plant Genomics & Phenomics Research Data Repository) dataset DOIs, which have been minted since 2015, occurs as 124 across 104 publications. In contrast, GBIS accession DOIs, minted since 2021, occurs as 27 across 11 publications, all of which authored by IPK’s researchers itself and no citing of IPK material by external groups using its persistent identifier. Which indicates that only sequence travels through literature and not the specimen (leaving them untraceable). The gap identified doesn’t occur from lack of persistent identifier, in fact IPK assigns a DataCite DOI to every accession, however the lack of the link between identifier the institution issues and the accession string referenced in literature.
+
+This document represents as an empirical audit of the implementation of FAIRness, rather than its theoretical specifications, and we offer it as a reference use case of designing Persistent Identifier (PID) networks within research data infrastructure.
+
+**Acknowledged contributors**: We thank Stephan Weise for assistance with GBIS system documentation, Daniel Arend for e!DAL-PGP system documentation, Catrin Kaydamov and Simone Winter from the IPK library for retrieval of publication records, and Jens Freitag for distributing the internal survey to research groups.
+
+## Authors
+
+import AuthorList from '@components/AuthorList.astro';
+
+<AuthorList authorRefs={frontmatter.authors} />
