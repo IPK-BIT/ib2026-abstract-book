@@ -20,7 +20,7 @@
           "time": "09:15 - 12:35",
           "title": "Session 1: Community, Stewardship, and Governance",
           "description": "A focus on the foundational human and organizational aspects of Research Data Management (RDM). Discussions on data stewardship, community engagement, legal metadata, and quality management frameworks.",
-          "chair": "TBD",
+          "chair": "Matthias Lange",
           "location": "Lecture Hall",
           "contributions": [
             {
@@ -188,7 +188,7 @@
           "time": "13:35 - 16:00",
           "title": "Session 2: Applied RDM, Curation, and Metadata Tooling",
           "description": "Practical approaches to actively managing and structuring data. Overview of federated curation workflows, collaborative sociotechnical practices, and software bridging researchers to FAIR data spaces.",
-          "chair": "TBD",
+          "chair": "Mary-Ann Ebeling",
           "location": "Lecture Hall",
           "contributions": [
             {
@@ -332,12 +332,12 @@
           "time": "16:30 - 18:30",
           "title": "Session 3: System Architectures & Semantic Tooling",
           "description": "The technical bridge between data structuring and infrastructure. Overview of implementing reference architectures, interoperable metadata interfaces, and software tools that connect researchers to FAIR data spaces.",
-          "chair": "TBD",
+          "chair": "Uwe Scholz",
           "location": "Lecture Hall",
           "contributions": [
             {
               "durationMinutes": 45,
-              "title": "TBD",
+              "title": "From Genomes to Prediction: Building the Data Infrastructure for Future Biological Discovery",
               "speaker": "Ware, Doreen",
               "authors": [
                 "doreen-ware"
@@ -487,7 +487,7 @@
           "time": "09:05 - 11:05",
           "title": "Session 5: Robust Architectures and Domain-Specific Data Standards",
           "description": "A dive into the technical backbone required to structure massive biological datasets. Advanced database architectures for multi-omics research and the implementation of scalable metadata standards for specific domains.",
-          "chair": "TBD",
+          "chair": "Daniel Arend",
           "location": "Lecture Hall",
           "contributions": [
             {
@@ -553,7 +553,7 @@
           "time": "11:35 - 16:30",
           "title": "Session 6: FAIR Assessment & Computational Workflows",
           "description": "A concentration on evaluating machine-actionability and processing raw biological data reliably. Presentations on API-driven FAIR assessment, automated metadata extraction via multi-agent systems, and domain-agnostic workflow engines.",
-          "chair": "TBD",
+          "chair": "Manuel Feser",
           "location": "Lecture Hall",
           "contributions": [
             {
@@ -690,7 +690,7 @@
         {
           "time": "19:00 - 22:00",
           "title": "Conference Dinner",
-          "location": "TBD",
+          "location": "Schlossmühle, QLB",
           "type": "Break"
         }
       ]
@@ -709,7 +709,7 @@
           "time": "09:05 - 11:05",
           "title": "Session 7: Large-Scale Genomics and Discovery Portals",
           "description": "A showcase of how complex biological structures are mapped and made accessible. An overview of large-scale portals, interactive platforms, and taxonomy tools.",
-          "chair": "TBD",
+          "chair": "Elena Rey Mazón",
           "location": "Lecture Hall",
           "contributions": [
             {
@@ -770,7 +770,7 @@
           "time": "11:30 - 13:30",
           "title": "Session 8: Knowledge Graphs and Generative AI",
           "description": "A deep dive into semantic networks and machine learning. Exploration of purpose-bound knowledge graphs and LLM-driven generative tools for metadata extraction and biological sequence prediction.",
-          "chair": "TBD",
+          "chair": "Patrick König",
           "location": "Lecture Hall",
           "contributions": [
             {
