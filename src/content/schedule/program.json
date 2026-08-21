@@ -107,18 +107,6 @@
                   "abstractSlug": "ib2026-abstract-book/abstracts/posters/102/"
                 },
                 {
-                  "title": "Label-Free Quantitative Proteomics Reveals Stress-Responsive Molecular Signatures in Contrasting Plant Genotypes",
-                  "speaker": "Zarabizadeh, Homa",
-                  "authors": [
-                    "homa-zarabizadeh",
-                    "naser-farokhi",
-                    "asadollah-ahmadikhah",
-                    "reza-haghi",
-                    "mohamadreza-hajirezai"
-                  ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/104/"
-                },
-                {
                   "title": "Towards FAIR NGS Data Management Across the Data Life Cycle: A Needs Analysis and Conceptual Framework",
                   "speaker": "Wohlers, Inken",
                   "authors": [
@@ -459,7 +447,7 @@
                     "uwe-scholz",
                     "matthias-lange"
                   ],
-                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/146/"
+                  "abstractSlug": "ib2026-abstract-book/abstracts/posters/158/"
                 }
               ]
             }
