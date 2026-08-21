@@ -8,16 +8,25 @@ interface Props {
   width?: number;
   number?: number | string; // e.g. "Fig. 1:"
   full?: boolean; // stretch to full content width instead of intrinsic size
+  href?: string; // wrap the image in a link
 }
 
-const { src, caption, width, number, full = false } = Astro.props;
+const { src, caption, width, number, full = false, href } = Astro.props;
 
 const altText = caption.replace(/<[^>]*>/g, '');
 const isLocalAsset = typeof src === 'object';
 ---
 
 <figure class:list={['sl-figure', { 'sl-figure-full': full }]}>
-  {isLocalAsset ? (
+  {href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {isLocalAsset ? (
+        <Image src={src as ImageMetadata} alt={altText} width={width} />
+      ) : (
+        <img src={src as string} alt={altText} width={width} />
+      )}
+    </a>
+  ) : isLocalAsset ? (
     <Image src={src as ImageMetadata} alt={altText} width={width} />
   ) : (
     <img src={src as string} alt={altText} width={width} />
