@@ -68,10 +68,18 @@ const {
 
       const map = L.map(element).setView(center, zoom);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
+      // NOTE: We intentionally use OpenStreetMap's standard tile server here
+      // instead of CARTO's anonymous basemaps.cartocdn.com endpoint. That
+      // CARTO endpoint sits behind a shared, global free-tier quota with no
+      // per-project key; once it's exceeded, CARTO's CDN silently replaces
+      // tile images with an "API KEY REQUIRED" watermark instead of erroring
+      // cleanly. Since this app is a static, client-only site on GitHub
+      // Pages, there's no way to hold a real secret key anyway, so we use a
+      // provider that's actually keyless rather than one that just looks
+      // keyless until its shared quota runs out.
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
       }).addTo(map);
 
       // Render Routes
