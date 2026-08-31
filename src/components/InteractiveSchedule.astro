@@ -54,120 +54,142 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
 
 <div class="interactive-schedule">
   <Tabs>
-    {program.days.map((day) => (
-      /* Passing data-date down to target the tab item container panel */
-      <TabItem label={day.label}>
-        <div class="linear-timeline" data-timeline-date={day.date}>
-          {day.slots.map((slot) => {
-            const isBreak = slot.type === 'Break';
-            // Parse time segment "HH:MM - HH:MM" into distinct start and end chunks
-            const [startTime, endTime] = slot.time.split(' - ').map(t => t.trim());
-            const contributionsWithTimes = withComputedTimes(slot.contributions, startTime);
-            
-            return (
-              <div 
-                class={`timeline-block ${isBreak ? 'block-break' : ''}`}
-                data-time-start={startTime}
-                data-time-end={endTime}
-              >
-                <!-- Left Column: Time Frame Bubble -->
-                <div class="time-marker">
-                  <span class="time-bubble">{slot.time}</span>
-                </div>
-                
-                <!-- Right Column: Content Cards -->
-                <div class="block-content">
-                  <div class="session-header">
-                    <h3 class="session-title">{slot.title}</h3>
-                    <div class="session-badges">
-                      {slot.location && (
-                        <span class="modern-location-tag">
-                          📍
-                          <span>{slot.location}</span>
-                        </span>
-                      )}
-                      {slot.type && <Badge text={slot.type} variant={getBadgeVariant(slot.type)} />}
-                    </div>
+    {program.days.map((day, index) => {
+      const prevDayLabel = index > 0 ? program.days[index - 1].label : null;
+      const nextDayLabel = index < program.days.length - 1 ? program.days[index + 1].label : null;
+      
+      return (
+        /* Passing data-date down to target the tab item container panel */
+        <TabItem label={day.label}>
+          <div class="linear-timeline" data-timeline-date={day.date}>
+            {day.slots.map((slot) => {
+              const isBreak = slot.type === 'Break';
+              // Parse time segment "HH:MM - HH:MM" into distinct start and end chunks
+              const [startTime, endTime] = slot.time.split(' - ').map(t => t.trim());
+              const contributionsWithTimes = withComputedTimes(slot.contributions, startTime);
+              
+              return (
+                <div 
+                  class={`timeline-block ${isBreak ? 'block-break' : ''}`}
+                  data-time-start={startTime}
+                  data-time-end={endTime}
+                >
+                  <!-- Left Column: Time Frame Bubble -->
+                  <div class="time-marker">
+                    <span class="time-bubble">{slot.time}</span>
                   </div>
                   
-                  {slot.chair && <p class="session-chair">Session Chair: <strong>{slot.chair}</strong></p>}
-
-                  {slot.description && <p class="session-description">{slot.description}</p>}
-
-                  {/* Grouped Consecutive Presentations */}
-                  {contributionsWithTimes.length > 0 && (
-                    <div class="nested-contributions">
-                      {contributionsWithTimes.map(({ contrib, displayTime }) => (
-                        <div class={`contribution-card ${contrib.posters ? 'contribution-card--compact' : ''}`}>
-                          <div class="contrib-top">
-                            <span class="contrib-time">{displayTime}</span>
-                            <div class="contrib-badges">
-                              {contrib.location && (
-                                <span class="modern-location-tag sub-loc">
-                                  📍                                  
-                                  <span>{contrib.location}</span>
-                                </span>
-                              )}
-                              <Badge text={contrib.type} variant={getBadgeVariant(contrib.type)} size="small" />
-                            </div>
-                          </div>
-                          <h4 class="contrib-title">{contrib.title}</h4>
-
-                          {/* Single-contribution case: one speaker, one abstract */}
-                          {!contrib.posters && contrib.speaker && (
-                            <p class="contrib-speaker">👤 {contrib.speaker}</p>
-                          )}
-                          {!contrib.posters && contrib.abstractSlug && (
-                            <div class="contrib-actions">
-                              <a href={`/${contrib.abstractSlug}`} class="abstract-link">Read Abstract →</a>
-                              <BookmarkButton 
-                                id={`/${contrib.abstractSlug}`} 
-                                title={contrib.title} 
-                                authors={contrib.authors ? contrib.authors : contrib.speaker ? [contrib.speaker]:[]} 
-                                compact={true} 
-                              />
-                            </div>
-                          )}
-
-                          {/* Poster Pitches case: several posters bundled into one slot */}
-                          {contrib.posters && contrib.posters.length > 0 && (
-                            <ul class="poster-list">
-                              {contrib.posters.map((poster) => (
-                                <li class="poster-item">
-                                  <span class="poster-item-title">{poster.title}</span>
-                                  <div class="poster-item-meta">
-                                    {poster.speaker && (
-                                      <span class="poster-item-speaker">👤 {poster.speaker}</span>
-                                    )}
-                                    <div class="poster-item-actions">
-                                      {poster.abstractSlug && (
-                                        <BookmarkButton 
-                                          id={`/${poster.abstractSlug}`} 
-                                          title={poster.title} 
-                                          authors={poster.authors ? poster.authors : poster.speaker ? [poster.speaker]:[]} 
-                                          compact={true} 
-                                        />
-                                      )}
-                                      {poster.abstractSlug && (
-                                        <a href={`/${poster.abstractSlug}`} class="abstract-link poster-item-link">Read Abstract →</a>
-                                      )}
-                                    </div>
-                                  </div>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      ))}
+                  <!-- Right Column: Content Cards -->
+                  <div class="block-content">
+                    <div class="session-header">
+                      <h3 class="session-title">{slot.title}</h3>
+                      <div class="session-badges">
+                        {slot.location && (
+                          <span class="modern-location-tag">
+                            📍
+                            <span>{slot.location}</span>
+                          </span>
+                        )}
+                        {slot.type && <Badge text={slot.type} variant={getBadgeVariant(slot.type)} />}
+                      </div>
                     </div>
-                  )}
+                    
+                    {slot.chair && <p class="session-chair">Session Chair: <strong>{slot.chair}</strong></p>}
+
+                    {slot.description && <p class="session-description">{slot.description}</p>}
+
+                    {/* Grouped Consecutive Presentations */}
+                    {contributionsWithTimes.length > 0 && (
+                      <div class="nested-contributions">
+                        {contributionsWithTimes.map(({ contrib, displayTime }) => (
+                          <div class={`contribution-card ${contrib.posters ? 'contribution-card--compact' : ''}`}>
+                            <div class="contrib-top">
+                              <span class="contrib-time">{displayTime}</span>
+                              <div class="contrib-badges">
+                                {contrib.location && (
+                                  <span class="modern-location-tag sub-loc">
+                                    📍                                  
+                                    <span>{contrib.location}</span>
+                                  </span>
+                                )}
+                                <Badge text={contrib.type} variant={getBadgeVariant(contrib.type)} size="small" />
+                              </div>
+                            </div>
+                            <h4 class="contrib-title">{contrib.title}</h4>
+
+                            {/* Single-contribution case: one speaker, one abstract */}
+                            {!contrib.posters && contrib.speaker && (
+                              <p class="contrib-speaker">👤 {contrib.speaker}</p>
+                            )}
+                            {!contrib.posters && contrib.abstractSlug && (
+                              <div class="contrib-actions">
+                                <a href={`/${contrib.abstractSlug}`} class="abstract-link">Read Abstract →</a>
+                                <BookmarkButton 
+                                  id={`/${contrib.abstractSlug}`} 
+                                  title={contrib.title} 
+                                  authors={contrib.authors ? contrib.authors : contrib.speaker ? [contrib.speaker]:[]} 
+                                  compact={true} 
+                                />
+                              </div>
+                            )}
+
+                            {/* Poster Pitches case: several posters bundled into one slot */}
+                            {contrib.posters && contrib.posters.length > 0 && (
+                              <ul class="poster-list">
+                                {contrib.posters.map((poster) => (
+                                  <li class="poster-item">
+                                    <span class="poster-item-title">{poster.title}</span>
+                                    <div class="poster-item-meta">
+                                      {poster.speaker && (
+                                        <span class="poster-item-speaker">👤 {poster.speaker}</span>
+                                      )}
+                                      <div class="poster-item-actions">
+                                        {poster.abstractSlug && (
+                                          <BookmarkButton 
+                                            id={`/${poster.abstractSlug}`} 
+                                            title={poster.title} 
+                                            authors={poster.authors ? poster.authors : poster.speaker ? [poster.speaker]:[]} 
+                                            compact={true} 
+                                          />
+                                        )}
+                                        {poster.abstractSlug && (
+                                          <a href={`/${poster.abstractSlug}`} class="abstract-link poster-item-link">Read Abstract →</a>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
+              );
+            })}
+
+            {/* Bottom Day-Jump Navigation Bar */}
+            {(prevDayLabel || nextDayLabel) && (
+              <div class="day-bottom-bar">
+                {prevDayLabel ? (
+                  <button type="button" class="day-nav-btn" data-target-day={prevDayLabel}>
+                    ← Previous day: {prevDayLabel}
+                  </button>
+                ) : <div />}
+                
+                {nextDayLabel && (
+                  <button type="button" class="day-nav-btn" data-target-day={nextDayLabel}>
+                    Next day: {nextDayLabel} →
+                  </button>
+                )}
               </div>
-            );
-          })}
-        </div>
-      </TabItem>
-    ))}
+            )}
+          </div>
+        </TabItem>
+      );
+    })}
   </Tabs>
 </div>
 
@@ -240,9 +262,38 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
     }
   }
 
+  // Setup Day Navigation Bar Buttons Logic
+  function setupDayNavButtons() {
+    document.querySelectorAll('.day-nav-btn').forEach((btn) => {
+      if (btn.hasAttribute('data-bound')) return;
+      btn.setAttribute('data-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        const targetLabel = (e.currentTarget as HTMLElement).getAttribute('data-target-day');
+        const parentTabContainer = btn.closest('starlight-tabs') as HTMLElement | null;
+        if (!parentTabContainer || !targetLabel) return;
+
+        const tabButtons = Array.from(parentTabContainer.querySelectorAll('[role="tab"]')) as HTMLButtonElement[];
+        const targetButton = tabButtons.find(b => b.textContent?.trim() === targetLabel);
+
+        if (targetButton) {
+          targetButton.click();
+          // Instantly jump viewport smoothly back to the top of the schedule container without manual scrolling up
+          parentTabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
   // Runs on document ready and hooks safely into Astro's SPA lifecycle navigation event signatures
-  document.addEventListener('DOMContentLoaded', handleLiveScheduleSync);
-  document.addEventListener('astro:after-swap', handleLiveScheduleSync);
+  document.addEventListener('DOMContentLoaded', () => {
+    handleLiveScheduleSync();
+    setupDayNavButtons();
+  });
+  document.addEventListener('astro:after-swap', () => {
+    handleLiveScheduleSync();
+    setupDayNavButtons();
+  });
 </script>
 
 <style>
@@ -261,7 +312,8 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
     position: absolute;
     left: 4.5rem;
     top: 1rem;
-    bottom: 1rem;
+    /* Terminate the vertical line well above the bottom bar */
+    bottom: 6rem;
     width: 2px;
     background-color: var(--sl-color-gray-5);
     z-index: 1;
@@ -511,5 +563,35 @@ const withComputedTimes = (contributions: Contribution[] | undefined, slotStartT
     align-items: center;
     gap: 0.75rem;
     flex-shrink: 0;
+  }
+
+  /* Bottom Day-Jump Navigation Bar Styling */
+  .day-bottom-bar {
+    margin-top: 3rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--sl-color-gray-5);
+    gap: 1rem;
+  }
+
+  .day-nav-btn {
+    background-color: var(--sl-color-bg-nav);
+    color: var(--sl-color-text-accent);
+    border: 1px solid var(--sl-color-gray-5);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+  }
+
+  .day-nav-btn:hover {
+    background-color: var(--sl-color-gray-6);
+    border-color: var(--sl-color-text-accent);
+    transform: translateY(-2px);
   }
 </style>
