@@ -61,7 +61,8 @@ export default defineConfig({
                 starlightImageZoom(),
                 starlightUiTweaks({
                     navbarLinks: [
-                        { label: 'My Bookmarks', href: '/ib2026-abstract-book/bookmarks/'}
+                        { label: 'Bingo', href: '/ib2026-abstract-book/bingo'},
+                        { label: 'My Bookmarks', href: '/ib2026-abstract-book/bookmarks/'},
                     ]
                 }),
             ],
